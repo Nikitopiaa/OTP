@@ -45,29 +45,69 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .display-settings input:checked{background:#80b900}
 .display-settings input:checked:before{transform:translateX(14px)}
 .display-settings input:focus-visible{outline:2px solid #222;outline-offset:3px}
-.phone-mode-button{background:#f0f7df;border-color:#deebc6;color:#436700}
+.display-help{font-size:11px;line-height:16px;color:#888;margin:0 0 4px;max-width:220px}
 .control-body{max-height:calc(100dvh - 100px);overflow-y:auto}
 .controls-gear{display:none}
 .hide-status #statusBar,.hide-status .dynamic-island{display:none}
 .hide-status .offer-navigation{top:12px}
-.hide-status .top-material{height:24px}
 .hide-home .home-indicator{display:none}
 .hide-home .figma-bottom-bar{height:83px}
 .hide-frame{height:100dvh;min-height:0;overflow:hidden}
 .hide-frame .stage{height:100dvh;min-height:0;padding:0}
-.hide-frame .device-wrap{width:calc(393px * var(--device-scale));height:100dvh}
-.hide-frame .iphone{width:393px;height:var(--preview-height);padding:0;border-radius:0;background:none;box-shadow:none}
+.hide-frame .device-wrap{width:393px;height:100dvh}
+.hide-frame .iphone{width:100%;height:100%;padding:0;border-radius:0;background:none;box-shadow:none;transform:none}
 .hide-frame .iphone:before,.hide-frame .hardware-button{display:none}
-.hide-frame .screen{height:var(--preview-height);border-radius:0}
+.hide-frame .screen{height:100%;border-radius:0}
 .hide-frame.hide-status .offer-navigation{top:max(12px,env(safe-area-inset-top,0px))}
-.hide-frame.hide-status .top-material{height:calc(24px + env(safe-area-inset-top,0px))}
+.hide-frame.hide-status .top-material{height:calc(84px + env(safe-area-inset-top,0px))}
 .hide-frame.hide-home .figma-bottom-bar{height:calc(83px + env(safe-area-inset-bottom,0px))}
 .hide-frame .gift{bottom:calc(83px + env(safe-area-inset-bottom,0px))}
 .hide-frame .bottom-sheet{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
-@media(max-width:650px){
+@media(max-width:650px),(hover:none) and (pointer:coarse){
+ body{height:100dvh;min-height:0;overflow:hidden}
+ .stage,.hide-frame .stage{height:100dvh;min-height:0;padding:0;display:block}
+ .device-wrap,.hide-frame .device-wrap{width:100%;height:100dvh}
+ .iphone{width:100%;height:100%;transform:none}
+ .screen{height:100%}
  .hide-frame .prototype-controls{left:auto;right:8px;bottom:auto;top:calc(8px + env(safe-area-inset-top,0px));width:min(280px,calc(100vw - 16px));pointer-events:none}
  .hide-frame .prototype-controls>summary{margin-left:auto;padding:0;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;background:#ffffffd9;box-shadow:0 2px 12px #0001;pointer-events:auto}
  .hide-frame .controls-title,.hide-frame .prototype-controls>summary:after{display:none}
  .hide-frame .controls-gear{display:block;font-size:22px;color:#555;line-height:1}
  .hide-frame .control-body{pointer-events:auto;max-height:calc(100dvh - 72px - env(safe-area-inset-top,0px))}
 }
+
+/* Layout grows with its container; text, icons and horizontal cards stay at 1:1. */
+.screen,.content{width:100%;min-width:0;max-width:none}
+.content{height:auto;min-height:100%;display:flex;flex-direction:column;padding-bottom:150px}
+.hero{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:393/535;flex:none}
+.hero-background{width:100%;height:114.57944%}
+.hero-background-1,.hero-background-2{height:100%}
+.hero-shade-top{width:100%}
+.hero-shade-bottom{width:calc(100% + 60px)}
+.hero-slide{display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 12px 54px}
+.hero-title{position:relative;inset:auto;width:calc(100% - 4px);margin:0 2px;flex:none}
+.offer{position:relative;inset:auto;width:100%;height:auto;min-height:72px;flex:none}
+.offer p{min-width:0}
+.offer-navigation,.status-bar,.top-material,.bottom-bar{width:100%}
+.dynamic-island{left:50%;transform:translateX(-50%)}
+.catalog{position:relative;inset:auto;width:100%;height:auto;min-height:706px;margin-top:-40px;flex:none}
+.chip-strip,.card-strip{width:calc(100% + 40px);min-width:0}
+.utilities{position:relative;inset:auto;width:100%;margin-top:24px;flex:none}
+.benefits,.insurance{position:relative;inset:auto;width:calc(100% - 32px);margin:32px 16px 0}
+.cashback{width:100%}
+.cashback-coin{left:auto;right:-90px}
+.benefit-grid,.insurance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.benefit-card{height:auto;min-height:192px}
+.invite{position:relative;inset:auto;width:calc(100% - 32px);height:auto;margin:24px 16px 0;padding-top:24px}
+.frog{left:calc(50% - 16px)}
+.invite-card{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:361/319}
+.invite-copy{left:20px;right:20px;width:auto}
+.invite-art{top:auto;bottom:0;width:100%;height:auto;aspect-ratio:361/230}
+.invite-card>.button{left:16px;right:16px;width:auto}
+.services{position:relative;inset:auto;width:calc(100% - 16px);margin:24px 8px 0}
+.services-heading p{white-space:normal}
+.service-row .product-icon{flex:none}
+.figma-bottom-bar .tab-glass{left:21px;right:21px;width:auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:4px 4px 4px 6px}
+.figma-bottom-bar .tab:nth-child(n){position:relative;top:auto;left:auto;width:auto;min-width:0}
+.home-indicator{left:50%;transform:translateX(-50%)}
+.sheet-handle{left:50%;transform:translateX(-50%)}
