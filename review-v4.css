@@ -3,6 +3,9 @@
 body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .stage{height:100svh;min-height:calc(876px * var(--device-scale) + 32px);padding:16px}
 .screen,.content{width:393px;min-width:393px;max-width:393px}
+/* Explicitly clip composited backdrop-blur planes to the screen silhouette. */
+.screen{--screen-radius:53px;isolation:isolate;clip-path:inset(0 round var(--screen-radius))}
+.hide-frame .screen{--screen-radius:0px}
 .offer-navigation{opacity:1;visibility:visible;transition:opacity .14s ease,visibility .14s ease;z-index:3}
 .offer-navigation.hidden-on-scroll{opacity:0;visibility:hidden;pointer-events:none}
 .offer-navigation.hidden-on-scroll .thumbnails{pointer-events:none}
