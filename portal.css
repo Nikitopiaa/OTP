@@ -1,28 +1,11 @@
 @font-face{font-family:Onest;src:url('assets/Onest.ttf') format('truetype');font-weight:100 900;font-display:swap}
 :root{font-family:Onest,Arial,sans-serif;color:#242724;background:#fff;font-synthesis:none;-webkit-text-size-adjust:100%}
 *{box-sizing:border-box}
-body{margin:0;min-width:280px;background:#fff}
-a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
-a:focus-visible{outline:3px solid #76af00;outline-offset:5px}
-h1,h2,p{margin:0}
-.portal{width:min(100%,1248px);min-height:100svh;margin:auto;padding:0 64px;display:flex;flex-direction:column}
-.portal-header{height:104px;display:flex;align-items:center;gap:24px;border-bottom:1px solid #e4e7e5}
-.portal-brand{display:flex;align-items:center;gap:10px;font-size:26px;font-weight:700;letter-spacing:-1px}
-.brand-symbol{width:42px;height:42px;display:grid;place-items:center;background:#bcf600;border-radius:14px}
-.brand-symbol img{display:block}
-.header-label{border-left:1px solid #d8ddda;padding-left:24px;font-size:14px;color:#70766f}
-main{flex:1}
-.portal-intro{padding:64px 0 48px}
-.eyebrow{display:block;color:#6b7663;font-size:10px;font-weight:600;letter-spacing:2px;margin-bottom:16px}
-.portal-intro h1{font-size:48px;line-height:1.12;letter-spacing:-2px;font-weight:600}
-.portal-intro p{margin-top:18px;color:#777d78;font-size:16px;line-height:25px}
-.section-heading{display:flex;align-items:center;gap:10px;margin-bottom:20px}
-.section-heading h2{font-size:15px;font-weight:500;line-height:22px}
-.prototype-count{display:grid;place-items:center;min-width:24px;height:24px;padding:0 7px;background:#e9ece8;border-radius:8px;color:#788073;font-size:11px}
-.prototype-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px;align-items:start}
-.prototype-card{display:flex;align-items:center;min-width:0;min-height:96px;padding:24px;border-radius:20px;background:#f5f6f7;transition:background .2s}
-.prototype-card h2{font-size:20px;line-height:26px;font-weight:500;letter-spacing:-.4px}
-.portal-footer{padding:48px 0 28px;color:#92978f;font-size:11px;line-height:16px}
-@media(hover:hover){.prototype-card:hover{background:#edf0eb}}
-@media(max-width:650px){.portal{padding:0 20px;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.portal-header{height:84px;gap:18px}.portal-brand{font-size:24px}.brand-symbol{width:36px;height:36px;border-radius:12px}.header-label{padding-left:18px;font-size:12px}.portal-intro{padding:40px 0 36px}.portal-intro h1{font-size:36px;letter-spacing:-1.5px}.portal-intro p{font-size:14px;line-height:22px;margin-top:14px}.desktop-break{display:none}.prototype-grid{gap:18px}.portal-footer{padding:36px 0 24px}}
+body{margin:0;min-width:280px;min-height:100svh;background:#fff}
+.portal{width:min(100%,1200px);min-height:100svh;margin:auto;padding:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px;align-content:start}
+.prototype-card{display:flex;align-items:center;min-width:0;min-height:96px;padding:24px;border-radius:20px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 4px 24px #00000012;-webkit-tap-highlight-color:transparent;transition:box-shadow .2s}
+.prototype-card h2{margin:0;font-size:20px;line-height:26px;font-weight:500;letter-spacing:-.4px}
+.prototype-card:focus-visible{outline:2px solid #76af00;outline-offset:5px}
+@media(hover:hover){.prototype-card:hover{box-shadow:0 6px 28px #0000001c}}
+@media(max-width:650px){.portal{padding:24px 20px;padding-top:calc(24px + env(safe-area-inset-top,0px));padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));gap:20px}}
 @media(prefers-reduced-motion:reduce){.prototype-card{transition:none}}
