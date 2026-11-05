@@ -1,0 +1,37 @@
+/* Comments 1–3: persistent story controls and time-synchronised image movement. */
+.offer-navigation{position:absolute;left:0;top:54px;width:393px;height:52px;z-index:7;pointer-events:none}
+.offer-navigation .thumbnails{top:4px;pointer-events:auto}
+.thumbnail-ring{stroke-width:3.8}
+.content-scrolled .thumbnail-ring{stroke:rgba(34,34,34,.62)}
+.hero-photo{position:absolute;inset:0;transform-origin:55% 45%;transform:translate3d(calc(var(--offer-progress,0)*-4px),calc(var(--offer-progress,0)*-3px),0) scale(calc(1 + var(--offer-progress,0)*.07))}
+.hero-photo>img{position:absolute}
+.hero-slide.active .hero-photo{will-change:transform}
+/* Keep all composited blur planes inside the rounded card silhouette. */
+.cashback{clip-path:inset(0 round 20px);isolation:isolate;contain:paint}
+.invite-card{clip-path:inset(0 round 16px);isolation:isolate;contain:paint}
+.cashback-gradient,.invite-gradient{width:100%;right:0;overflow:hidden;border-bottom-left-radius:inherit;border-bottom-right-radius:inherit}
+.gift-close{box-shadow:0 2px 8px rgba(48,17,89,.12)}
+.gift-close .icon{width:24px;height:24px}
+.frog{top:8px}
+/* Original Figma category assets: purple controller and three service discs. */
+.foreign-service-icon{width:32px;height:32px;border-radius:50%;background:#6a2cb5;display:grid;place-items:center;flex:none}
+.foreign-service-icon>img{width:24px;height:24px}
+.service-icon-stack{display:flex;align-items:center;width:72px;height:32px;flex:none}
+.service-disc{position:relative;display:grid;place-items:center;width:32px;height:32px;flex:none;border:1px solid #fff;border-radius:50%;margin-right:-12px;overflow:hidden}
+.service-disc:last-child{margin-right:0}.service-disc>img{width:24px;height:24px}.service-disc.pet{background:#82bf00}.service-disc.sim{background:#1582d0}.service-disc.legal{background:#6a2cb5}
+/* Figma OUTSIDE stroke 7/8px = CSS centred stroke 14/16px. */
+.hero-title{paint-order:stroke fill;-webkit-text-stroke:14px rgba(255,255,255,.2);text-shadow:none}
+.hero-title.small{-webkit-text-stroke-width:16px;-webkit-text-stroke-color:rgba(255,255,255,.2)}
+.hero-slide[data-slide="2"] .hero-title{-webkit-text-stroke-color:rgba(0,0,0,.2)}
+/* iOS and iPadOS 27 / Tab Bar - iPhone / Default / five tabs.
+   Source: 402×95, glass 360×62, buttons 352×54. */
+.bottom-bar.ios27-tab-bar{height:95px;display:block;padding:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible}
+.tab-glass{position:absolute;left:16.5px;top:12px;width:360px;height:62px;padding:4px;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;border-radius:36px;background:rgba(245,245,245,.58);backdrop-filter:blur(20px) saturate(1.65);-webkit-backdrop-filter:blur(20px) saturate(1.65);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 2px rgba(255,255,255,.95),inset 0 -1px 1px rgba(0,0,0,.06),0 4px 18px rgba(0,0,0,.12)}
+.ios27-tab-bar .tab{height:54px;width:auto;min-width:0;border-radius:29px;padding:4px 0;gap:2px;font-size:10px;line-height:12px;letter-spacing:0;justify-content:center;position:relative}
+.ios27-tab-bar .tab .icon{width:28px;height:28px}
+.ios27-tab-bar .tab.selected{background:rgba(118,118,128,.16);color:#78ad00;box-shadow:inset 0 1px 1px rgba(255,255,255,.45)}
+.gift{bottom:97px}
+/* A progressive edge material replaces the solid status-bar rectangle. */
+.top-material{position:absolute;z-index:5;left:0;top:0;width:393px;height:128px;transform:rotate(180deg);opacity:var(--chrome-opacity,0);--blur-tint:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.78) 48%,rgba(255,255,255,.95));transition:opacity .12s linear}
+.status-bar,.status-bar.scrolled{background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(prefers-reduced-motion:reduce){.hero-photo{transform:none;will-change:auto}}

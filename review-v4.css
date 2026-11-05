@@ -1,0 +1,37 @@
+/* A 393 CSS-pixel screen at 1:1 whenever the available width permits it.
+   A short desktop viewport scrolls the preview instead of shrinking the phone. */
+body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
+.stage{height:100svh;min-height:calc(876px * var(--device-scale) + 32px);padding:16px}
+.screen,.content{width:393px;min-width:393px;max-width:393px}
+.offer-navigation{opacity:1;visibility:visible;transition:opacity .14s ease,visibility .14s ease;z-index:3}
+.offer-navigation.hidden-on-scroll{opacity:0;visibility:hidden;pointer-events:none}
+.offer-navigation.hidden-on-scroll .thumbnails{pointer-events:none}
+.thumbnail-ring{stroke-width:1.5}
+.hero-title,.hero-title.small,.hero-slide[data-slide="2"] .hero-title{-webkit-text-stroke:0 transparent;text-shadow:none}
+.hero-slide{transition:none;transform:translateX(100%);opacity:0}
+.hero-slide.active,.hero-slide.is-leaving{transform:translateX(0);opacity:1}
+.hero-slide.is-leaving{pointer-events:none;z-index:1}
+.hero-slide.active{z-index:2}
+.top-material{height:84px}
+/* Exact source: Figma 21215:354527, BottomBar, 393 × 95. */
+.figma-bottom-bar{isolation:isolate}
+.bar-softener{position:absolute;inset:0;z-index:0;--blur-tint:linear-gradient(to bottom,rgba(243,244,246,0),#f3f4f6)}
+.figma-bottom-bar .tab-glass{left:21px;top:12px;width:351px;height:62px;display:block;padding:0;border:0;border-radius:296px;background:linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.05)),linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.4)),linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75));backdrop-filter:blur(3.5px) saturate(1.15);-webkit-backdrop-filter:blur(3.5px) saturate(1.15);box-shadow:0 8px 40px rgba(0,0,0,.12),inset 0 1px 1px rgba(255,255,255,.65);z-index:1}
+.figma-bottom-bar .tab{position:absolute;top:4px;width:74.2px;height:54px;margin:0;padding:8px;gap:4px;font-family:Onest,Arial,sans-serif;font-size:10px;line-height:10px;font-weight:500;letter-spacing:0;color:#222;background:none;border-radius:0;box-shadow:none}
+.figma-bottom-bar .tab:nth-child(1){left:6px}.figma-bottom-bar .tab:nth-child(2){left:72.2px}.figma-bottom-bar .tab:nth-child(3){left:138.4px}.figma-bottom-bar .tab:nth-child(4){left:204.6px}.figma-bottom-bar .tab:nth-child(5){left:270.8px}
+.figma-bottom-bar .tab .icon{width:24px;height:24px;position:relative;z-index:1}
+.figma-bottom-bar .tab>span{position:relative;z-index:1}
+.figma-bottom-bar .tab.selected{color:#000;background:none;box-shadow:none}
+.figma-bottom-bar .tab.selected:before{content:'';position:absolute;inset:0 -2px;background:rgba(0,0,0,.05);border-radius:100px}
+.figma-bottom-bar .home-indicator{z-index:2}
+@media(max-width:650px){.stage{height:100svh;min-height:calc(876px * var(--device-scale) + 32px);padding:16px}}
+@media(prefers-reduced-motion:reduce){.offer-navigation{transition:none}}
+
+/* Continue the offer underneath the catalogue's transparent rounded corners. */
+.hero{height:535px;isolation:isolate;z-index:0}
+.hero-background-1,.hero-background-2{height:535px}
+.catalog{z-index:1}
+/* Source Figma 21169:322142 / 21169:322144. */
+.utility-card.atm-card{width:139px}
+.atm-art{position:absolute;right:29px;bottom:19px;width:81px;height:60px;overflow:hidden;pointer-events:none}
+.atm-art>img{position:absolute;left:-23.95%;top:-50.88%;width:138.53%;height:186.77%;object-fit:fill}

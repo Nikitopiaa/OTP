@@ -1,0 +1,35 @@
+/* Minimal presentation: the device and its optional controls. */
+:root,body{background:#fff}
+body{margin:0;height:100svh;overflow:hidden}
+.stage{height:100svh;min-height:0;padding:20px;display:grid;place-items:center;gap:0}
+.iphone{box-shadow:0 0 0 1px #777d76,0 1px 0 2px #d8ddd6,0 0 0 4px #80857e,0 18px 35px -18px #19241759}
+.prototype-controls{position:fixed;z-index:30;right:20px;bottom:20px;width:260px;font-size:12px;color:#666}
+.prototype-controls>summary{list-style:none;margin-left:auto;width:max-content;max-width:100%;padding:10px 14px;border:1px solid #e8e8e8;background:#fff;border-radius:12px;cursor:pointer;user-select:none}
+.prototype-controls>summary::-webkit-details-marker{display:none}
+.prototype-controls>summary:after{content:'⌃';margin-left:10px;color:#999}
+.prototype-controls[open]>summary:after{content:'⌄'}
+.control-body{margin-top:8px;padding:14px;border:1px solid #e8e8e8;background:#fff;border-radius:14px;box-shadow:0 6px 20px #00000008}
+.control-caption{display:flex;align-items:center;gap:8px;color:#777;font-size:11px}
+.control-caption #slideNumber{font-size:12px;color:#444}
+.control-caption #slideName{flex:1;font-size:11px}
+.control-caption>span:last-child{white-space:nowrap;color:#999;font-size:10px}
+.prototype-controls .playback-controls{margin-top:12px;gap:8px}
+.prototype-controls .playback-controls button{min-width:0;flex:1;padding:9px 8px;border-radius:10px;background:#fafafa;border-color:#ededed;color:#555}
+.gift-toggle{width:100%;margin-top:8px;padding:10px;border:1px solid #ededed;border-radius:10px;background:#fafafa;font-size:12px;color:#555}
+.gift[hidden]{display:none}
+/* Insets belong to the scroll content, not to the clipping viewport. */
+.chip-strip,.card-strip{width:393px;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;scroll-padding-inline:20px}
+/* Figma progressive background blur, with its tint above the blur planes. */
+.progressive-blur{pointer-events:none;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.blur-plane,.blur-tint{position:absolute;inset:0;pointer-events:none}
+.blur-plane{-webkit-backdrop-filter:blur(var(--blur));backdrop-filter:blur(var(--blur));-webkit-mask-image:var(--blur-mask);mask-image:var(--blur-mask)}
+.blur-tint{background:var(--blur-tint)}
+.hero-shade-top{top:-114px;height:274px;transform:rotate(180deg);--blur-tint:linear-gradient(to bottom,transparent,#000)}
+.hero-shade-bottom{top:213px;height:298px;--blur-tint:linear-gradient(to bottom,transparent,rgba(0,0,0,.6))}
+.hero-background-1 .hero-shade-top,.hero-background-2 .hero-shade-top{height:302px}
+.hero-background-1 .hero-shade-bottom,.hero-background-2 .hero-shade-bottom{top:188px;height:323px}
+.cashback-gradient{--blur-tint:linear-gradient(179.837480911deg,rgba(242,126,54,0) .48167%,rgb(255,157,97) 66.884%)}
+.invite-gradient{--blur-tint:linear-gradient(to top,#271740 30.297413%,rgba(39,23,64,0) 99.912757%)}
+@media(max-width:650px){.stage{height:100svh;min-height:0;padding:16px}.prototype-controls{right:12px;bottom:12px;width:250px}}
+@media(max-height:480px){body{height:auto;overflow-y:auto}.stage{min-height:320px}}
+.prototype-controls{left:20px;right:auto}.prototype-controls>summary{margin-left:0}@media(max-width:650px){.prototype-controls{left:12px;right:auto}}
