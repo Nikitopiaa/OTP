@@ -3,8 +3,16 @@ const duration=10000,circumference=2*Math.PI*19;
 const scrollArea=$('#scrollArea'),hero=$('#hero'),thumbs=$('#thumbnails');
 let slides=[],active=0,elapsed=0,lastTime=null,paused=false,held=false,modal=false,previousFocus=null,gesture=null;
 let slideAnimations=[],slideAnimationEpoch=0;
-function fitDevice(){const availableWidth=document.documentElement.clientWidth||innerWidth;const scale=Math.min(1,(availableWidth-32)/417);document.documentElement.style.setProperty('--device-scale',Math.max(.24,scale));}
+const displaySettingsKey='otp-prototype-display-v1';
+let displaySettings={status:true,frame:true,home:true};
+try{const saved=JSON.parse(localStorage.getItem(displaySettingsKey));for(const key of Object.keys(displaySettings))if(typeof saved?.[key]==='boolean')displaySettings[key]=saved[key];}catch{}
+function fitDevice(){const availableWidth=document.documentElement.clientWidth||innerWidth;const scale=Math.max(.24,displaySettings.frame?Math.min(1,(availableWidth-32)/417):availableWidth<=650?availableWidth/393:1);document.documentElement.style.setProperty('--device-scale',scale);document.documentElement.style.setProperty('--preview-height',innerHeight/scale+'px');}
+function applyDisplaySettings(){for(const key of Object.keys(displaySettings)){document.body.classList.toggle('hide-'+key,!displaySettings[key]);$('#show'+key[0].toUpperCase()+key.slice(1)).checked=displaySettings[key];}fitDevice();try{localStorage.setItem(displaySettingsKey,JSON.stringify(displaySettings));}catch{}}
+for(const key of Object.keys(displaySettings))$('#show'+key[0].toUpperCase()+key.slice(1)).addEventListener('change',e=>{displaySettings[key]=e.target.checked;applyDisplaySettings();});
+$('#phoneModeButton').addEventListener('click',()=>{displaySettings={status:false,frame:false,home:false};applyDisplaySettings();$('.prototype-controls').open=false;});
+applyDisplaySettings();
 addEventListener('resize',fitDevice);fitDevice();
+window.visualViewport?.addEventListener('resize',fitDevice);
 function renderSlide(previous,index,direction){
  const epoch=++slideAnimationEpoch;slideAnimations.forEach(a=>a.cancel());slideAnimations=[];
  const elements=[...document.querySelectorAll('.hero-slide')];
