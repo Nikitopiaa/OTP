@@ -98,8 +98,10 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .hero-background-1,.hero-background-2{height:100%}
 .hero-shade-top{width:100%}
 .hero-shade-bottom{width:calc(100% + 60px)}
-.hero-slide{display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 12px 54px}
-.hero-title{position:relative;inset:auto;width:calc(100% - 4px);margin:0 2px;flex:none}
+.hero-slide{display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 16px 54px}
+.hero-slide[data-slide="0"]{padding-left:12px;padding-right:12px;gap:18px}
+.hero-title{position:relative;inset:auto;width:100%;margin:0;flex:none;align-self:center;transform:none}
+.hero-slide[data-slide="0"] .hero-title{width:calc(100% - 5px)}
 .offer{position:relative;inset:auto;width:100%;height:auto;min-height:72px;flex:none}
 .offer p{min-width:0}
 .offer-navigation,.status-bar,.top-material,.bottom-bar{width:100%}
@@ -139,8 +141,9 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .mini-card.credit,.mini-card.debit{width:48px;height:48px;border-radius:0;background:none;box-shadow:none}
 .mini-card.credit>img{left:-1.77%;top:-1.77%;width:103.54%;height:103.54%}
 .mini-card.debit>img{left:-1.78%;top:-1.82%;width:103.43%;height:103.43%}
-.hero-slide[data-slide="1"] .offer{padding:16px}
-.hero-slide[data-slide="1"] .offer p{font-size:16px;line-height:20px;font-weight:580}
+.hero-slide .offer{padding:12px 16px}
+.hero-slide .offer p{font-size:16px;line-height:20px;font-weight:580}
+.hero-slide .offer-cta{line-height:18px;flex:none}
 /* Stable preview nodes animate position and scale instead of being replaced. */
 .offer-navigation .thumbnails{width:108px;height:40px;display:block;overflow:hidden}
 .thumbnails .thumbnail,.thumbnails .thumbnail.active{position:absolute;left:0;top:0;width:40px;height:40px;transform-origin:center;will-change:auto}
