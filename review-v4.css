@@ -16,8 +16,7 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .hero-slide.is-leaving{pointer-events:none;z-index:1}
 .hero-slide.active{z-index:2}
 .hero-slide:not(.active):not(.is-leaving){display:none}
-.hero-slide .offer{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.is-scrolling .hero-slide .offer{backdrop-filter:none;-webkit-backdrop-filter:none}
+.hero-slide .offer{backdrop-filter:none;-webkit-backdrop-filter:none;isolation:isolate;overflow:hidden;background:none}
 .top-material{height:84px}
 /* Exact source: Figma 21215:354527, BottomBar, 393 × 95. */
 .figma-bottom-bar{isolation:isolate}
@@ -121,5 +120,24 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 
 /* iOS uses pre-rendered offer blur and translucent tints, with no live backdrop filters. */
 .lightweight-rendering .blur-plane{display:none}
-.lightweight-rendering .hero-slide .offer{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.24)}
+.lightweight-rendering .hero-slide .offer{backdrop-filter:none;-webkit-backdrop-filter:none;background:none}
 .lightweight-rendering .figma-bottom-bar .tab-glass{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(250,250,251,.94)}
+
+/* Figma's 40px offer blur is prepared once, then clipped to the offer shape. */
+.offer-blur{position:absolute;inset:0;z-index:-1;overflow:hidden;border-radius:inherit;pointer-events:none}
+.offer-blur:after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.16)}
+.offer-blur-photo{position:absolute;transform-origin:55% 45%;pointer-events:none}
+.offer-blur-photo>img{width:100%;height:100%;object-fit:fill}
+.mini-card.credit,.mini-card.debit{width:48px;height:48px;border-radius:0;background:none;box-shadow:none}
+.mini-card.credit>img{left:-1.77%;top:-1.77%;width:103.54%;height:103.54%}
+.mini-card.debit>img{left:-1.78%;top:-1.82%;width:103.43%;height:103.43%}
+.hero-slide[data-slide="1"] .offer{padding:16px}
+.hero-slide[data-slide="1"] .offer p{font-size:16px;line-height:20px;font-weight:580}
+/* Stable preview nodes animate position and scale instead of being replaced. */
+.offer-navigation .thumbnails{width:108px;height:40px;display:block;overflow:hidden}
+.thumbnails .thumbnail,.thumbnails .thumbnail.active{position:absolute;left:0;top:0;width:40px;height:40px;transform-origin:center;will-change:auto}
+.thumbnails .thumbnail-picture,.thumbnails .thumbnail.active .thumbnail-picture{inset:0;transition:transform .56s cubic-bezier(.22,.61,.36,1);transform:scale(1)}
+.thumbnails .thumbnail.active .thumbnail-picture{transform:scale(.85715)}
+.thumbnails .thumbnail-ring{opacity:0;transition:opacity .3s;stroke-width:1.5}
+.thumbnails .thumbnail.active .thumbnail-ring{opacity:1}
+@media(prefers-reduced-motion:reduce){.thumbnails .thumbnail-picture,.thumbnails .thumbnail-ring{transition:none}}
