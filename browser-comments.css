@@ -16,7 +16,7 @@
 .foreign-service-icon{width:32px;height:32px;border-radius:50%;background:#6a2cb5;display:grid;place-items:center;flex:none}
 .foreign-service-icon>img{width:24px;height:24px}
 .service-icon-stack{display:flex;align-items:center;width:72px;height:32px;flex:none}
-.service-disc{position:relative;display:grid;place-items:center;width:32px;height:32px;flex:none;border:1px solid #fff;border-radius:50%;margin-right:-12px;overflow:hidden}
+.service-disc{position:relative;display:grid;place-items:center;width:32px;height:32px;flex:none;border:2px solid var(--background);border-radius:50%;margin-right:-12px;overflow:hidden}
 .service-disc:last-child{margin-right:0}.service-disc>img{width:24px;height:24px}.service-disc.pet{background:#82bf00}.service-disc.sim{background:#1582d0}.service-disc.legal{background:#6a2cb5}
 /* Figma OUTSIDE stroke 7/8px = CSS centred stroke 14/16px. */
 .hero-title{paint-order:stroke fill;-webkit-text-stroke:14px rgba(255,255,255,.2);text-shadow:none}

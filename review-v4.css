@@ -1,6 +1,10 @@
 /* A 393 CSS-pixel screen at 1:1 whenever the available width permits it.
    A short desktop viewport scrolls the preview instead of shrinking the phone. */
 body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
+html,body,.scroll-area{overscroll-behavior-y:none}
+.scroll-area.is-pulling{user-select:none;-webkit-user-select:none}
+.hero.is-pull-returning{transition:height .42s cubic-bezier(.2,.75,.25,1)}
+@media(prefers-reduced-motion:reduce){.hero.is-pull-returning{transition:none}}
 .stage{height:100svh;min-height:calc(868px * var(--device-scale) + 32px);padding:16px}
 .device-wrap{width:calc(409px * var(--device-scale));height:calc(868px * var(--device-scale))}
 /* Thin, neutral device surround matching the supplied mockup reference. */
@@ -10,6 +14,10 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .dynamic-island{top:12px;width:112px;height:30px;background:#111;box-shadow:none}
 .dynamic-island i{display:none}
 .gift-text{left:-4px;top:41px;width:93px;height:63px;overflow:visible}
+.gift-shine{position:absolute;left:-11px;top:-4px;width:106px;height:108px;pointer-events:none;overflow:hidden;-webkit-mask-image:var(--gift-art-mask),var(--gift-text-mask);mask-image:var(--gift-art-mask),var(--gift-text-mask);-webkit-mask-size:106px 106px,93px 63px;mask-size:106px 106px,93px 63px;-webkit-mask-position:0 0,7px 45px;mask-position:0 0,7px 45px;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.gift-shine-streak{position:absolute;left:0;top:-20px;width:34px;height:150px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2) 20%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 80%,transparent);transform:translateX(-55px) skewX(-18deg);opacity:0;visibility:hidden;animation:gift-shine-pass 8s linear 8s infinite}
+@keyframes gift-shine-pass{0%{transform:translateX(-55px) skewX(-18deg);opacity:0;visibility:visible}2%{opacity:.9}12.5%{transform:translateX(155px) skewX(-18deg);opacity:.9;visibility:visible}13%,100%{transform:translateX(155px) skewX(-18deg);opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.gift-shine{display:none}}
 .screen,.content{width:393px;min-width:393px;max-width:393px}
 /* Explicitly clip composited backdrop-blur planes to the screen silhouette. */
 .screen{--screen-radius:53px;isolation:isolate;clip-path:inset(0 round var(--screen-radius))}
@@ -114,6 +122,7 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .cashback-coin{left:auto;right:-90px}
 .benefit-grid,.insurance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .benefit-card{height:auto;min-height:192px}
+.benefit-card>span:last-child{min-width:0;max-width:100%}
 .invite{position:relative;inset:auto;width:calc(100% - 32px);height:auto;margin:24px 16px 0;padding-top:24px}
 .frog{left:calc(50% - 16px)}
 .invite-card{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:361/319}
