@@ -14,12 +14,12 @@ html,body,.scroll-area{overscroll-behavior-y:none}
 .dynamic-island{top:12px;width:112px;height:30px;background:#111;box-shadow:none}
 .dynamic-island i{display:none}
 .gift-text{left:-4px;top:41px;width:93px;height:63px;overflow:visible}
-.gift-open{--gift-effect-period:8s;--gift-effect-delay:8s}
-.gift-art{animation:gift-sway var(--gift-effect-period) ease-in-out var(--gift-effect-delay) infinite}
+.gift-open{--gift-effect-period:12s;--gift-effect-delay:4s}
+.gift-art{animation:gift-lift var(--gift-effect-period) ease-in-out var(--gift-effect-delay) infinite}
 .gift-shine{position:absolute;left:-4px;top:41px;width:93px;height:63px;pointer-events:none;overflow:hidden;-webkit-mask-image:var(--gift-text-mask);mask-image:var(--gift-text-mask);-webkit-mask-size:93px 63px;mask-size:93px 63px;-webkit-mask-position:0 0;mask-position:0 0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .gift-shine-streak{position:absolute;left:0;top:-20px;width:34px;height:110px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2) 20%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 80%,transparent);transform:translateX(-55px) skewX(-18deg);opacity:0;visibility:hidden;animation:gift-shine-pass var(--gift-effect-period) linear var(--gift-effect-delay) infinite}
 @keyframes gift-shine-pass{0%{transform:translateX(-55px) skewX(-18deg);opacity:0;visibility:visible}2%{opacity:.9}12.5%{transform:translateX(155px) skewX(-18deg);opacity:.9;visibility:visible}13%,100%{transform:translateX(155px) skewX(-18deg);opacity:0;visibility:hidden}}
-@keyframes gift-sway{0%,13%,100%{transform:translate(0,0)}2.5%{transform:translate(3px,-3px)}6.5%{transform:translate(-3px,-5px)}10%{transform:translate(2px,-2px)}}
+@keyframes gift-lift{0%,13%,100%{transform:translateY(0)}6.5%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.gift-shine{display:none}.gift-art{animation:none}}
 .screen,.content{width:393px;min-width:393px;max-width:393px}
 /* Explicitly clip composited backdrop-blur planes to the screen silhouette. */
@@ -86,7 +86,7 @@ html,body,.scroll-area{overscroll-behavior-y:none}
 .hide-frame.hide-status .offer-navigation{top:max(12px,env(safe-area-inset-top,0px))}
 .hide-frame.hide-status .top-material{height:calc(84px + env(safe-area-inset-top,0px))}
 .hide-frame.hide-home .figma-bottom-bar{height:calc(83px + env(safe-area-inset-bottom,0px))}
-.hide-frame .gift{bottom:calc(83px + env(safe-area-inset-bottom,0px))}
+.hide-frame .gift{bottom:calc(63px + env(safe-area-inset-bottom,0px))}
 .hide-frame .bottom-sheet{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 @media(max-width:650px),(hover:none) and (pointer:coarse){
  body{height:100dvh;min-height:0;overflow:hidden}
@@ -111,7 +111,7 @@ html,body,.scroll-area{overscroll-behavior-y:none}
 .hero-shade-bottom{width:calc(100% + 60px)}
 .hero-slide{display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 16px 54px}
 .hero-slide[data-slide="0"]{padding-left:12px;padding-right:12px;gap:18px}
-.hero-title{position:relative;inset:auto;width:100%;margin:0;flex:none;align-self:center;transform:none}
+.hero-title{position:relative;inset:auto;width:100%;margin:0;flex:none;align-self:center;transform:none;font-family:Onest,Arial,sans-serif}
 .hero-slide[data-slide="0"] .hero-title{width:calc(100% - 5px)}
 .offer{position:relative;inset:auto;width:100%;height:auto;min-height:72px;flex:none}
 .offer p{min-width:0}
