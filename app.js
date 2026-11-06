@@ -126,6 +126,27 @@ $('#pauseButton').addEventListener('click',()=>{paused=!paused;$('#pauseButton')
 function restart(){if(modal)closeSheet();scrollArea.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});selectSlide(0);}
 $('#restartButton').addEventListener('click',restart);
 function setGiftVisibility(visible){$('#gift').hidden=!visible;$('#giftToggleButton').textContent=visible?'Скрыть подарок':'Показать подарок';$('#giftToggleButton').setAttribute('aria-pressed',String(visible));}
+const giftMotionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+let giftEffects=[],giftEffectFrame=null;
+function syncGiftEffects(){
+ if(giftEffectFrame!==null){cancelAnimationFrame(giftEffectFrame);giftEffectFrame=null;}
+ giftEffects.forEach(effect=>effect.cancel());giftEffects=[];
+ if(giftMotionPreference.matches)return;
+ giftEffectFrame=requestAnimationFrame(time=>{
+  giftEffectFrame=null;if(giftMotionPreference.matches)return;
+  const style=getComputedStyle($('.gift-open'));
+  const timing={duration:parseFloat(style.getPropertyValue('--gift-effect-period'))*1000,delay:parseFloat(style.getPropertyValue('--gift-effect-delay'))*1000,iterations:Infinity,fill:'both'};
+  const end=.13;
+  const lift=[{offset:0,transform:'translateY(0)',easing:'ease-in-out'},{offset:end/2,transform:'translateY(-4px)',easing:'ease-in-out'},{offset:end,transform:'translateY(0)'},{offset:1,transform:'translateY(0)'}];
+  const shine=[[0,0],[.007,.9],[end/2,.9],[.123,.9],[end,0],[1,0]].map(([offset,opacity])=>({offset,opacity,transform:'translateX('+(90*Math.min(offset/end,1))+'px) skewX(-18deg)'}));
+  const epoch=document.timeline.currentTime??time;
+  giftEffects=[$('.gift-art').animate(lift,timing),$('.gift-shine-streak').animate(shine,timing)];
+  // Both effects share an exact timeline origin, even if their assets load separately.
+  giftEffects.forEach(effect=>{effect.startTime=epoch;});
+ });
+}
+giftMotionPreference.addEventListener('change',syncGiftEffects);
+syncGiftEffects();
 $('#giftToggleButton').addEventListener('click',()=>setGiftVisibility($('#gift').hidden));
 hero.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;gesture={x:e.clientX,y:e.clientY,id:e.pointerId};held=true;syncPlayback();});
 hero.addEventListener('pointerup',e=>{if(!gesture)return;const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;held=false;if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)*1.3)selectSlide(active+(dx<0?1:-1));gesture=null;lastTime=null;syncPlayback();});

@@ -15,12 +15,9 @@ html,body,.scroll-area{overscroll-behavior-y:none}
 .dynamic-island i{display:none}
 .gift-text{left:-4px;top:41px;width:93px;height:63px;overflow:visible}
 .gift-open{--gift-effect-period:12s;--gift-effect-delay:4s}
-.gift-art{animation:gift-lift var(--gift-effect-period) ease-in-out var(--gift-effect-delay) infinite}
 .gift-shine{position:absolute;left:-4px;top:41px;width:93px;height:63px;pointer-events:none;overflow:hidden;-webkit-mask-image:var(--gift-text-mask);mask-image:var(--gift-text-mask);-webkit-mask-size:93px 63px;mask-size:93px 63px;-webkit-mask-position:0 0;mask-position:0 0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.gift-shine-streak{position:absolute;left:0;top:-20px;width:34px;height:110px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2) 20%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 80%,transparent);transform:translateX(-55px) skewX(-18deg);opacity:0;visibility:hidden;animation:gift-shine-pass var(--gift-effect-period) linear var(--gift-effect-delay) infinite}
-@keyframes gift-shine-pass{0%{transform:translateX(-55px) skewX(-18deg);opacity:0;visibility:visible}2%{opacity:.9}12.5%{transform:translateX(155px) skewX(-18deg);opacity:.9;visibility:visible}13%,100%{transform:translateX(155px) skewX(-18deg);opacity:0;visibility:hidden}}
-@keyframes gift-lift{0%,13%,100%{transform:translateY(0)}6.5%{transform:translateY(-4px)}}
-@media(prefers-reduced-motion:reduce){.gift-shine{display:none}.gift-art{animation:none}}
+.gift-shine-streak{position:absolute;left:0;top:-20px;width:34px;height:110px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2) 20%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 80%,transparent);transform:translateX(0) skewX(-18deg);opacity:0}
+@media(prefers-reduced-motion:reduce){.gift-shine{display:none}}
 .screen,.content{width:393px;min-width:393px;max-width:393px}
 /* Explicitly clip composited backdrop-blur planes to the screen silhouette. */
 .screen{--screen-radius:53px;isolation:isolate;clip-path:inset(0 round var(--screen-radius))}
@@ -86,7 +83,7 @@ html,body,.scroll-area{overscroll-behavior-y:none}
 .hide-frame.hide-status .offer-navigation{top:max(12px,env(safe-area-inset-top,0px))}
 .hide-frame.hide-status .top-material{height:calc(84px + env(safe-area-inset-top,0px))}
 .hide-frame.hide-home .figma-bottom-bar{height:calc(83px + env(safe-area-inset-bottom,0px))}
-.hide-frame .gift{bottom:calc(63px + env(safe-area-inset-bottom,0px))}
+.hide-frame .gift{bottom:calc(75px + env(safe-area-inset-bottom,0px))}
 .hide-frame .bottom-sheet{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 @media(max-width:650px),(hover:none) and (pointer:coarse){
  body{height:100dvh;min-height:0;overflow:hidden}
