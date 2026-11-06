@@ -6,12 +6,22 @@ document.body.classList.toggle('lightweight-rendering',lightweightRendering);
 let slides=[],active=0,elapsed=0,lastTime=null,paused=false,held=false,modal=false,previousFocus=null,gesture=null;
 let slideAnimations=[],slideAnimationEpoch=0;
 let photoMotions=[],thumbnailAnimations=[],timerId=null,heroVisible=true,scrolling=false,scrollIdleTimer=null,chromeFrame=null,chromeOpacity=-1;
-const displaySettingsKey='otp-prototype-display-v2',mobileViewport=matchMedia('(max-width:650px), (hover:none) and (pointer:coarse)');
-let showDeviceChrome=!mobileViewport.matches;
-try{const saved=JSON.parse(localStorage.getItem(displaySettingsKey));if(typeof saved?.showDeviceChrome==='boolean')showDeviceChrome=saved.showDeviceChrome;else{const legacy=JSON.parse(localStorage.getItem('otp-prototype-display-v1'));if(legacy&&Object.values(legacy).some(v=>v===false))showDeviceChrome=false;}}catch{}
-function fitDevice(){const availableWidth=document.documentElement.clientWidth||innerWidth;const scale=showDeviceChrome&&!mobileViewport.matches?Math.max(.24,Math.min(1,(availableWidth-32)/417)):1;document.documentElement.style.setProperty('--device-scale',scale);}
+const displaySettingsKey='otp-prototype-display-v3',mobileViewport=matchMedia('(max-width:650px), (hover:none) and (pointer:coarse)');
+const displayMode=()=>mobileViewport.matches?'mobile':'desktop';
+function readDisplayPreference(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(displaySettingsKey));
+  if(typeof saved?.[displayMode()]==='boolean')return saved[displayMode()];
+  // Existing desktop preferences must not turn the frame on for a phone.
+  if(!mobileViewport.matches){const previous=JSON.parse(localStorage.getItem('otp-prototype-display-v2'));if(typeof previous?.showDeviceChrome==='boolean')return previous.showDeviceChrome;const legacy=JSON.parse(localStorage.getItem('otp-prototype-display-v1'));if(legacy&&Object.values(legacy).some(v=>v===false))return false;}
+ }catch{}
+ return !mobileViewport.matches;
+}
+let showDeviceChrome=readDisplayPreference();
+function fitDevice(){const availableWidth=document.documentElement.clientWidth||innerWidth;const scale=showDeviceChrome&&!mobileViewport.matches?Math.max(.24,Math.min(1,(availableWidth-32)/409)):1;document.documentElement.style.setProperty('--device-scale',scale);}
 function applyDisplaySettings(){for(const key of ['status','frame','home'])document.body.classList.toggle('hide-'+key,!showDeviceChrome);$('#showDeviceChrome').checked=showDeviceChrome;fitDevice();}
-$('#showDeviceChrome').addEventListener('change',e=>{showDeviceChrome=e.target.checked;applyDisplaySettings();try{localStorage.setItem(displaySettingsKey,JSON.stringify({showDeviceChrome}));}catch{}});
+$('#showDeviceChrome').addEventListener('change',e=>{showDeviceChrome=e.target.checked;applyDisplaySettings();try{const saved=JSON.parse(localStorage.getItem(displaySettingsKey))||{};localStorage.setItem(displaySettingsKey,JSON.stringify({...saved,[displayMode()]:showDeviceChrome}));}catch{}});
+mobileViewport.addEventListener('change',()=>{showDeviceChrome=readDisplayPreference();applyDisplaySettings();});
 applyDisplaySettings();
 addEventListener('resize',fitDevice);fitDevice();
 window.visualViewport?.addEventListener('resize',fitDevice);
@@ -36,7 +46,7 @@ function createThumbnails(){
  });
 }
 const thumbnailSlot=(index,current)=>[0,1,-1][(index-current+3)%3];
-const thumbnailTransform=slot=>'translateX('+(34+slot*40.4285)+'px) scale('+(slot===0?1:.678575)+')';
+const thumbnailTransform=(slot,scale=slot===0?1:.678575)=>'translateX('+(34+slot*40.4285)+'px) scale('+scale+')';
 function renderThumbnails(previous,direction){
  const buttons=[...thumbs.children],before=buttons.map(b=>({transform:getComputedStyle(b).transform,opacity:getComputedStyle(b).opacity}));
  thumbnailAnimations.forEach(a=>a.cancel());thumbnailAnimations=[];
@@ -46,9 +56,9 @@ function renderThumbnails(previous,direction){
   button.classList.toggle('active',i===active);button.setAttribute('aria-current',String(i===active));button.style.transform=transform;button.style.opacity=opacity;
   const circle=button.querySelector('circle');circle.style.strokeDashoffset=0;
   if(!animate)return;
-  // Recycle the outgoing edge preview outside the clipped strip, retaining its DOM.
+  // Shrink at the old position, then grow in place at the new position.
   const wraps=oldSlot===-direction&&slot===direction;
-  const frames=wraps?[before[i],{transform:thumbnailTransform(-2*direction),opacity:0,offset:.44},{transform:thumbnailTransform(2*direction),opacity:0,offset:.45},{transform,opacity}]:[before[i],{transform,opacity}];
+  const frames=wraps?[before[i],{transform:thumbnailTransform(oldSlot,.08),opacity:0,offset:.4},{transform:thumbnailTransform(slot,.08),opacity:0,offset:.42},{transform,opacity}]:[before[i],{transform,opacity}];
   thumbnailAnimations.push(button.animate(frames,{duration:560,easing:'cubic-bezier(.22,.61,.36,1)'}));
  });
 }

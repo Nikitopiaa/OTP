@@ -1,7 +1,15 @@
 /* A 393 CSS-pixel screen at 1:1 whenever the available width permits it.
    A short desktop viewport scrolls the preview instead of shrinking the phone. */
 body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
-.stage{height:100svh;min-height:calc(876px * var(--device-scale) + 32px);padding:16px}
+.stage{height:100svh;min-height:calc(868px * var(--device-scale) + 32px);padding:16px}
+.device-wrap{width:calc(409px * var(--device-scale));height:calc(868px * var(--device-scale))}
+/* Thin, neutral device surround matching the supplied mockup reference. */
+.iphone{width:409px;height:868px;padding:8px;border-radius:61px;background:#19191c;box-shadow:0 0 0 1px #8d8d94,inset 0 0 0 1px #626268,0 18px 50px -12px #28283738}
+.iphone:before{inset:5px;border:3px solid #54545a;border-radius:56px}
+.hardware-button{display:none}
+.dynamic-island{top:12px;width:112px;height:30px;background:#111;box-shadow:none}
+.dynamic-island i{display:none}
+.gift-text{left:-4px;top:41px;width:93px;height:63px;overflow:visible}
 .screen,.content{width:393px;min-width:393px;max-width:393px}
 /* Explicitly clip composited backdrop-blur planes to the screen silhouette. */
 .screen{--screen-radius:53px;isolation:isolate;clip-path:inset(0 round var(--screen-radius))}
@@ -29,7 +37,7 @@ body{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
 .figma-bottom-bar .tab.selected{color:#000;background:none;box-shadow:none}
 .figma-bottom-bar .tab.selected:before{content:'';position:absolute;inset:0 -2px;background:rgba(0,0,0,.05);border-radius:100px}
 .figma-bottom-bar .home-indicator{z-index:2}
-@media(max-width:650px){.stage{height:100svh;min-height:calc(876px * var(--device-scale) + 32px);padding:16px}}
+@media(max-width:650px){.stage{height:100svh;min-height:calc(868px * var(--device-scale) + 32px);padding:16px}}
 @media(prefers-reduced-motion:reduce){.offer-navigation{transition:none}}
 
 /* Continue the offer underneath the catalogue's transparent rounded corners. */
