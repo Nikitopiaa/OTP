@@ -111,7 +111,7 @@ html,body,.scroll-area{overscroll-behavior-y:none}
 .hero-shade-bottom{width:calc(100% + 60px)}
 .hero-slide{display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 16px 54px}
 .hero-slide[data-slide="0"]{padding-left:12px;padding-right:12px;gap:18px}
-.hero-title{position:relative;inset:auto;width:100%;margin:0;flex:none;align-self:center;transform:none;font-family:Onest,Arial,sans-serif;font-weight:700}
+.hero-title{position:relative;inset:auto;width:100%;margin:0;flex:none;align-self:center;transform:none;font-family:Onest,Arial,sans-serif;font-weight:600}
 .hero-slide[data-slide="0"] .hero-title{width:calc(100% - 5px)}
 .offer{position:relative;inset:auto;width:100%;height:auto;min-height:72px;flex:none}
 .offer p{min-width:0}
