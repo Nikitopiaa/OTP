@@ -10,6 +10,7 @@
   const controls = document.querySelector('.prototype-controls');
   const nav = screen.querySelector('.bottom-bar');
   const layer = screen.querySelector('.sf-product-layer');
+  const currencyLayer = screen.querySelector('.sf-currency-layer');
   const currency = screen.querySelector('#sf-currency');
   const hearts = screen.querySelector('.sf-hearts');
   const toast = screen.querySelector('.sf-toast');
@@ -17,14 +18,6 @@
   const slots = [{ x: 0, w: 4 }, { x: 8, w: 6 }, { x: 18, w: 22 }, { x: 44, w: 6 }, { x: 54, w: 4 }];
   const wrap = index => (index + offers.length) % offers.length;
   const pixel = value => value + 'px';
-  const currencyVeil = document.createElement('button');
-  currencyVeil.className = 'sf-currency-veil';
-  currencyVeil.type = 'button';
-  currencyVeil.tabIndex = -1;
-  currencyVeil.hidden = true;
-  currencyVeil.setAttribute('aria-label', 'Закрыть выбор валюты');
-  currency.before(currencyVeil);
-  currency.setAttribute('aria-modal', 'true');
 
   let active = 0;
   let progress;
@@ -37,11 +30,11 @@
   let productTrigger;
   let currencyTrigger;
   let toastTimer;
-  let footerObserver;
+  let productObserver;
 
   function syncPlayback() {
     if (!progress) return;
-    const playing = !document.hidden && heroVisible && !gesture && !transition && !pullReturn && !currency.open && layer.hidden;
+    const playing = !document.hidden && heroVisible && !gesture && !transition && !pullReturn && currencyLayer.hidden && layer.hidden;
     if (playing && progress.playState === 'paused') progress.play();
     if (!playing && progress.playState === 'running') progress.pause();
   }
@@ -104,7 +97,7 @@
   }
 
   function slide(step, user = false, offset = 0, commit = true) {
-    if (transition || pullReturn || !layer.hidden || currency.open || !step) return;
+    if (transition || pullReturn || !layer.hidden || !currencyLayer.hidden || !step) return;
     const direction = Math.sign(step);
     const index = wrap(active + step);
     const current = offers[active];
@@ -156,7 +149,7 @@
   document.addEventListener('visibilitychange', syncPlayback);
 
   function beginGesture(x, y, id, kind, target) {
-    if (gesture || transition || pullReturn || !layer.hidden || currency.open || !hero.contains(target) ||
+    if (gesture || transition || pullReturn || !layer.hidden || !currencyLayer.hidden || !hero.contains(target) ||
         target.closest('.sf-dots, input, select')) return;
     gesture = { x, y, id, kind, base: hero.offsetHeight, offset: 0, direction: 0, atTop: scrollArea.scrollTop <= 0 };
     syncPlayback();
@@ -269,17 +262,17 @@
   }
 
   function syncInert() {
-    const covered = !layer.hidden || currency.open;
+    const modalOpen = !currencyLayer.hidden;
+    const covered = !layer.hidden || modalOpen;
     for (const element of [scrollArea, gift, nav]) element.inert = covered;
-    layer.inert = currency.open;
-    controls.inert = currency.open;
+    layer.inert = modalOpen;
+    controls.inert = modalOpen;
     document.querySelector('.sf-back').inert = covered;
     syncPlayback();
   }
 
   function closeCurrency(restoreFocus = true) {
-    currency.close();
-    currencyVeil.hidden = true;
+    currencyLayer.hidden = true;
     syncInert();
     if (restoreFocus) currencyTrigger?.focus({ preventScroll: true });
   }
@@ -287,29 +280,48 @@
   function openCurrency(trigger) {
     currencyTrigger = trigger;
     controls.open = false;
-    currencyVeil.hidden = false;
-    currency.show();
+    currencyLayer.hidden = false;
     syncInert();
-    currency.querySelector('[data-currency]').focus({ preventScroll: true });
+    currency.focus({ preventScroll: true });
+  }
+
+  function syncProductChrome(view) {
+    const scroller = view.querySelector('.sf-product-scroll');
+    const footer = view.querySelector('.sf-product-footer');
+    const header = view.querySelector('.sf-product-header');
+    const panel = view.querySelector('[data-header-panel]');
+    const material = view.querySelector('.sf-product-material');
+    const updateMaterial = () => {
+      const overlap = header.getBoundingClientRect().bottom - panel.getBoundingClientRect().top;
+      const opacity = scroller.scrollTop > 0 ? Math.max(0, Math.min(1, overlap / 40)) : 0;
+      material.style.setProperty('--chrome-opacity', opacity);
+    };
+    productObserver = new ResizeObserver(() => {
+      if (footer) view.style.setProperty('--sf-footer-height', pixel(footer.offsetHeight));
+      if (material) updateMaterial();
+    });
+    if (footer) {
+      view.style.setProperty('--sf-footer-height', pixel(footer.offsetHeight));
+      productObserver.observe(footer);
+    }
+    if (material) {
+      scroller.addEventListener('scroll', updateMaterial, { passive: true });
+      productObserver.observe(header);
+      productObserver.observe(panel);
+      updateMaterial();
+    }
   }
 
   function renderRoute() {
-    if (currency.open) closeCurrency(false);
-    footerObserver?.disconnect();
+    if (!currencyLayer.hidden) closeCurrency(false);
+    productObserver?.disconnect();
     const route = location.hash.slice(1);
     const template = route && document.getElementById('sf-product-' + route);
     layer.replaceChildren();
     layer.hidden = !template;
     if (template) {
       layer.append(template.content.cloneNode(true));
-      const footer = layer.querySelector('.sf-product-footer');
-      if (footer) {
-        const view = layer.firstElementChild;
-        const measure = () => view.style.setProperty('--sf-footer-height', pixel(footer.offsetHeight));
-        footerObserver = new ResizeObserver(measure);
-        footerObserver.observe(footer);
-        measure();
-      }
+      syncProductChrome(layer.firstElementChild);
     }
     syncInert();
     if (template) layer.querySelector('[data-product-back]').focus({ preventScroll: true });
@@ -401,13 +413,13 @@
   });
 
   document.addEventListener('keydown', event => {
-    if (currency.open) {
+    if (!currencyLayer.hidden) {
       if (event.key === 'Escape') { event.preventDefault(); closeCurrency(); }
       if (event.key === 'Tab') {
         const focusable = [...currency.querySelectorAll('button')];
         const index = focusable.indexOf(document.activeElement);
-        if (event.shiftKey && index === 0) { event.preventDefault(); focusable.at(-1).focus(); }
-        if (!event.shiftKey && index === focusable.length - 1) { event.preventDefault(); focusable[0].focus(); }
+        if (event.shiftKey && index <= 0) { event.preventDefault(); focusable.at(-1).focus({ preventScroll: true }); }
+        if (!event.shiftKey && index === focusable.length - 1) { event.preventDefault(); focusable[0].focus({ preventScroll: true }); }
       }
       return;
     }
