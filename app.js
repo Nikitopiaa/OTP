@@ -2,31 +2,10 @@ const $=(s)=>document.querySelector(s);
 const duration=10000,circumference=2*Math.PI*19;
 const photoMotionEnd=['translate(-10px,-7px) scale(1.12)','translate(10px,-6px) scale(1.12)','translate(-14px,-9px) scale(1.14)'];
 const scrollArea=$('#scrollArea'),hero=$('#hero'),thumbs=$('#thumbnails');
-const lightweightRendering=CSS.supports('-webkit-touch-callout','none')||new URLSearchParams(location.search).get('render')==='light';
-document.body.classList.toggle('lightweight-rendering',lightweightRendering);
 let slides=[],active=0,elapsed=0,lastTime=null,paused=false,held=false,modal=false,previousFocus=null,gesture=null;
 let slideAnimations=[],slideAnimationEpoch=0;
 let photoMotions=[],thumbnailAnimations=[],timerId=null,heroVisible=true,scrolling=false,scrollIdleTimer=null,chromeFrame=null,chromeOpacity=-1;
 let pulling=false,pullInput=null,pullFrame=null,pullReturnTimer=null,pullClickUntil=0;
-const displaySettingsKey='otp-prototype-display-v3',mobileViewport=matchMedia('(max-width:650px), (hover:none) and (pointer:coarse)');
-const displayMode=()=>mobileViewport.matches?'mobile':'desktop';
-function readDisplayPreference(){
- try{
-  const saved=JSON.parse(localStorage.getItem(displaySettingsKey));
-  if(typeof saved?.[displayMode()]==='boolean')return saved[displayMode()];
-  // Existing desktop preferences must not turn the frame on for a phone.
-  if(!mobileViewport.matches){const previous=JSON.parse(localStorage.getItem('otp-prototype-display-v2'));if(typeof previous?.showDeviceChrome==='boolean')return previous.showDeviceChrome;const legacy=JSON.parse(localStorage.getItem('otp-prototype-display-v1'));if(legacy&&Object.values(legacy).some(v=>v===false))return false;}
- }catch{}
- return !mobileViewport.matches;
-}
-let showDeviceChrome=readDisplayPreference();
-function fitDevice(){const availableWidth=document.documentElement.clientWidth||innerWidth;const scale=showDeviceChrome&&!mobileViewport.matches?Math.max(.24,Math.min(1,(availableWidth-32)/409)):1;document.documentElement.style.setProperty('--device-scale',scale);}
-function applyDisplaySettings(){for(const key of ['status','frame','home'])document.body.classList.toggle('hide-'+key,!showDeviceChrome);$('#showDeviceChrome').checked=showDeviceChrome;fitDevice();}
-$('#showDeviceChrome').addEventListener('change',e=>{showDeviceChrome=e.target.checked;applyDisplaySettings();try{const saved=JSON.parse(localStorage.getItem(displaySettingsKey))||{};localStorage.setItem(displaySettingsKey,JSON.stringify({...saved,[displayMode()]:showDeviceChrome}));}catch{}});
-mobileViewport.addEventListener('change',()=>{showDeviceChrome=readDisplayPreference();applyDisplaySettings();});
-applyDisplaySettings();
-addEventListener('resize',fitDevice);fitDevice();
-window.visualViewport?.addEventListener('resize',fitDevice);
 function renderSlide(previous,index,direction){
  const epoch=++slideAnimationEpoch;slideAnimations.forEach(a=>a.cancel());slideAnimations=[];
  const elements=[...document.querySelectorAll('.hero-slide')];
