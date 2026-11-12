@@ -1,6 +1,7 @@
 (() => {
   const scrollArea = document.querySelector('#scrollArea');
   const screen = scrollArea.parentElement;
+  const stage = screen.closest('.stage');
   const hero = screen.querySelector('.sf-hero');
   const offers = [...hero.querySelectorAll('.sf-offer')];
   const indicator = hero.querySelector('.sf-dots');
@@ -35,7 +36,6 @@
   let suppressClickUntil = 0;
   let productTrigger;
   let currencyTrigger;
-  let currencyRoute;
   let toastTimer;
   let footerObserver;
 
@@ -157,7 +157,7 @@
 
   function beginGesture(x, y, id, kind, target) {
     if (gesture || transition || pullReturn || !layer.hidden || currency.open || !hero.contains(target) ||
-        target.closest('.sf-dots, .sf-arrow, input, select')) return;
+        target.closest('.sf-dots, input, select')) return;
     gesture = { x, y, id, kind, base: hero.offsetHeight, offset: 0, direction: 0, atTop: scrollArea.scrollTop <= 0 };
     syncPlayback();
   }
@@ -188,6 +188,7 @@
       else if (gesture.atTop && dy > 0 && scrollArea.scrollTop <= 0) gesture.mode = 'pull';
       else { finishGesture(); return; }
       if (!event.cancelable) { gesture.mode = null; finishGesture(); return; }
+      if (gesture.mode === 'pull') gesture.artHeight = offers[active].querySelector('.sf-hero-art span').offsetHeight;
       scrollArea.classList.add('is-pulling');
       if (gesture.kind === 'mouse') scrollArea.setPointerCapture(gesture.id);
       syncPlayback();
@@ -202,8 +203,12 @@
     if (!pullFrame) pullFrame = requestAnimationFrame(() => {
       pullFrame = null;
       if (gesture?.mode !== 'pull') return;
-      hero.style.height = pixel(gesture.base + gesture.offset);
-      hero.style.setProperty('--sf-art-scale', Math.min(1.8, 1 + gesture.offset / 230));
+      const distance = gesture.offset;
+      const scale = 1 + .9 * (1 - Math.exp(-distance / 160));
+      const artGrowth = (scale - 1) * gesture.artHeight;
+      hero.style.height = pixel(gesture.base + distance);
+      hero.style.setProperty('--sf-art-scale', scale);
+      hero.style.setProperty('--sf-art-shift', pixel((artGrowth - distance) * .42));
     });
   }
 
@@ -222,6 +227,7 @@
     hero.classList.add('is-pull-returning');
     hero.style.height = pixel(input.base);
     hero.style.removeProperty('--sf-art-scale');
+    hero.style.removeProperty('--sf-art-shift');
     pullReturn = setTimeout(() => {
       hero.classList.remove('is-pull-returning');
       hero.style.removeProperty('height');
@@ -278,8 +284,7 @@
     if (restoreFocus) currencyTrigger?.focus({ preventScroll: true });
   }
 
-  function openCurrency(route, trigger) {
-    currencyRoute = route;
+  function openCurrency(trigger) {
     currencyTrigger = trigger;
     controls.open = false;
     currencyVeil.hidden = false;
@@ -315,8 +320,8 @@
   }
 
   function goToProduct(route, trigger) {
-    if (route === 'currency' || route === 'currency-savings') {
-      openCurrency(route, trigger);
+    if (route === 'currency') {
+      openCurrency(trigger);
       return;
     }
     if (location.hash === '#' + route || !document.getElementById('sf-product-' + route)) return;
@@ -334,9 +339,16 @@
     }
   }
 
-  function showUnavailable() {
+  function dismissNotice() {
+    if (!toast.classList.contains('visible')) return;
     clearTimeout(toastTimer);
     hearts.replaceChildren();
+    toast.classList.remove('visible');
+    toast.textContent = '';
+  }
+
+  function showUnavailable() {
+    dismissNotice();
     toast.textContent = 'Там ничего нет, но возможно когда-нибудь появится. Сейчас доступен только флоу витрины.';
     toast.classList.add('visible');
     if (!reducedMotion.matches) {
@@ -354,24 +366,22 @@
         hearts.append(heart);
       }
     }
-    toastTimer = setTimeout(() => {
-      hearts.replaceChildren();
-      toast.classList.remove('visible');
-    }, 3900);
+    toastTimer = setTimeout(dismissNotice, 3900);
+  }
+
+  for (const event of ['pointerdown', 'click', 'keydown', 'wheel', 'scroll']) {
+    stage.addEventListener(event, dismissNotice, { capture: true, passive: true });
   }
 
   screen.addEventListener('click', event => {
     const target = event.target.closest('button');
     if (!target) return;
     if (target.dataset.product) goToProduct(target.dataset.product, target);
-    else if (target.hasAttribute('data-slide')) slide(Number(target.dataset.slide), true);
     else if (target.hasAttribute('data-product-back')) backToProductList();
     else if (target.matches('.sf-sheet-handle, .sf-currency-veil')) closeCurrency();
     else if (target.dataset.currency) {
-      const savings = currencyRoute === 'currency-savings';
       closeCurrency();
-      if (savings) goToProduct('savings', currencyTrigger);
-      else showUnavailable();
+      showUnavailable();
     } else if (target.hasAttribute('data-unavailable')) showUnavailable();
     else if (target.hasAttribute('data-pill')) {
       for (const sibling of target.parentElement.children) sibling.setAttribute('aria-pressed', String(sibling === target));
@@ -414,6 +424,16 @@
     if (controls.open && !controls.contains(event.target)) controls.open = false;
   });
   giftToggle.addEventListener('click', () => setGiftVisible(gift.hidden));
+  for (const toggle of controls.querySelectorAll('[data-badge-toggle]')) {
+    const badge = screen.querySelector('.sf-badge--' + toggle.dataset.badgeToggle);
+    const key = 'otp-storefront-badge-' + toggle.dataset.badgeToggle;
+    try { toggle.checked = localStorage.getItem(key) !== 'hidden'; } catch {}
+    badge.hidden = !toggle.checked;
+    toggle.addEventListener('change', () => {
+      badge.hidden = !toggle.checked;
+      try { localStorage.setItem(key, toggle.checked ? 'visible' : 'hidden'); } catch {}
+    });
+  }
   window.addEventListener('popstate', renderRoute);
   scrollArea.addEventListener('scroll', () => {
     screen.classList.toggle('sf-scrolled', scrollArea.scrollTop > 28);
