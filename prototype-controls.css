@@ -1,0 +1,45 @@
+.prototype-navigation { --sf-controls-top: 20px; --sf-controls-edge: 20px; }
+.prototype-navigation .sf-float, .prototype-navigation .prototype-controls > summary.sf-float {
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: #ffffff66; -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 1.25px 0 0 -.75px #0000000a, -1.25px 0 0 -.75px #0000000a, 0 0 4px .5px #0d0a2b14,
+    0 8px 15px #00000005, inset 0 40px 10px -40px #0000000a, inset 0 -40px 10px -40px #0000000a;
+}
+.sf-float img { width: 24px; height: 24px; }
+.prototype-navigation .sf-back { position: fixed; z-index: 30; top: var(--sf-controls-top); left: var(--sf-controls-edge); }
+.prototype-navigation .prototype-controls {
+  top: var(--sf-controls-top); right: var(--sf-controls-edge); left: auto; bottom: auto;
+  width: min(285px, calc(100vw - 2 * var(--sf-controls-edge))); pointer-events: none;
+}
+.prototype-navigation .prototype-controls > summary.sf-float { margin-left: auto; width: 44px; height: 44px; pointer-events: auto; }
+.prototype-navigation .prototype-controls > summary::after { display: none; }
+.prototype-navigation .control-body {
+  pointer-events: auto; padding: 10px; color: #222; font-size: 14px; border-radius: 24px;
+  border: 1px solid #ffffffa0; background: #f8f8fadf; -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35);
+  box-shadow: 0 16px 40px #0d0a2b22, inset 0 1px 1px #fff;
+}
+.prototype-navigation .control-body h2 { padding: 8px 10px; font-size: 15px; }
+.prototype-navigation .control-body .sf-switch-row { padding: 9px 10px; border-radius: 14px; background: #ffffff95; }
+.prototype-navigation .control-body .gift-toggle {
+  width: 100%; margin-top: 6px; padding: 12px 10px; color: #222; text-align: left;
+  border: 0; background: #ffffff95; border-radius: 14px; font-size: 14px;
+}
+.prototype-navigation .control-body { max-height: calc(100dvh - var(--sf-controls-top) - 64px); overflow: auto; }
+@media (max-width: 650px), (hover: none) and (pointer: coarse) {
+  .prototype-navigation { --sf-controls-top: calc(8px + env(safe-area-inset-top, 0px)); --sf-controls-edge: 8px; }
+  .prototype-navigation:not(.hide-frame) { --sf-controls-top: 57px; }
+}
+
+.sf-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sf-switch-row small { display: block; color: #717171; margin-top: 4px; }
+.sf-switch-row input[type="checkbox"] {
+  appearance: none; position: relative; flex: none; width: 40px; height: 24px; margin: 0;
+  background: #dcdde0; border-radius: 24px; cursor: pointer;
+}
+.sf-switch-row input::before { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform .2s; }
+.sf-switch-row input:checked { background: #a3d700; }
+.sf-switch-row input:checked::before { transform: translateX(16px); }
+.concept-playback { margin-top: 8px; padding: 10px; border-radius: 14px; background: #ffffff95; }
+.concept-playback h3 { margin: 0 0 8px; font-size: 14px; font-weight: 580; }
+.concept-playback .playback-controls button { font: inherit; font-size: 12px; }
