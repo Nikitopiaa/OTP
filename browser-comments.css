@@ -32,6 +32,14 @@
 /* Leave 12px from the visible text backing to the tab glass, including SVG padding. */
 .gift{bottom:87px}
 /* A progressive edge material replaces the solid status-bar rectangle. */
-.top-material{position:absolute;z-index:5;left:0;top:0;width:393px;height:128px;transform:rotate(180deg);opacity:var(--chrome-opacity,0);--blur-tint:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.78) 48%,rgba(255,255,255,.95));transition:opacity .12s linear}
+.top-material {
+  position: absolute; z-index: 5; left: 0; top: 0; width: 393px; height: 128px;
+  overflow: clip;
+  border-radius: var(--screen-radius, 0px) var(--screen-radius, 0px) 0 0;
+  clip-path: inset(0 round var(--screen-radius, 0px) var(--screen-radius, 0px) 0 0);
+  --blur-direction: to top;
+  --blur-tint: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,.78) 48%, rgba(255,255,255,.95));
+  opacity: var(--chrome-opacity, 0); transition: opacity .12s linear;
+}
 .status-bar,.status-bar.scrolled{background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
 @media(prefers-reduced-motion:reduce){.hero-photo{transform:none;will-change:auto}}

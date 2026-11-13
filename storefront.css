@@ -411,7 +411,7 @@
 .sf-auto-card:nth-child(2) { --art-x: -23.19%; --art-y: -2.3%; --art-w: 146.11%; --art-h: 149.56%; }
 .sf-auto-card:nth-child(3) { --art-x: -29.17%; --art-y: -11.37%; --art-w: 158.33%; --art-h: 158.33%; }
 .storefront .top-material {
-  --blur-tint: linear-gradient(to bottom, #f0f1f200, #f0f1f2d9 62%, var(--sf-surface));
+  --blur-tint: linear-gradient(to top, #f0f1f200, #f0f1f2d9 62%, var(--sf-surface));
 }
 .storefront .sf-scrolled .top-material {
   --chrome-opacity: 1;
