@@ -23,7 +23,8 @@
 .sf-hero-art .sf-art-cover { inset: 0; width: 100%; height: 100%; object-position: bottom; }
 .sf-hero h1.sf-offer-small { font-size: 20px; line-height: 24px; }
 .sf-hero .sf-hero-copy, .sf-hero h1 { width: 100%; max-width: none; }
-.sf-badge--savings { width: 32px; height: 24px; }
+.sf-deposit[data-product="savings"] { position: relative; }
+.sf-badge--savings { inset: 2px auto auto 46px; width: 32px; height: 24px; }
 .sf-badge[hidden] { display: none; }
 .sf-insurance-card:nth-child(2) { --art-x: 10.85%; --art-y: -4.62%; --art-w: 78.31%; --art-h: 100.59%; }
 .sf-insurance-card:nth-child(3) { --art-x: 4.08%; --art-y: -10.87%; --art-w: 91.61%; --art-h: 117.68%; }
