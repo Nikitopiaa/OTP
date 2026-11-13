@@ -437,9 +437,14 @@
   });
   giftToggle.addEventListener('click', () => setGiftVisible(gift.hidden));
   for (const toggle of controls.querySelectorAll('[data-badge-toggle]')) {
-    const badge = screen.querySelector('.sf-badge--' + toggle.dataset.badgeToggle);
-    const key = 'otp-storefront-badge-' + toggle.dataset.badgeToggle;
-    try { toggle.checked = localStorage.getItem(key) !== 'hidden'; } catch {}
+    const badgeName = toggle.dataset.badgeToggle;
+    const badge = screen.querySelector('.sf-badge--' + badgeName);
+    const key = 'otp-storefront-badge-' + badgeName;
+    try {
+      const saved = localStorage.getItem(key) ??
+        (badgeName === 'cash' ? localStorage.getItem('otp-storefront-badge-refinance') : null);
+      toggle.checked = saved !== 'hidden';
+    } catch {}
     badge.hidden = !toggle.checked;
     toggle.addEventListener('change', () => {
       badge.hidden = !toggle.checked;
