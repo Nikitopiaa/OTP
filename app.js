@@ -3,8 +3,7 @@ const duration=10000,circumference=2*Math.PI*19;
 const photoMotionEnd=['translate(-10px,-7px) scale(1.12)','translate(10px,-6px) scale(1.12)','translate(-14px,-9px) scale(1.14)'];
 const scrollArea=$('#scrollArea'),hero=$('#hero'),thumbs=$('#thumbnails');
 const prototypeControls = $('.prototype-controls');
-const prototypeBack = $('.sf-back');
-let slides=[],active=0,elapsed=0,lastTime=null,paused=false,held=false,modal=false,previousFocus=null,gesture=null;
+let slides=[],active=0,elapsed=0,lastTime=null,paused=false,held=false,modal=false,gesture=null;
 let slideAnimations=[],slideAnimationEpoch=0;
 let photoMotions=[],thumbnailAnimations=[],timerId=null,heroVisible=true,scrolling=false,scrollIdleTimer=null,chromeFrame=null,chromeOpacity=-1;
 let pulling=false,pullInput=null,pullFrame=null,pullReturnTimer=null,pullClickUntil=0;
@@ -104,7 +103,7 @@ scrollArea.addEventListener('pointermove',event=>{if(pullInput?.kind==='mouse'&&
 for(const eventName of ['pointerup','pointercancel','lostpointercapture'])scrollArea.addEventListener(eventName,event=>{if(pullInput?.kind==='mouse'&&event.pointerId===pullInput.id)finishPull();});
 scrollArea.addEventListener('click',event=>{if(performance.now()<pullClickUntil){event.preventDefault();event.stopImmediatePropagation();}},true);
 $('#pauseButton').addEventListener('click',()=>{paused=!paused;$('#pauseButton').setAttribute('aria-pressed',String(paused));$('#pauseButton').setAttribute('aria-label',paused?'Продолжить автопереключение':'Приостановить автопереключение');$('#pauseLabel').textContent=paused?'Продолжить':'Пауза';$('#pauseIcon').textContent=paused?'▷':'Ⅱ';lastTime=null;syncPlayback();});
-function restart(){if(modal)closeSheet();scrollArea.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});selectSlide(0);}
+function restart(){scrollArea.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});selectSlide(0);}
 $('#restartButton').addEventListener('click',restart);
 function setGiftVisibility(visible){$('#gift').hidden=!visible;$('#giftToggleButton').textContent=visible?'Скрыть подарок':'Показать подарок';$('#giftToggleButton').setAttribute('aria-pressed',String(visible));}
 const giftMotionPreference=matchMedia('(prefers-reduced-motion: reduce)');
@@ -138,29 +137,27 @@ document.addEventListener('visibilitychange',()=>{lastTime=null;syncPlayback();}
 function updateChrome(){const scrollTop=scrollArea.scrollTop,stories=$('.offer-navigation');stories.classList.toggle('hidden-on-scroll',scrollTop>24);stories.inert=modal||scrollTop>24;$('#statusBar').classList.toggle('scrolled',scrollTop>360);$('#screen').classList.toggle('content-scrolled',scrollTop>360);const opacity=Math.round(Math.max(0,Math.min(1,(scrollTop-280)/160))*20)/20;if(opacity!==chromeOpacity){chromeOpacity=opacity;$('#screen').style.setProperty('--chrome-opacity',String(opacity));}}
 scrollArea.addEventListener('scroll',()=>{if(!scrolling){scrolling=true;$('#screen').classList.add('is-scrolling');syncPlayback();}clearTimeout(scrollIdleTimer);scrollIdleTimer=setTimeout(()=>{scrolling=false;$('#screen').classList.remove('is-scrolling');syncPlayback();},180);if(chromeFrame===null)chromeFrame=requestAnimationFrame(()=>{chromeFrame=null;updateChrome();});},{passive:true});updateChrome();
 new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;syncPlayback();},{root:scrollArea}).observe(hero);
-function openSheet(title){previousFocus=document.activeElement;modal=true;$('#sheetTitle').textContent=title;$('#sheetBackdrop').hidden=false;scrollArea.inert=true;$('.bottom-bar').inert=true;$('.offer-navigation').inert=true;$('#gift').inert=true;prototypeControls.open=false;prototypeControls.inert=true;prototypeBack.inert=true;$('.sheet-close').focus();lastTime=null;syncPlayback();}
-function closeSheet(){modal=false;$('#sheetBackdrop').hidden=true;scrollArea.inert=false;$('.bottom-bar').inert=false;$('#gift').inert=false;prototypeControls.inert=false;prototypeBack.inert=false;updateChrome();previousFocus?.focus({preventScroll:true});lastTime=null;syncPlayback();}
-document.addEventListener('click',e=>{const detail=e.target.closest('[data-detail]');if(detail)openSheet(detail.dataset.detail);const offer=e.target.closest('[data-action="offer"]');if(offer)openSheet(slides[Number(offer.dataset.offer)].name);const scroll=e.target.closest('[data-scroll]');if(scroll){const destination=$('#'+scroll.dataset.scroll);if(destination){const root=scrollArea.getBoundingClientRect(),scale=root.height/scrollArea.clientHeight;scrollArea.scrollTo({top:scrollArea.scrollTop+(destination.getBoundingClientRect().top-root.top)/scale-70,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}}if(e.target.closest('[data-home]'))restart();if(e.target.closest('[data-close-sheet],.sheet-close')||e.target===$('#sheetBackdrop'))closeSheet();if(e.target.closest('.gift-close'))setGiftVisibility(false);});
+mountPrototypeFlows(covered => {
+  modal = covered;
+  updateChrome();
+  lastTime = null;
+  syncPlayback();
+});
 document.addEventListener('click', event => {
-  if (prototypeControls.open && !prototypeControls.contains(event.target)) prototypeControls.open = false;
+  const scroll = event.target.closest('[data-scroll]');
+  const destination = scroll && document.getElementById(scroll.dataset.scroll);
+  if (destination) {
+    const root = scrollArea.getBoundingClientRect();
+    const scale = root.height / scrollArea.clientHeight;
+    scrollArea.scrollTo({
+      top: scrollArea.scrollTop + (destination.getBoundingClientRect().top - root.top) / scale - 70,
+      behavior: giftMotionPreference.matches ? 'instant' : 'smooth'
+    });
+  }
+  if (event.target.closest('.gift-close')) setGiftVisibility(false);
 });
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    if (modal) closeSheet();
-    else if (prototypeControls.open) {
-      prototypeControls.open = false;
-      prototypeControls.querySelector('summary').focus();
-    }
-    return;
-  }
-  if (modal && event.key === 'Tab') {
-    const focusable = [...$('#sheetBackdrop').querySelectorAll('button')];
-    const first = focusable[0], last = focusable.at(-1);
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-    return;
-  }
-  if (modal || prototypeControls.open || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
+  if (event.defaultPrevented || modal || prototypeControls.open || event.target.closest('input,textarea,select')) return;
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
     event.preventDefault();
     selectSlide(active + (event.key === 'ArrowRight' ? 1 : -1));

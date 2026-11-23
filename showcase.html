@@ -1,13 +1,13 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><title>ОТП · Витрина в iPhone</title><meta name="description" content="Интерактивный прототип витрины ОТП: три оффера, убывающий таймер и прокрутка в мокапе iPhone."><link rel="icon" href="assets/0875b053-18e4-4f7f-82a3-59920434768f.svg"><link rel="preload" href="assets/Onest.ttf" as="font" type="font/ttf" crossorigin><link rel="preload" href="assets/offer-background-0.webp" as="image"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="refinements.css"><link rel="stylesheet" href="browser-comments.css"><link rel="stylesheet" href="review-v4.css"><script src="device-display.js" defer></script><script src="app.js" defer></script><link rel="stylesheet" href="prototype-controls.css"></head><body class="prototype-navigation">
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><title>ОТП · Витрина в iPhone</title><meta name="description" content="Интерактивный прототип витрины ОТП: три оффера, убывающий таймер и прокрутка в мокапе iPhone."><link rel="icon" href="assets/0875b053-18e4-4f7f-82a3-59920434768f.svg"><link rel="preload" href="assets/Onest.ttf" as="font" type="font/ttf" crossorigin><link rel="preload" href="assets/offer-background-0.webp" as="image"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="refinements.css"><link rel="stylesheet" href="browser-comments.css"><link rel="stylesheet" href="review-v4.css"><script src="device-display.js" defer></script><script src="prototype-flows.js" defer></script><script src="app.js" defer></script><link rel="stylesheet" href="storefront-flow.css"><link rel="stylesheet" href="prototype-controls.css"></head><body class="prototype-navigation">
 
-<main class="stage"><div class="device-wrap" id="deviceWrap"><div class="iphone" id="iphone"><div class="hardware-button mute"></div><div class="hardware-button volume-up"></div><div class="hardware-button volume-down"></div><div class="hardware-button power"></div><div class="screen" id="screen"><div class="scroll-area" id="scrollArea" tabindex="0" aria-label="Прокручиваемая витрина продуктов"><div class="content"><section class="hero" id="hero" aria-label="Предложения банка" aria-roledescription="карусель"><article class="hero-slide active" data-slide="0" aria-hidden="false"><div class="hero-background hero-background-0"><div class="hero-photo"><img src="assets/offer-background-0.webp" alt="" width="880" height="1373" decoding="async" fetchpriority="high" draggable="false"></div></div><h1 class="hero-title ">Удвоенный кешбэк<br>по кредитной карте</h1><div class="offer"><div class="offer-blur" aria-hidden="true"><div class="offer-blur-photo"><img src="assets/offer-material-0.webp" alt="" decoding="async" draggable="false"></div></div><div class="mini-card credit"><img src="assets/optimized-9fbe568c636a4242.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><p>120 дней без процентов и кешбэк</p><button class="button offer-cta" data-action="offer" data-offer="0">Оформить</button></div></article><article class="hero-slide " data-slide="1" aria-hidden="true"><div class="hero-background hero-background-1"><div class="hero-photo"><img src="assets/offer-background-1.webp" alt="" width="880" height="1198" decoding="async" fetchpriority="low" draggable="false"></div></div><h1 class="hero-title small">Бесплатная карта с высоким<br>кешбэком на АЗС, ЖКХ</h1><div class="offer"><div class="offer-blur" aria-hidden="true"><div class="offer-blur-photo"><img src="assets/offer-material-1.webp" alt="" decoding="async" draggable="false"></div></div><div class="mini-card debit"><img src="assets/optimized-d6e7f50be330d6b9.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><p>Оформите карту с кешбэком до 10%</p><button class="button offer-cta" data-action="offer" data-offer="1">Оформить</button></div></article><article class="hero-slide " data-slide="2" aria-hidden="true"><div class="hero-background hero-background-2"><div class="hero-photo"><img src="assets/offer-background-2.webp" alt="" width="880" height="1198" decoding="async" fetchpriority="low" draggable="false"></div></div><h1 class="hero-title small">Деньги на свой уголок<br>природы за пару минут</h1><div class="offer"><div class="offer-blur" aria-hidden="true"><div class="offer-blur-photo"><img src="assets/offer-material-2.webp" alt="" decoding="async" draggable="false"></div></div><div class="mini-card house"><img src="assets/optimized-f6d69e88bf37eb2c.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><p>До 3 млн ₽ чтобы сбежать от суеты</p><button class="button offer-cta" data-action="offer" data-offer="2">Оформить</button></div></article><div class="offer-navigation"><div class="thumbnails" id="thumbnails" aria-label="Переключение предложений"></div></div></section>
-<section class="catalog" id="products"><nav class="chip-strip" aria-label="Категории продуктов"><button class="chip" data-scroll="services"><span class="foreign-service-icon"><img src="assets/151bcef9-cd73-4acf-a54f-e7855ae08db1.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Зарубежные сервисы</span></button><button class="chip" data-scroll="products"><img src="assets/c85bd5a9-94f6-42d0-907d-1c30ee0b39a0.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Деньги</span></button><button class="chip" data-scroll="deposits"><img src="assets/eed44481-beca-4f6b-ad0e-643cf1621e88.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Вклады</span></button><button class="chip" data-scroll="insurance"><img src="assets/2257b391-c886-486d-b428-5380858d8bd5.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Страховки</span></button><button class="chip" data-scroll="services"><span class="service-icon-stack"><span class="service-disc pet"><img src="assets/d7277643-4ba9-44db-9d47-e90f3c170d54.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span class="service-disc sim"><img src="assets/103880b9-0599-496c-aeab-753f662cdd48.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span class="service-disc legal"><img src="assets/7b01c40f-b2bc-406b-afa3-5d64203b2e25.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span></span><span>Услуги</span></button></nav><section class="cards-block" id="cards"><h2 class="section-caption">Выпустить карту</h2><div class="card-strip"><button class="bank-card" data-detail="Кредитная карта"><div class="card-picture"><img src="assets/optimized-9fbe568c636a4242.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><span class="card-caption">Кредитная</span><strong>120 дней без %</strong></button><button class="bank-card" data-detail="Дебетовая карта"><div class="card-picture"><img src="assets/optimized-d6e7f50be330d6b9.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><span class="card-caption">Дебетовая</span><strong>Кешбэк до 5%</strong></button><button class="bank-card" data-detail="Дебетовая карта"><div class="card-picture"><img src="assets/optimized-cc3e75cf77cf730b.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><span class="card-caption">Дебетовая</span><strong>ОТП Premium</strong></button></div></section><section><h2 class="section-caption">Все продукты</h2><div class="product-list"><button class="product-row"  data-detail="Кредит наличными"><span class="product-icon lime"><img src="assets/001c13eb-f4de-418b-a0da-e53a3bb709d2.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/71c8b78d-f60d-49b0-a908-d481d38151f2.svg" class="promo-badge" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Кредит наличными</span></button><button class="product-row" id="deposits" data-detail="Вклады и счета"><span class="product-icon orange"><img src="assets/e6f96ec7-bcb1-4d79-a195-221704ce430f.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Вклады и счета</span></button><button class="product-row"  data-detail="Рефинансирование"><span class="product-icon blue"><img src="assets/250d52c9-4d9d-46dd-af65-6f6e97d4d17a.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Рефинансирование</span></button><button class="product-row"  data-detail="Экспресс-деньги"><span class="product-icon purple"><img src="assets/8a56b900-5fa9-4d91-a94e-f1629bc39370.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Экспресс-деньги</span></button><button class="product-row"  data-scroll="insurance"><span class="product-icon pink"><img src="assets/8bba7abe-c1b8-4409-bb69-9ba2d0c09efa.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Страхование</span></button></div></section><button class="button neutral full" data-detail="Выбрать продукт">Выбрать продукт</button></section>
-<section class="utilities" aria-label="Быстрые действия"><button class="utility-card " data-detail="Заказать доп.карту"><span>Заказать<br>доп.карту</span><img src="assets/optimized-ad0a9d75bbc4276c.webp" class="card-extra" style="" alt="" draggable="false" loading="lazy" decoding="async"></button><button class="utility-card " data-detail="ОТП Стикер"><span>ОТП<br>Стикер</span><img src="assets/optimized-f664e5fa48195c6a.webp" class="sticker" style="" alt="" draggable="false" loading="lazy" decoding="async"></button><button class="utility-card atm-card" data-detail="Найти банкомат"><span>Найти<br>банкомат</span><div class="atm-art"><img src="assets/optimized-a1927a1cc7cb7291.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div></button></section>
-<section class="benefits" id="benefits"><h2>Выгода</h2><div class="cashback"><div class="cashback-coin"><img src="assets/optimized-8c4d7a21a06c5875.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><div class="cashback-gradient progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:4px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:8px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><p>Вы получили</p><div class="cashback-total">1 238₽<span class="earned">+ 472 <img src="assets/optimized-c936764719a65007.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span></div><div class="cashback-actions"><button class="button white orange-text" data-detail="Обменять кешбэк">Обменять</button><button class="button translucent" data-detail="Больше кешбэка">Больше кешбэка</button></div></div><div class="benefit-grid"><button class="benefit-card" data-detail="Кешбэк до 30%"><span class="store-logos"><img src="assets/573f13b3-b086-4fbb-99a2-be48eb9bf623.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/70ccfdb3-a1de-430c-9fe9-231155f47633.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/3b31ceb1-89d9-401a-92fe-6f790a667440.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/8317be80-d5d3-430e-9764-ae0228630523.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/02b44937-a794-4ad7-b908-ae3dd0293faf.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Кешбэк до 30%</strong><small>Собрали самое выгодное рядом с домом и везде</small></span></button><button class="benefit-card" data-detail="Давай делить"><img src="assets/521a5310-8ab5-410b-a76e-1e15ac2adbf7.svg" class="icon share-logo" style="" alt="" draggable="false" loading="lazy" decoding="async"><span><strong>Давай делить</strong><small>Оплата покупок частями</small></span></button></div></section>
-<section class="invite" id="invite"><div class="frog"><img src="assets/optimized-2daa78dd96b8eebe.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><div class="invite-card"><img src="assets/optimized-18ff9c9e2851372e.webp" class="invite-background" style="" alt="" draggable="false" loading="lazy" decoding="async"><div class="invite-copy"><small>Приглашайте и зарабатывайте!</small><h2>Получите до 2 500 ₽<br>за друга</h2></div><div class="invite-art"><img src="assets/optimized-e1a47f1c994ee7d6.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><div class="invite-gradient progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:2.9500000475px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:5.900000095px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><button class="button white full" data-detail="Пригласить друга">Пригласить</button></div></section>
-<section class="insurance" id="insurance"><h2>Страхование</h2><p class="muted">Защита, которая позволяет не переживать</p><div class="insurance-grid"><button class="insurance-card" data-detail="Защита от мошенничества"><span class="insurance-icon fraud"><img src="assets/optimized-1316c1f95d90c2d3.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span class="new-label">Новое</span><span>Защита<br>от мошенничества</span></button><button class="insurance-card" data-detail="ОСАГО"><span class="insurance-icon osago"><img src="assets/optimized-51e789589dcd99f3.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>ОСАГО</span></button><button class="insurance-card" data-detail="Страхование имущества"><span class="insurance-icon property"><img src="assets/optimized-d95f2736fa488522.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Страхование<br>имущества</span></button><button class="insurance-card" data-detail="Туристическая страховка"><span class="insurance-icon travel"><img src="assets/optimized-9bb6c32cce122e21.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Туристическая<br>страховка</span></button></div><button class="button white full" data-detail="Все страховки">Все страховки</button></section>
-<section class="services" id="services"><div class="services-heading"><h2>Услуги и сервисы</h2><p>Решайте бытовые и цифровые задачи в одном месте</p></div><div class="service-list"><button class="service-row" data-detail="Зарубежные сервисы"><span class="product-icon purple"><img src="assets/8dcb3608-475a-4f0a-80ce-320e39f8ebff.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span class="new-label">Новое</span></span><span><strong>Зарубежные сервисы</strong><small>Нейросети, игры и многое другое</small></span></button><button class="service-row" data-detail="Цифровая сим-карта"><span class="product-icon blue"><img src="assets/52d1ae29-95f7-49c0-a153-1a6dab46b04f.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Цифровая сим-карта</strong><small>Интернет в поездках по всему миру</small></span></button><button class="service-row" data-detail="Ветпомощь"><span class="product-icon lime"><img src="assets/36f94da7-004b-4e45-ad67-0541b3378f19.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Ветпомощь</strong><small>Поддержка для любящих хозяев</small></span></button><button class="service-row" data-detail="Юридическая помощь"><span class="product-icon orange"><img src="assets/0de357f1-37b5-47f7-b09e-1c87309f95ee.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Юридическая помощь</strong><small>Ваш юрист всегда на связи</small></span></button></div><button class="button white full" data-detail="Все услуги">Все услуги</button></section>
-</div></div><div class="top-material progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><div class="status-bar" id="statusBar"><span>9:41</span><div class="status-icons"><img src="assets/ca817ffc-cc6b-4115-bdd8-49d239fa98e7.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/1c2d1152-4c3d-4fe3-b891-0fe01ffe4e7c.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span class="battery"><span></span><img src="assets/e9dddb76-1fde-49cb-ae41-7112d66abdaa.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span></div></div><div class="dynamic-island" aria-hidden="true"><i></i></div><div class="gift" id="gift"><button class="gift-open" data-detail="Пригласить друга" aria-label="До 2 500 рублей за друга"><img src="assets/optimized-55758accea0aba7c.webp" class="gift-art" style="" alt="" draggable="false" loading="lazy" decoding="async"><svg class="gift-text" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" overflow="visible" style="display: block;" width="93.1125" height="62.8875" viewBox="0 0 93.1125 62.8875" fill="none" xmlns="http://www.w3.org/2000/svg">
+<main class="stage"><div class="device-wrap" id="deviceWrap"><div class="iphone" id="iphone"><div class="hardware-button mute"></div><div class="hardware-button volume-up"></div><div class="hardware-button volume-down"></div><div class="hardware-button power"></div><div class="screen" id="screen"><div class="scroll-area" id="scrollArea" tabindex="0" aria-label="Прокручиваемая витрина продуктов"><div class="content"><section class="hero" id="hero" aria-label="Предложения банка" aria-roledescription="карусель"><article class="hero-slide active" data-slide="0" aria-hidden="false"><div class="hero-background hero-background-0"><div class="hero-photo"><img src="assets/offer-background-0.webp" alt="" width="880" height="1373" decoding="async" fetchpriority="high" draggable="false"></div></div><h1 class="hero-title ">Удвоенный кешбэк<br>по кредитной карте</h1><div class="offer"><div class="offer-blur" aria-hidden="true"><div class="offer-blur-photo"><img src="assets/offer-material-0.webp" alt="" decoding="async" draggable="false"></div></div><div class="mini-card credit"><img src="assets/optimized-9fbe568c636a4242.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><p>120 дней без процентов и кешбэк</p><button class="button offer-cta" data-product="credit-card">Оформить</button></div></article><article class="hero-slide " data-slide="1" aria-hidden="true"><div class="hero-background hero-background-1"><div class="hero-photo"><img src="assets/offer-background-1.webp" alt="" width="880" height="1198" decoding="async" fetchpriority="low" draggable="false"></div></div><h1 class="hero-title small">Бесплатная карта с высоким<br>кешбэком на АЗС, ЖКХ</h1><div class="offer"><div class="offer-blur" aria-hidden="true"><div class="offer-blur-photo"><img src="assets/offer-material-1.webp" alt="" decoding="async" draggable="false"></div></div><div class="mini-card debit"><img src="assets/optimized-d6e7f50be330d6b9.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><p>Оформите карту с кешбэком до 10%</p><button class="button offer-cta" data-product="debit">Оформить</button></div></article><article class="hero-slide " data-slide="2" aria-hidden="true"><div class="hero-background hero-background-2"><div class="hero-photo"><img src="assets/offer-background-2.webp" alt="" width="880" height="1198" decoding="async" fetchpriority="low" draggable="false"></div></div><h1 class="hero-title small">Деньги на свой уголок<br>природы за пару минут</h1><div class="offer"><div class="offer-blur" aria-hidden="true"><div class="offer-blur-photo"><img src="assets/offer-material-2.webp" alt="" decoding="async" draggable="false"></div></div><div class="mini-card house"><img src="assets/optimized-f6d69e88bf37eb2c.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><p>До 3 млн ₽ чтобы сбежать от суеты</p><button class="button offer-cta" data-product="cash">Оформить</button></div></article><div class="offer-navigation"><div class="thumbnails" id="thumbnails" aria-label="Переключение предложений"></div></div></section>
+<section class="catalog" id="products"><nav class="chip-strip" aria-label="Категории продуктов"><button class="chip" data-product="foreign"><span class="foreign-service-icon"><img src="assets/151bcef9-cd73-4acf-a54f-e7855ae08db1.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Зарубежные сервисы</span></button><button class="chip" data-scroll="products"><img src="assets/c85bd5a9-94f6-42d0-907d-1c30ee0b39a0.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Деньги</span></button><button class="chip" data-scroll="deposits"><img src="assets/eed44481-beca-4f6b-ad0e-643cf1621e88.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Вклады</span></button><button class="chip" data-scroll="insurance"><img src="assets/2257b391-c886-486d-b428-5380858d8bd5.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Страховки</span></button><button class="chip" data-scroll="services"><span class="service-icon-stack"><span class="service-disc pet"><img src="assets/d7277643-4ba9-44db-9d47-e90f3c170d54.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span class="service-disc sim"><img src="assets/103880b9-0599-496c-aeab-753f662cdd48.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span class="service-disc legal"><img src="assets/7b01c40f-b2bc-406b-afa3-5d64203b2e25.svg" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span></span><span>Услуги</span></button></nav><section class="cards-block" id="cards"><h2 class="section-caption">Выпустить карту</h2><div class="card-strip"><button class="bank-card" data-product="credit-card"><div class="card-picture"><img src="assets/optimized-9fbe568c636a4242.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><span class="card-caption">Кредитная</span><strong>120 дней без %</strong></button><button class="bank-card" data-product="debit"><div class="card-picture"><img src="assets/optimized-d6e7f50be330d6b9.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><span class="card-caption">Дебетовая</span><strong>Кешбэк до 5%</strong></button><button class="bank-card" data-product="premium"><div class="card-picture"><img src="assets/optimized-cc3e75cf77cf730b.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><span class="card-caption">Дебетовая</span><strong>ОТП Premium</strong></button></div></section><section><h2 class="section-caption">Все продукты</h2><div class="product-list"><button class="product-row"  data-product="cash"><span class="product-icon lime"><img src="assets/001c13eb-f4de-418b-a0da-e53a3bb709d2.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/71c8b78d-f60d-49b0-a908-d481d38151f2.svg" class="promo-badge" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Кредит наличными</span></button><button class="product-row" id="deposits" data-product="deposits"><span class="product-icon orange"><img src="assets/e6f96ec7-bcb1-4d79-a195-221704ce430f.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Вклады и счета</span></button><button class="product-row"  data-product="refinance"><span class="product-icon blue"><img src="assets/250d52c9-4d9d-46dd-af65-6f6e97d4d17a.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Рефинансирование</span></button><button class="product-row"  data-product="express"><span class="product-icon purple"><img src="assets/8a56b900-5fa9-4d91-a94e-f1629bc39370.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Экспресс-деньги</span></button><button class="product-row"  data-scroll="insurance"><span class="product-icon pink"><img src="assets/8bba7abe-c1b8-4409-bb69-9ba2d0c09efa.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Страхование</span></button></div></section><button class="button neutral full" data-unavailable>Выбрать продукт</button></section>
+<section class="utilities" aria-label="Быстрые действия"><button class="utility-card " data-unavailable><span>Заказать<br>доп.карту</span><img src="assets/optimized-ad0a9d75bbc4276c.webp" class="card-extra" style="" alt="" draggable="false" loading="lazy" decoding="async"></button><button class="utility-card " data-product="sticker"><span>ОТП<br>Стикер</span><img src="assets/optimized-f664e5fa48195c6a.webp" class="sticker" style="" alt="" draggable="false" loading="lazy" decoding="async"></button><button class="utility-card atm-card" data-unavailable><span>Найти<br>банкомат</span><div class="atm-art"><img src="assets/optimized-a1927a1cc7cb7291.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div></button></section>
+<section class="benefits" id="benefits"><h2>Выгода</h2><div class="cashback"><div class="cashback-coin"><img src="assets/optimized-8c4d7a21a06c5875.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><div class="cashback-gradient progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:4px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:8px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><p>Вы получили</p><div class="cashback-total">1 238₽<span class="earned">+ 472 <img src="assets/optimized-c936764719a65007.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span></div><div class="cashback-actions"><button class="button white orange-text" data-unavailable>Обменять</button><button class="button translucent" data-unavailable>Больше кешбэка</button></div></div><div class="benefit-grid"><button class="benefit-card" data-unavailable><span class="store-logos"><img src="assets/573f13b3-b086-4fbb-99a2-be48eb9bf623.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/70ccfdb3-a1de-430c-9fe9-231155f47633.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/3b31ceb1-89d9-401a-92fe-6f790a667440.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/8317be80-d5d3-430e-9764-ae0228630523.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/02b44937-a794-4ad7-b908-ae3dd0293faf.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Кешбэк до 30%</strong><small>Собрали самое выгодное рядом с домом и везде</small></span></button><button class="benefit-card" data-unavailable><img src="assets/521a5310-8ab5-410b-a76e-1e15ac2adbf7.svg" class="icon share-logo" style="" alt="" draggable="false" loading="lazy" decoding="async"><span><strong>Давай делить</strong><small>Оплата покупок частями</small></span></button></div></section>
+<section class="invite" id="invite"><div class="frog"><img src="assets/optimized-2daa78dd96b8eebe.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><div class="invite-card"><img src="assets/optimized-18ff9c9e2851372e.webp" class="invite-background" style="" alt="" draggable="false" loading="lazy" decoding="async"><div class="invite-copy"><small>Приглашайте и зарабатывайте!</small><h2>Получите до 2 500 ₽<br>за друга</h2></div><div class="invite-art"><img src="assets/optimized-e1a47f1c994ee7d6.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></div><div class="invite-gradient progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:2.9500000475px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:5.900000095px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><button class="button white full" data-product="referral">Пригласить</button></div></section>
+<section class="insurance" id="insurance"><h2>Страхование</h2><p class="muted">Защита, которая позволяет не переживать</p><div class="insurance-grid"><button class="insurance-card" data-product="fraud"><span class="insurance-icon fraud"><img src="assets/optimized-1316c1f95d90c2d3.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span class="new-label">Новое</span><span>Защита<br>от мошенничества</span></button><button class="insurance-card" data-product="osago"><span class="insurance-icon osago"><img src="assets/optimized-51e789589dcd99f3.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>ОСАГО</span></button><button class="insurance-card" data-unavailable><span class="insurance-icon property"><img src="assets/optimized-d95f2736fa488522.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Страхование<br>имущества</span></button><button class="insurance-card" data-unavailable><span class="insurance-icon travel"><img src="assets/optimized-9bb6c32cce122e21.webp" class="" style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span>Туристическая<br>страховка</span></button></div><button class="button white full" data-product="benefits">Все страховки</button></section>
+<section class="services" id="services"><div class="services-heading"><h2>Услуги и сервисы</h2><p>Решайте бытовые и цифровые задачи в одном месте</p></div><div class="service-list"><button class="service-row" data-product="foreign"><span class="product-icon purple"><img src="assets/8dcb3608-475a-4f0a-80ce-320e39f8ebff.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span class="new-label">Новое</span></span><span><strong>Зарубежные сервисы</strong><small>Нейросети, игры и многое другое</small></span></button><button class="service-row" data-product="esim"><span class="product-icon blue"><img src="assets/52d1ae29-95f7-49c0-a153-1a6dab46b04f.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Цифровая сим-карта</strong><small>Интернет в поездках по всему миру</small></span></button><button class="service-row" data-unavailable><span class="product-icon lime"><img src="assets/36f94da7-004b-4e45-ad67-0541b3378f19.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Ветпомощь</strong><small>Поддержка для любящих хозяев</small></span></button><button class="service-row" data-unavailable><span class="product-icon orange"><img src="assets/0de357f1-37b5-47f7-b09e-1c87309f95ee.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span><span><strong>Юридическая помощь</strong><small>Ваш юрист всегда на связи</small></span></button></div><button class="button white full" data-product="benefits">Все услуги</button></section>
+</div></div><div class="top-material progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><div class="status-bar" id="statusBar"><span>9:41</span><div class="status-icons"><img src="assets/ca817ffc-cc6b-4115-bdd8-49d239fa98e7.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><img src="assets/1c2d1152-4c3d-4fe3-b891-0fe01ffe4e7c.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"><span class="battery"><span></span><img src="assets/e9dddb76-1fde-49cb-ae41-7112d66abdaa.svg" class="icon " style="" alt="" draggable="false" loading="lazy" decoding="async"></span></div></div><div class="dynamic-island" aria-hidden="true"><i></i></div><div class="gift" id="gift"><button class="gift-open" data-product="referral" aria-label="До 2 500 рублей за друга"><img src="assets/optimized-55758accea0aba7c.webp" class="gift-art" style="" alt="" draggable="false" loading="lazy" decoding="async"><svg class="gift-text" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" overflow="visible" style="display: block;" width="93.1125" height="62.8875" viewBox="0 0 93.1125 62.8875" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g class="gift-text-shadow" filter="url(#filter0_d_0_590)"><path id="Vector" d="M77.6951 40.7099C77.2987 40.0668 77.6666 38.6924 78.3921 38.4821C82.8005 37.2048 85.3125 34.3413 85.3125 26.8125C85.3125 21.9375 81.8998 18.3898 72.637 18.5317C70.3072 18.5673 69.0212 19.2541 68.1555 20.529C67.595 21.3544 65.645 21.5031 64.9106 20.8277C63.175 19.2316 60.572 18.3512 58.042 18.4054C57.5811 18.4152 57.244 17.8082 57.4779 17.411C58.8835 15.0241 58.9235 11.8097 57.5512 9.41961C56.2182 7.07935 53.7772 5.8519 51.0985 5.8519C47.7488 5.85207 44.314 5.85 40.9628 5.85C37.224 5.85011 36.3122 9.2943 35.9526 12.3027C34.7022 13.5593 34.4235 15.6054 34.5465 17.4243C34.5871 18.0234 34.1323 18.5612 33.5319 18.5612H30.5273C28.7157 18.5612 27.0405 19.376 25.9239 20.6941C25.3967 21.3165 24.2375 21.4185 23.6494 20.8534C21.9639 19.2337 19.5897 18.3899 17.2372 18.3898C10.7817 18.3898 7.8 24.375 7.8 29.25V30.225C7.8 36.5711 10.725 39.8645 13.9542 39.8645H14.0866C14.8991 39.8645 15.3871 40.8316 15.0503 41.5711C12.7899 46.5348 15.62 53.1375 23.8875 53.1375C23.8875 53.1375 65.5734 53.1375 70.8117 53.1375C76.05 53.1375 78.8117 49.6124 78.8117 44.7375C78.8117 43.0831 78.311 41.7091 77.6951 40.7099Z" fill="white"/></g><g class="gift-text-lettering">
 <path id="Vector" d="M77.6951 40.7099C77.2987 40.0668 77.6666 38.6924 78.3921 38.4821C82.8005 37.2048 85.3125 34.3413 85.3125 26.8125C85.3125 21.9375 81.8998 18.3898 72.637 18.5317C70.3072 18.5673 69.0212 19.2541 68.1555 20.529C67.595 21.3544 65.645 21.5031 64.9106 20.8277C63.175 19.2316 60.572 18.3512 58.042 18.4054C57.5811 18.4152 57.244 17.8082 57.4779 17.411C58.8835 15.0241 58.9235 11.8097 57.5512 9.41961C56.2182 7.07935 53.7772 5.8519 51.0985 5.8519C47.7488 5.85207 44.314 5.85 40.9628 5.85C37.224 5.85011 36.3122 9.2943 35.9526 12.3027C34.7022 13.5593 34.4235 15.6054 34.5465 17.4243C34.5871 18.0234 34.1323 18.5612 33.5319 18.5612H30.5273C28.7157 18.5612 27.0405 19.376 25.9239 20.6941C25.3967 21.3165 24.2375 21.4185 23.6494 20.8534C21.9639 19.2337 19.5897 18.3899 17.2372 18.3898C10.7817 18.3898 7.8 24.375 7.8 29.25V30.225C7.8 36.5711 10.725 39.8645 13.9542 39.8645H14.0866C14.8991 39.8645 15.3871 40.8316 15.0503 41.5711C12.7899 46.5348 15.62 53.1375 23.8875 53.1375C23.8875 53.1375 65.5734 53.1375 70.8117 53.1375C76.05 53.1375 78.8117 49.6124 78.8117 44.7375C78.8117 43.0831 78.311 41.7091 77.6951 40.7099Z" fill="white"/>
 <g id="Vector_2">
@@ -44,7 +44,37 @@
 </filter>
 </defs>
 </svg>
-<span class="gift-shine" aria-hidden="true" style="--gift-text-mask:url('assets/4cfcca9e-62a1-4d0c-a104-4fc405082448.svg')"><span class="gift-shine-streak"></span></span></button><button class="gift-close" aria-label="Скрыть подарок"><img src="assets/23f00c22-8ced-4bbc-8306-c48fa144f0fe.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"></button></div><nav class="bottom-bar ios27-tab-bar figma-bottom-bar" aria-label="Основная навигация"><div class="bar-softener progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:2px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:4px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><div class="tab-glass"><button class="tab " data-detail="Главный"><img src="assets/6858beac-b441-4aff-a8ef-e84af8ec0150.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Главный</span></button><button class="tab " data-detail="История"><img src="assets/7abdf4b0-42cb-41f8-b499-097496f2b66f.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>История</span></button><button class="tab " data-detail="Платежи"><img src="assets/b1ce6f24-ccb9-45cc-9316-363b0462b032.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Платежи</span></button><button class="tab " data-detail="Чаты"><img src="assets/19131026-6bca-4701-8cce-c1fa898c5e29.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Чаты</span></button><button class="tab selected" data-home aria-current="page"><img src="assets/17c73601-36a0-4c1c-9fe5-9d6dde3aa266.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Оформить</span></button></div><div class="home-indicator"></div></nav><div class="sheet-backdrop" id="sheetBackdrop" hidden><section class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><div class="sheet-handle"></div><button class="sheet-close" aria-label="Закрыть">×</button><span class="sheet-eyebrow">ВИТРИНА ОТП</span><h2 id="sheetTitle"></h2><p>Это интерактивный прототип. Следующий экран добавим после согласования сценария.</p><button class="button lime-button full" data-close-sheet>Вернуться к витрине</button></section></div></div></div></div>
+<span class="gift-shine" aria-hidden="true" style="--gift-text-mask:url('assets/4cfcca9e-62a1-4d0c-a104-4fc405082448.svg')"><span class="gift-shine-streak"></span></span></button><button class="gift-close" aria-label="Скрыть подарок"><img src="assets/23f00c22-8ced-4bbc-8306-c48fa144f0fe.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"></button></div><nav class="bottom-bar ios27-tab-bar figma-bottom-bar" aria-label="Основная навигация"><div class="bar-softener progressive-blur" aria-hidden="true"><span class="blur-plane" style="--blur:2px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:4px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div><div class="tab-glass"><button class="tab " data-unavailable><img src="assets/6858beac-b441-4aff-a8ef-e84af8ec0150.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Главный</span></button><button class="tab " data-unavailable><img src="assets/7abdf4b0-42cb-41f8-b499-097496f2b66f.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>История</span></button><button class="tab " data-unavailable><img src="assets/b1ce6f24-ccb9-45cc-9316-363b0462b032.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Платежи</span></button><button class="tab " data-unavailable><img src="assets/19131026-6bca-4701-8cce-c1fa898c5e29.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Чаты</span></button><button class="tab selected" data-scroll-top aria-current="page"><img src="assets/17c73601-36a0-4c1c-9fe5-9d6dde3aa266.svg" class="icon" style="" alt="" draggable="false" loading="lazy" decoding="async"><span>Оформить</span></button></div><div class="home-indicator"></div></nav><div class="sf-product-layer" hidden></div>
+      <div class="sf-currency-layer" hidden>
+        <button class="sf-currency-veil" type="button" tabindex="-1" aria-label="Закрыть выбор валюты"></button>
+        <section id="sf-currency" role="dialog" aria-modal="true" aria-labelledby="sf-currency-title" tabindex="-1">
+          <button class="sf-sheet-handle" type="button" aria-label="Закрыть выбор валюты"></button>
+          <h2 id="sf-currency-title">Выберите валюту счета</h2>
+
+    <button type="button" class="sf-currency-option" data-currency="EUR">
+      <span class="sf-currency-icon"><img src="assets/flow-0632864e-d6e7-4bc8-9f44-81aa47a9208a.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+      <span><small>EUR</small><strong>Евро</strong></span>
+    </button>
+    <button type="button" class="sf-currency-option" data-currency="USD">
+      <span class="sf-currency-icon"><img src="assets/flow-2ded0b76-d883-446a-b6b8-48ab540bc40f.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+      <span><small>USD</small><strong>Доллар</strong></span>
+    </button>
+    <button type="button" class="sf-currency-option" data-currency="KZT">
+      <span class="sf-currency-icon"><img src="assets/flow-ddc46ba3-eb3a-46ab-bf57-c68ef015cdd8.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+      <span><small>KZT</small><strong>Тенге</strong></span>
+    </button>
+    <button type="button" class="sf-currency-option" data-currency="CNY">
+      <span class="sf-currency-icon"><img src="assets/flow-0dc9f2d1-4c95-4728-a241-2497a6cabc9e.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+      <span><small>CNY</small><strong>Юань</strong></span>
+    </button>
+    <button type="button" class="sf-currency-option" data-currency="RUB">
+      <span class="sf-currency-icon"><img src="assets/flow-c1195933-f1e6-4316-a63b-7da73462b2db.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+      <span><small>RUB</small><strong>Рубль</strong></span>
+    </button><div class="home-indicator" aria-hidden="true"></div>
+        </section>
+      </div>
+      <div class="sf-hearts" aria-hidden="true" data-image="assets/flow-572ffbc3-3dbe-4115-9f07-067e15a49130.webp"></div>
+      <div class="sf-toast" role="status" aria-live="polite"></div></div></div></div>
 
     <a class="sf-back sf-float" href="index.html" aria-label="Назад на главную"><img src="assets/flow-56854cb0-2253-44bd-9367-608263d77706.svg" class="" alt="" decoding="async" draggable="false" loading="eager"></a>
     <details class="prototype-controls">
@@ -62,4 +92,639 @@
  </div>
 </section>
       </div>
-    </details></main><div class="sr-only" id="announcement" aria-live="polite"></div></body></html>
+    </details></main><div class="sr-only" id="announcement" aria-live="polite"></div><template id="sf-product-cash"><div class="sf-product-view sf-product--promo" data-route="cash">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Кредит наличными"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-f22ab27f-240a-4574-84a1-845b3d0e50df.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Кредит наличными</h1>
+
+
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-38656b1d-aeca-4530-8f8f-17c966622dfa.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Сумма до 3 000 000 ₽, ставка — 18,2% годовых</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-da99bfc3-1071-4e5f-9e16-1ea5242ae4c5.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Решение за 1 минуту</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-41117641-0bb9-4493-a7b3-90ec6ef5e293.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>От 50 до 200 тысяч ₽ — перевод за 4 часа, свыше — за 48 часов</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-4a743fb8-60a3-4bd3-a3c6-cf260b8fd65f.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Удобная оплата в мобильном приложении</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-c0fe320a-0eb6-438b-8fed-917de10afb3e.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Оцените свои финансовые возможности и риски</strong></div>
+  </div></div>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оставить заявку</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-refinance"><div class="sf-product-view sf-product--promo" data-route="refinance">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Рефинансирование"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-be225e77-00ad-4f62-8258-f4f1f0f2c577.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Рефинансирование</h1>
+      <p class="sf-product-subtitle">Экономьте время и деньги — платите один кредит вместо нескольких 💜</p>
+
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-cd1b10a3-a17e-4d96-a283-4c1ebd6c264b.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Объедините до 5 кредитов или кредитных карт в один кредит</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-ad9519e6-db84-4796-9260-481281a1d3bb.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Уменьшите платёж до 2 раз</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-4bad9080-8493-455f-8de7-e6e61965c8a8.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Оформите онлайн без лишних справок</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-a0320cb6-55b1-41a0-9187-2400fbf8f284.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Получите дополнительно 2 млн ₽ на личные цели</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-1e5f8de5-8070-41bd-8fef-863298ed6c1c.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Оцените свои финансовые возможности и риски</strong></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Как работает рефинансирование?</span><span aria-hidden="true">›</span></button><button class="sf-product-more" type="button" data-unavailable>
+  <span>Документы для оформления</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оставить заявку</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-express"><div class="sf-product-view sf-product--promo" data-route="express">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Экспресс-кредит"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-d77ef615-1a41-4b27-acb5-f5ce67d23da1.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Экспресс-кредит</h1>
+      <p class="sf-product-subtitle">Нужны деньги на короткий срок? Мы готовы помочь</p>
+
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-1b93209d-716b-4f52-b7f1-27627661e68c.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Одобрение до 100 000 ₽ за 1 минуту</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-f9b9a823-018f-4313-b202-09893ee4e33a.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Без справок и поручителей</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-afafc707-4de2-408e-adca-91aa1dcc4b7a.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Не нужно занимать у друзей</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-0fcb221d-969e-49a0-984d-d992819c11fc.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Высокая вероятность одобрения</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-f82c577e-d3ab-4605-8e6f-1b9ad48f1d91.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Оцените свои финансовые возможности и риски</strong></div>
+  </div></div>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оставить заявку</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-esim"><div class="sf-product-view sf-product--promo" data-route="esim">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Туристическая eSIM для поездок за рубеж"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-97e6935e-b2fb-4645-ab93-44c17aa02fc1.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Туристическая eSIM для поездок за рубеж</h1>
+
+      <button class="sf-explainer" type="button" data-unavailable>
+        <span><strong>Как это работает?</strong><small>Узнайте, как это работает</small></span>
+        <span class="sf-explainer-art"><img src="assets/flow-9a373e29-b3a8-4db0-b4c5-ea5339796d0f.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></span></button>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-5471745c-837e-47be-aef2-da34928fb582.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Более 200 стран и 9 регионов</strong><small>Быстрый интернет в путешествиях</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-4cd706f0-a7e2-475c-9c8d-b226f9c07908.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Подключение за несколько минут</strong><small>Добавьте eSIM на устройство без обращения к оператору</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-4530036a-c02f-4efd-bad2-4121c7040f0b.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Понятные цены без доплат</strong><small>Полная стоимость известна при выборе тарифа</small></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы и ответы</span><span aria-hidden="true">›</span></button><button class="sf-product-more" type="button" data-unavailable>
+  <span>Чат с банком</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оформить</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-fraud"><div class="sf-product-view sf-product--promo" data-route="fraud">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Защита счетов от мошенников"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-b5c3d62e-fe86-47f6-9e09-5ce4acd81a68.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Защита счетов от мошенников</h1>
+
+
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-536f512b-589c-48cc-8485-84f9be8304dd.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Защита всех карт, счетов и вкладов</strong><small>Защита карт, счетов и вкладов в любом банке</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-a8b7ffeb-64b7-4855-a54a-b89a85767d56.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Защита от мошеннических кредитов</strong><small>Аннулируем кредиты, оформленные без вашего ведома</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-5748f7c6-b310-475f-97aa-d1166d5d9da7.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Выплата до 600 000 ₽</strong><small>В зависимости от условий полиса</small></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы и ответы</span><span aria-hidden="true">›</span></button><button class="sf-product-more" type="button" data-unavailable>
+  <span>Чат с банком</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Подключить защиту</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-foreign"><div class="sf-product-view sf-product--promo" data-route="foreign">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Оплата зарубежных сервисов"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-0e53a786-6952-4513-b496-0dbcfb7b790d.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Оплата зарубежных сервисов</h1>
+
+      <button class="sf-explainer" type="button" data-unavailable>
+        <span><strong>Как это работает?</strong><small>Узнайте, как это работает</small></span>
+        <span class="sf-explainer-art"><img src="assets/flow-d06b93ab-823b-4636-bb2b-01a1e76445d2.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></span></button>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-15fb4b3a-8dfc-4c17-a06e-48139a4e3e5c.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Более 100 сервисов и сайтов</strong><small>Нейросети, игры и другое для работы и развлечений</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-d6e3a310-903a-4890-a7e2-fac7588a2321.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Без карты иностранного банка</strong><small>Платите в рублях через СБП. Быстро и безопасно</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-3fe3e331-fbc5-4dfb-a6ef-a776cb780134.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Выгодные цены</strong><small>Без скрытых комиссий и наценок</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-8cf0c3de-3fdd-439c-809f-868868a1b1ea.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Не забудьте отключить VPN</strong><small>Чтобы сервис работал корректно</small></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы и ответы</span><span aria-hidden="true">›</span></button><button class="sf-product-more" type="button" data-unavailable>
+  <span>Чат с банком</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Выбрать сервис</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-sport"><div class="sf-product-view sf-product--promo" data-route="sport">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Защита для занятий спортом"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-3560dd21-0e8c-476e-8468-ecca28504f46.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Защита для занятий спортом</h1>
+      <p class="sf-product-subtitle">Покрытие медицинских расходов при происшествиях по всему миру</p>
+      <button class="sf-explainer" type="button" data-unavailable>
+        <span><strong>Как работает страховка?</strong><small>Всё, что нужно знать</small></span>
+        <span class="sf-explainer-art"><img src="assets/flow-07730880-d09e-4ffe-ac51-c69fd955e78a.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></span></button>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-c74f0786-d4e5-4d10-9d54-53ec6e265158.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Регулярные занятия спортом</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-19dc87d3-09cd-426c-86c8-7a4e4c11e1e1.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Участие в соревнованиях</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-6ffcf8f7-5a07-409c-95a6-275015fe8a75.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Детские лагеря</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-50521fc1-acda-4624-a9bc-936230be0173.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Бытовые травмы</strong></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы и ответы</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Рассчитать стоимость</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-kasko"><div class="sf-product-view sf-product--promo" data-route="kasko">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Оформить КАСКО"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-e896d1ad-7104-4dd4-9536-ab673ebcf3e9.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Оформить КАСКО</h1>
+      <p class="sf-product-subtitle">Сравните предложения 19 страховых компаний и выберите лучшее</p>
+
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-8f20365b-2131-453f-af10-fcc5ed5092a6.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Ремонт после ДТП</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-650e369c-61bf-404f-a729-5131fc11bd05.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Защита от угона автомобиля</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-9806c36b-f56d-4efc-873a-6afb29d7c8d2.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Выплата при полной гибели автомобиля</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-b7c97f35-cbaf-407f-92b6-188e4c895d12.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Срок страхования: 1 год</strong></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы и ответы</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+        <label class="sf-consent"><input type="checkbox" checked>Я даю согласие на обработку персональных данных</label>
+        <button class="sf-product-action" type="button" data-unavailable>Оформить</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-osago"><div class="sf-product-view sf-product--promo" data-route="osago">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Оформить ОСАГО"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-bda2cf38-6cdc-4aa1-88ad-8c1077e1f746.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
+    <section class="sf-product-body" data-header-panel><h1>Оформить ОСАГО</h1>
+
+      <button class="sf-explainer" type="button" data-unavailable>
+        <span><strong>Как сэкономить на полисе</strong><small>Всё, что нужно знать</small></span>
+        <span class="sf-explainer-art"><img src="assets/flow-ecf8302f-25c9-4ba7-bfcf-362cd754ec76.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></span></button>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-eab2da1d-4c7b-4296-9828-9a5c494bdab8.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Выберите лучшее предложение от 20+ страховых компаний</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-dd956359-5f83-4a1d-95a7-5bb51bf83a65.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Все скидки за стаж и историю вождения учтены</strong></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-487edb24-0774-4e56-8ab7-23bef29e8901.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Получите полис на почту сразу после оформления</strong></div>
+  </div></div><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы и ответы</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оформить</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-debit"><div class="sf-product-view sf-product--card" data-route="debit">
+      <div class="sf-product-scroll" tabindex="0" aria-label="ОТП Карта"><div class="sf-product-hero sf-product-card-art">
+    <div class="sf-bank-card ">
+      <img src="assets/flow-5bee0f43-d63c-4a32-b700-ec22c03d7f2f.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"><img src="assets/flow-a8806dc6-802e-4eeb-8197-ee0428d17acc.svg" class="sf-bank-logo" alt="" decoding="async" draggable="false" loading="lazy">
+    </div><span class="sf-card-indicator" aria-hidden="true"></span>
+    </div>
+    <section class="sf-product-body sf-card-body" data-header-panel>
+      <h1>ОТП Карта</h1>
+      <div class="sf-pills"><button type="button" aria-pressed="true" data-product="debit">Цифровая</button><button type="button" aria-pressed="false" data-pill>Пластиковая</button><button type="button" aria-pressed="false" data-product="sticker">Стикер</button></div>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-53914986-eda8-4f01-a75d-f6d3b7078b93.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Кешбэк до 10%</strong><small>Супермаркеты, одежда, аптеки, ЖКУ, рестораны, АЗС и ещё 5 категорий</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-d5363013-c122-4e6c-9682-fa42fb04389a.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Доход 12,5%</strong><small>На накопительном счёте</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-e0edbf12-2eda-45b9-ab1a-71816dc92959.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Бесплатный выпуск и обслуживание</strong><small>Без условий</small></div>
+  </div></div>
+      <div class="sf-rate-note"><strong>К карте — накопительный счёт с пополнением и снятием</strong>
+        <span>12,5%</span><small>Ставка на остаток до 2 000 000 ₽</small></div>
+
+      <label class="sf-country">Страна налогового резидентства
+        <select><option>Россия</option></select></label>
+      <button class="sf-product-more" type="button" data-unavailable>
+  <img src="assets/flow-cef6361b-bc12-447c-94a5-e5e327f4d059.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"><span>Тарифы и условия</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Дебетовые карты</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оформить карту</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-premium"><div class="sf-product-view sf-product--card" data-route="premium">
+      <div class="sf-product-scroll" tabindex="0" aria-label="OTP Premium"><div class="sf-product-hero sf-product-card-art">
+    <div class="sf-bank-card ">
+      <img src="assets/flow-3b45378d-8f2d-4047-9626-aebc5cb877e4.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"><img src="assets/flow-29053cd9-f987-41d6-83ae-9e003f4cc542.svg" class="sf-bank-logo" alt="" decoding="async" draggable="false" loading="lazy">
+    </div><span class="sf-card-indicator" aria-hidden="true"></span>
+    </div>
+    <section class="sf-product-body sf-card-body" data-header-panel>
+      <h1>OTP Premium</h1>
+      <div class="sf-pills"><button type="button" aria-pressed="true" data-product="premium">Пластиковая</button><button type="button" aria-pressed="false" data-product="sticker">Стикер</button></div>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-02311638-8ecb-490b-9bf8-e3d8a73964b3.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Кешбэк 5% в выбранных категориях</strong><small>Продукты, одежда, аптеки, ЖКУ, рестораны, АЗС и ещё 5 категорий</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon">✦</span>
+    <div><strong>До 96 проходов в бизнес-залы</strong><small>По всему миру</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon">✧</span>
+    <div><strong>Консьерж-сервис 24/7</strong><small>Бронирования, путешествия, обучение и другое с Konsierge</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon">+</span>
+    <div><strong>Бесплатный выпуск карты</strong><small>Бесплатно при выполнении любого условия, иначе — 2 800 ₽ в месяц</small></div>
+  </div></div>
+      <div class="sf-rate-note"><strong>К карте — накопительный счёт с пополнением и снятием</strong>
+        <span>13%</span><small>Ставка на остаток до 10 000 000 ₽</small></div>
+
+      <label class="sf-country">Страна налогового резидентства
+        <select><option>Россия</option></select></label>
+      <button class="sf-product-more" type="button" data-unavailable>
+  <img src="assets/flow-7855758c-78ee-48aa-97b2-277e6abf565b.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"><span>Тарифы и условия</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Дебетовые карты</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оформить карту</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-credit-card"><div class="sf-product-view sf-product--card" data-route="credit-card">
+      <div class="sf-product-scroll" tabindex="0" aria-label="120 дней без процентов"><div class="sf-product-hero sf-product-card-art">
+    <div class="sf-bank-card ">
+      <img src="assets/flow-8e6bf56a-99b7-47dc-8731-366c0f025cd9.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"><img src="assets/flow-286aa2eb-e7c9-4f04-a3f0-4aa03580be0d.svg" class="sf-bank-logo" alt="" decoding="async" draggable="false" loading="lazy">
+    </div>
+    </div>
+    <section class="sf-product-body sf-card-body" data-header-panel>
+      <h1>120 дней без процентов</h1><p class="sf-product-subtitle">Кешбэк до 10% и бесплатное обслуживание</p>
+
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-94938190-0e61-4313-b5c5-aad6208fb33a.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Беспроцентный период</strong><small>До 120 дней без процентов</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-d779e257-30c9-42ea-b279-b1503c30edad.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Оплата зарубежных сервисов</strong><small>Apple ID, ChatGPT, PlayStation и другие</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon">10%</span>
+    <div><strong>Кешбэк до 10%</strong><small>Продукты, одежда, аптеки, ЖКУ, рестораны, АЗС и ещё 5 категорий</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon">24</span>
+    <div><strong>Рассрочка</strong><small>До 24 месяцев</small></div>
+  </div></div>
+
+      <div class="sf-form-fields">
+        <label for="sf-credit-limit">Выберите сумму лимита</label>
+        <output for="sf-credit-limit" class="sf-field">150 000 ₽</output>
+        <input id="sf-credit-limit" type="range" min="10000" max="1000000" step="10000" value="150000">
+        <div class="sf-range-labels"><span>10 000 ₽</span><span>1 000 000 ₽</span></div>
+        <label class="sf-switch-row"><span>Хочу пластиковую карту<small>Вы получите цифровую карту. Пластиковую можно заказать в любой момент на экране карты.</small></span><input type="checkbox"></label>
+      </div>
+      <label class="sf-country">Страна налогового резидентства
+        <select><option>Россия</option></select></label>
+      <button class="sf-product-more" type="button" data-unavailable>
+  <img src="assets/flow-5fe1a7da-8c8a-48f7-9ccd-e2f1bc295519.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"><span>Тарифы и условия</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Кредитные карты</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оформить заявку</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-sticker"><div class="sf-product-view sf-product--card" data-route="sticker">
+      <div class="sf-product-scroll" tabindex="0" aria-label="ОТП Карта"><div class="sf-product-hero sf-product-card-art">
+    <div class="sf-bank-card sf-sticker-preview">
+      <img src="assets/flow-d3d0e547-3f6d-4cc2-b5b8-6533bf86ea90.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </div><span class="sf-card-indicator" aria-hidden="true"></span>
+    </div>
+    <section class="sf-product-body sf-card-body" data-header-panel>
+      <h1>ОТП Карта</h1>
+      <div class="sf-pills"><button type="button" aria-pressed="false" data-product="debit">Цифровая</button><button type="button" aria-pressed="false" data-pill>Пластиковая</button><button type="button" aria-pressed="true" data-product="sticker">Стикер</button></div>
+      <div class="sf-features">
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-cb532278-d35c-4943-b73a-e6b476994ffd.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Удобная оплата телефоном</strong><small>Стикер всегда под рукой</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-43fea155-1d8d-4066-abb1-3ce3d77a8886.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Кешбэк до 10%</strong><small>Продукты, одежда, аптеки, ЖКУ, рестораны, АЗС и ещё 5 категорий</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-5ab8e29f-a7a7-4190-9f3f-e7910ad0ac88.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Доход 12,5%</strong><small>На накопительном счёте</small></div>
+  </div>
+  <div class="sf-feature">
+    <span class="sf-feature-icon"><img src="assets/flow-ed67589b-219b-4344-80bb-4999a77aa93c.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></span>
+    <div><strong>Бесплатный выпуск и обслуживание</strong><small>Без условий</small></div>
+  </div></div>
+      <div class="sf-rate-note"><strong>Стикер и накопительный счёт с пополнением и снятием</strong>
+        <span>12,5%</span><small>Ставка на остаток до 2 000 000 ₽</small></div>
+
+      <label class="sf-country">Страна налогового резидентства
+        <select><option>Россия</option></select></label>
+      <button class="sf-product-more" type="button" data-unavailable>
+  <img src="assets/flow-beb56153-e82e-42e8-817b-45c90c47d59f.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"><span>Тарифы и условия</span><span aria-hidden="true">›</span></button><button class="sf-product-more" type="button" data-unavailable>
+  <span>Вопросы о стикере</span><span aria-hidden="true">›</span></button>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Дебетовые карты</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Оформить стикер</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-deposits"><div class="sf-product-view sf-product--deposits" data-route="deposits">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Вклады и счета"><section class="sf-product-body sf-directory"><h1>Вклады и счета</h1>
+    <p>Валюта</p><div class="sf-pills"><button type="button" aria-pressed="true" data-pill>RUB</button><button type="button" aria-pressed="false" data-pill>KZT</button><button type="button" aria-pressed="false" data-pill>CNY</button><button type="button" aria-pressed="false" data-pill>USD</button><button type="button" aria-pressed="false" data-pill>EUR</button></div>
+      <div class="sf-deposit-source" data-header-panel><label class="sf-switch-row">Снятие<input type="checkbox"></label>
+      <label class="sf-switch-row">Пополнение<input type="checkbox"></label></div>
+
+    <button type="button" class="sf-directory-item" data-header-panel data-product="savings">
+      <span><small>Накопительный счет</small><strong>До 12,5%</strong>
+      <em>Бессрочно</em></span>
+      <img src="assets/flow-d18fb20d-872d-4267-837c-07b08551a6b2.svg" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="horizon">
+      <span><small>Горизонт</small><strong>до 13,6%</strong>
+      <small>Минимальная сумма вклада</small><span>1 000 ₽</span><em>91–1098 дней</em></span>
+      <img src="assets/flow-85bd4ab6-6f16-4c8e-82b1-af6033735b98.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="attraction">
+      <span><small>Притяжение</small><strong>до 12,1%</strong>
+      <small>Минимальная сумма вклада</small><span>20 000 ₽</span><em>181–732 дня</em></span>
+      <img src="assets/flow-fbf400a0-139c-4efd-8330-fee6c179a602.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><small>Приватный (ежемесячно)</small><strong>до 12,3%</strong>
+      <small>Минимальная сумма вклада</small><span>10 000 000 ₽</span><em>181–366 дней</em></span>
+      <img src="assets/flow-5ca0a259-42cc-42fd-9291-af02eb8e9e89.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><small>Без границ</small><strong>до 12%</strong>
+      <small>Минимальная сумма вклада</small><span>1 000 ₽</span><em>91 день</em></span>
+      <img src="assets/flow-a99f0438-a4cb-474f-a179-9346df3be32e.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="currency">
+      <span><small>Текущий счёт</small><strong>0%</strong>
+      <em>Бессрочно</em></span>
+      <img src="assets/flow-1b9e2ea7-6983-4300-9a8e-935bb121d8eb.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button></section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Вклады и счета</span></header>
+
+    </div></template>
+<template id="sf-product-benefits"><div class="sf-product-view sf-product--benefits" data-route="benefits">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Привилегии+"><section class="sf-product-body sf-directory"><h1>Привилегии+</h1>
+
+
+    <button type="button" class="sf-directory-item" data-header-panel data-product="fuel">
+      <span><strong>Заправки</strong><small>Найдите заправку на карте</small></span><img src="assets/flow-b88d2cc4-3b7c-4de3-9795-1ab6ee6174fe.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="fraud">
+      <span><strong>Защита от мошенников</strong><small>Защитите все свои счета от мошенников</small></span><img src="assets/flow-fffddbfe-42c7-4def-b58e-388cf3e10ab8.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="foreign">
+      <span><strong>Зарубежные сервисы</strong><small>Нейросети, игры и многое другое</small></span><img src="assets/flow-29a94433-8b63-4302-981c-78cf1f5b6f1a.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="esim">
+      <span><strong>eSIM для путешествий</strong><small>Оставайтесь на связи по всему миру</small></span><img src="assets/flow-1b54b715-5697-4e9c-b8be-8dd0d0a1559e.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="osago">
+      <span><strong>ОСАГО</strong><small>Скидки от 15 страховых компаний на выбор</small></span><img src="assets/flow-5d7a8216-cc17-4bae-8d81-0b28e9c19ff5.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="kasko">
+      <span><strong>КАСКО</strong><small>Комплексная защита автомобиля</small></span><img src="assets/flow-2b741f7c-dab1-40cc-9230-a23c38ee2746.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Карта иностранного банка</strong><small>Быстро, с минимумом документов</small></span><img src="assets/flow-ad233a74-e26f-4a88-91fe-1bb3afbcbb33.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Оформление виз</strong><small>Без посещения визового центра</small></span><img src="assets/flow-ed183d71-86ae-415c-8463-c75db1fc1a63.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Ветеринарная помощь</strong><small>Поддержка заботливых хозяев питомцев</small></span><img src="assets/flow-decdf413-ff88-49a8-b394-d6c90656d50f.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Юридическая помощь</strong><small>Ваш юрист всегда на связи</small></span><img src="assets/flow-ae61e014-4581-4ae8-af03-c867901faaeb.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Забота о здоровье</strong><small>Программа медицинского страхования</small></span><img src="assets/flow-c90d0b72-e1c0-43c0-b43b-23a7623dda99.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Ипотечное страхование</strong><small>Для ипотеки в любом банке</small></span><img src="assets/flow-80a1d905-3e9d-4693-9a28-dc0a461a34b4.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-product="sport">
+      <span><strong>Спортивное страхование</strong><small>Для взрослых и детей</small></span><img src="assets/flow-65a33d7f-b8fc-40ab-aedc-19015068b83f.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Страхование путешествий</strong><small>Для поездок в любую точку мира</small></span><img src="assets/flow-2ccbfdf8-ff0a-4097-8b50-9f62eb5fb78e.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button>
+    <button type="button" class="sf-directory-item" data-header-panel data-unavailable>
+      <span><strong>Страхование имущества</strong><small>Защита имущества от несчастных случаев и других рисков</small></span><img src="assets/flow-53295406-1688-4d98-8226-9197aac8147e.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+    </button></section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+
+    </div></template>
+<template id="sf-product-savings"><div class="sf-product-view sf-product--savings" data-route="savings">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Накопительный счет"><div class="sf-savings-art"><img src="assets/flow-fc9d0a7c-f8b8-4cda-8e13-a8c7144bbd1b.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"><h1>В РАБОТЕ!!!</h1></div></div>
+
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Накопительный счет</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" disabled>Продолжить</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-horizon"><div class="sf-product-view sf-product--deposit" data-route="horizon">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Горизонт"><section class="sf-product-body sf-deposit-form">
+    <div class="sf-deposit-source" data-header-panel><small>Счёт списания</small>
+      <div><img src="assets/flow-5bee0f43-d63c-4a32-b700-ec22c03d7f2f.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"><span>ОТП Карта<small>Дебетовая карта</small></span><strong>98 056,12 ₽</strong></div></div>
+    <label for="sf-deposit-amount-horizon">Сумма</label>
+    <input id="sf-deposit-amount-horizon" class="sf-field" type="text" inputmode="numeric" placeholder="0 ₽">
+    <small>от 1 000 ₽ до 600 000 000 ₽</small>
+    <p>Срок</p><div class="sf-pills"><button type="button" aria-pressed="true" data-pill>91 день</button><button type="button" aria-pressed="false" data-pill>181 день</button><button type="button" aria-pressed="false" data-pill>275 дней</button><button type="button" aria-pressed="false" data-pill>366 дней</button></div>
+    <div class="sf-rate-note"><small>Доход</small><strong>До 12%</strong></div>
+    <label class="sf-switch-row sf-deposit-source"><span>Оставлять доход на вкладе</span><input type="checkbox" checked></label>
+    <dl class="sf-deposit-source"><dt>Капитализация</dt><dd>Нет</dd><dt>Частичное снятие</dt><dd>Нет</dd>
+      <dt>Пополнение</dt><dd>Нет</dd></dl>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Горизонт</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Продолжить</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-attraction"><div class="sf-product-view sf-product--deposit" data-route="attraction">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Притяжение"><section class="sf-product-body sf-deposit-form">
+    <div class="sf-deposit-source" data-header-panel><small>Счёт списания</small>
+      <div><img src="assets/flow-5bee0f43-d63c-4a32-b700-ec22c03d7f2f.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"><span>ОТП Карта<small>Дебетовая карта</small></span><strong>98 056,12 ₽</strong></div></div>
+    <label for="sf-deposit-amount-attraction">Сумма</label>
+    <input id="sf-deposit-amount-attraction" class="sf-field" type="text" inputmode="numeric" placeholder="Выберите сумму">
+    <small>от 1 000 ₽ до 600 000 000 ₽</small>
+    <p>Срок</p><div class="sf-pills"><button type="button" aria-pressed="true" data-pill>181 день</button><button type="button" aria-pressed="false" data-pill>275 дней</button><button type="button" aria-pressed="false" data-pill>366 дней</button></div>
+    <div class="sf-rate-note"><small>Доход</small><strong>До 12,1%</strong></div>
+
+    <dl class="sf-deposit-source"><dt>Капитализация</dt><dd>Нет</dd><dt>Частичное снятие</dt><dd>Да</dd>
+      <dt>Пополнение</dt><dd>Да, после частичного снятия, в пределах первоначальной суммы вклада</dd></dl>
+    </section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Притяжение</span></header>
+      <footer class="sf-product-footer">
+
+        <button class="sf-product-action" type="button" data-unavailable>Продолжить</button><div class="home-indicator" aria-hidden="true"></div></footer>
+    </div></template>
+<template id="sf-product-referral"><div class="sf-product-view sf-product--referral" data-route="referral">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Подтверждение"><section class="sf-product-body sf-referral-products">
+    <article class="sf-referral-product"><img src="assets/flow-a9e92f80-0667-40cb-8de4-1db83b0369f7.svg" class="" alt="" decoding="async" draggable="false" loading="lazy">
+      <div data-header-panel><h2>ОТП Карта</h2><div class="sf-referral-rewards"><span><small>Вам</small>1 000 ₽</span>
+        <span><small>Другу</small>до 1 000 ₽</span></div>
+        <button class="sf-product-action" type="button" data-unavailable>Поделиться ссылкой</button></div>
+    </article>
+    <article class="sf-referral-product"><img src="assets/flow-2a096a42-7992-4af8-bf90-da95b8593f87.svg" class="" alt="" decoding="async" draggable="false" loading="lazy">
+      <div data-header-panel><h2>Кредитная карта — 120 дней без процентов</h2><div class="sf-referral-rewards"><span><small>Вам</small>1 000 ₽</span>
+        <span><small>Другу</small>2 000 ₽</span></div>
+        <button class="sf-product-action" type="button" data-unavailable>Поделиться ссылкой</button></div>
+    </article>
+    <article class="sf-referral-product"><img src="assets/flow-3cfd3945-3f9e-45e8-9b6e-a4a8f9d3e9bf.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">
+      <div data-header-panel><h2>ОТП Premium</h2><div class="sf-referral-rewards"><span><small>Вам и другу</small>1 500 ₽</span>
+        <span><small>Главный приз</small>100 000 ₽</span></div>
+        <button class="sf-product-action" type="button" data-unavailable>Поделиться ссылкой</button></div>
+    </article></section></div>
+      <div class="top-material progressive-blur sf-product-material" aria-hidden="true"><span class="blur-plane" style="--blur:10px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 24.999999999999993%,#000 41.666666666666664%,#000 58.33333333333332%,transparent 74.99999999999999%)"></span><span class="blur-plane" style="--blur:20px;--blur-mask:linear-gradient(var(--blur-direction,to bottom),transparent 58.33333333333332%,#000 74.99999999999999%,#000 91.66666666666667%,#000 100%)"></span><span class="blur-tint"></span></div>
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        <span>Подтверждение</span></header>
+
+    </div></template>
+<template id="sf-product-fuel"><div class="sf-product-view sf-product--map" data-route="fuel">
+      <div class="sf-product-scroll" tabindex="0" aria-label="Заправки"><div class="sf-fuel-map">
+    <img src="assets/flow-fd63b603-0a82-44ce-9f1d-9a4ce706ffbc.webp" class="sf-map-image" alt="" decoding="async" draggable="false" loading="lazy">
+    <div class="sf-map-cashback">Кешбэк 10%</div>
+    <div class="sf-map-pin"><img src="assets/flow-a2131b73-f9e0-416e-9699-54306ab5370d.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">Газпромнефть</div>
+    <div class="sf-map-controls"><button type="button" aria-label="Увеличить масштаб" data-map-zoom="1">+</button>
+      <button type="button" aria-label="Уменьшить масштаб" data-map-zoom="-1">−</button>
+      <button type="button" aria-label="Вернуть исходный масштаб" data-map-zoom="0">⌖</button></div>
+    <div class="sf-map-filters"><button type="button" data-unavailable>АИ-98</button>
+      <button type="button" data-unavailable><img src="assets/flow-a2131b73-f9e0-416e-9699-54306ab5370d.webp" class="" alt="" decoding="async" draggable="false" loading="lazy">Газпромнефть</button></div></div></div>
+
+      <header class="sf-product-header"><button type="button" class="sf-float" data-product-back aria-label="Назад к витрине"><img src="assets/flow-540bca8c-a5e7-4557-8b33-8cfb7d82510d.svg" class="" alt="" decoding="async" draggable="false" loading="lazy"></button>
+        </header>
+
+    </div></template></body></html>
