@@ -271,7 +271,7 @@
     try {
       const saved = localStorage.getItem(key) ??
         (badgeName === 'cash' ? localStorage.getItem('otp-storefront-badge-refinance') : null);
-      toggle.checked = saved !== 'hidden';
+      if (saved === 'visible' || saved === 'hidden') toggle.checked = saved === 'visible';
     } catch {}
     badge.hidden = !toggle.checked;
     toggle.addEventListener('change', () => {
