@@ -209,6 +209,10 @@
   top: -8px;
   right: -8px;
 }
+.sf-badge--refinance {
+  left: 26px;
+  right: auto;
+}
 .sf-sticker {
   position: relative;
   display: grid;

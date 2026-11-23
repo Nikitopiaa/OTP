@@ -267,7 +267,7 @@
   for (const toggle of controls.querySelectorAll('[data-badge-toggle]')) {
     const badgeName = toggle.dataset.badgeToggle;
     const badge = screen.querySelector('.sf-badge--' + badgeName);
-    const key = 'otp-storefront-badge-' + badgeName;
+    const key = 'otp-storefront-badge-' + (toggle.dataset.badgePreference || badgeName);
     try {
       const saved = localStorage.getItem(key) ??
         (badgeName === 'cash' ? localStorage.getItem('otp-storefront-badge-refinance') : null);
