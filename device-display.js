@@ -2,6 +2,7 @@
   const storageKey = 'otp-prototype-display-v3';
   const mobile = matchMedia('(max-width:650px), (hover:none) and (pointer:coarse)');
   const toggle = document.querySelector('#showDeviceChrome');
+  const deviceWidth = Number(document.body.dataset.deviceWidth) || 409;
   const mode = () => mobile.matches ? 'mobile' : 'desktop';
   const lightweight = CSS.supports('-webkit-touch-callout', 'none') ||
     new URLSearchParams(location.search).get('render') === 'light';
@@ -25,7 +26,7 @@
 
   function fitDevice() {
     const width = document.documentElement.clientWidth || innerWidth;
-    const scale = showChrome && !mobile.matches ? Math.max(.24, Math.min(1, (width - 32) / 409)) : 1;
+    const scale = showChrome && !mobile.matches ? Math.max(.24, Math.min(1, (width - 32) / deviceWidth)) : 1;
     document.documentElement.style.setProperty('--device-scale', scale);
   }
 

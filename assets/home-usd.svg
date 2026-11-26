@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Flags">
+<g clip-path="url(#clip0_0_1081)">
+<rect width="24" height="18" rx="4" fill="white"/>
+<path id="Vector" d="M0 0H10.2857V8.4H0V0Z" fill-rule="evenodd" clip-rule="evenodd" fill="#1A47B8"/>
+<path id="Vector_2" d="M10.2857 0V1.2H24V0H10.2857ZM10.2857 2.4V3.6H24V2.4H10.2857ZM10.2857 4.8V6H24V4.8H10.2857ZM10.2857 7.2V8.4H24V7.2H10.2857ZM0 9.6V10.8H24V9.6H0ZM0 12V13.2H24V12H0ZM0 14.4V15.6H24V14.4H0ZM0 16.8V18H24V16.8H0Z" fill-rule="evenodd" clip-rule="evenodd" fill="#F93939"/>
+<path id="Vector_3" d="M1.14286 1.2V2.4H2.28571V1.2H1.14286ZM3.42857 1.2V2.4H4.57143V1.2H3.42857ZM5.71429 1.2V2.4H6.85714V1.2H5.71429ZM8 1.2V2.4H9.14286V1.2H8ZM6.85714 2.4V3.6H8V2.4H6.85714ZM4.57143 2.4V3.6H5.71429V2.4H4.57143ZM2.28571 2.4V3.6H3.42857V2.4H2.28571ZM1.14286 3.6V4.8H2.28571V3.6H1.14286ZM3.42857 3.6V4.8H4.57143V3.6H3.42857ZM5.71429 3.6V4.8H6.85714V3.6H5.71429ZM8 3.6V4.8H9.14286V3.6H8ZM1.14286 6V7.2H2.28571V6H1.14286ZM3.42857 6V7.2H4.57143V6H3.42857ZM5.71429 6V7.2H6.85714V6H5.71429ZM8 6V7.2H9.14286V6H8ZM6.85714 4.8V6H8V4.8H6.85714ZM4.57143 4.8V6H5.71429V4.8H4.57143ZM2.28571 4.8V6H3.42857V4.8H2.28571Z" fill-rule="evenodd" clip-rule="evenodd" fill="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1081">
+<rect width="24" height="18" rx="4" fill="white"/>
+</clipPath>
+</defs>
+</svg>

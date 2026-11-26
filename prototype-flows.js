@@ -1,4 +1,4 @@
-function mountPrototypeFlows(onCoveredChange) {
+function mountPrototypeFlows(onCoveredChange = () => {}) {
   const scrollArea = document.querySelector('#scrollArea');
   const screen = scrollArea.parentElement;
   const controls = document.querySelector('.prototype-controls');
@@ -22,7 +22,9 @@ function mountPrototypeFlows(onCoveredChange) {
   function syncInert() {
     const modalOpen = !currencyLayer.hidden;
     const covered = !layer.hidden || modalOpen;
-    for (const element of [scrollArea, gift, nav]) element.inert = covered;
+    scrollArea.inert = covered;
+    nav.inert = covered;
+    if (gift) gift.inert = covered;
     layer.inert = modalOpen;
     controls.inert = modalOpen;
     back.inert = covered;
