@@ -156,13 +156,6 @@
 .home-prototype .figma-bottom-bar .bar-softener { --blur-tint: linear-gradient(to bottom, #f3f4f600, var(--home-surface)); }
 .home-prototype .figma-bottom-bar .tab { justify-content: center; }
 .home-prototype .tab > span { white-space: nowrap; }
-.home-layout-save {
-  position: fixed; z-index: 31; top: var(--sf-controls-top); left: 50%; transform: translateX(-50%);
-  min-height: 40px; padding: 8px 18px; border-radius: 24px; background: #222; color: #fff;
-  font-size: 14px; font-weight: 580; box-shadow: 0 3px 12px #0002;
-}
-.home-layout-save[hidden] { display: none; }
-.home-prototype:has(.sf-product-view, .sf-currency-layer:not([hidden])) .home-layout-save { visibility: hidden; }
 [data-home-editable] { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 [data-home-drag-source] { display: none; }
 .is-home-offer-dragging, .is-home-offer-dragging * { cursor: grabbing; }

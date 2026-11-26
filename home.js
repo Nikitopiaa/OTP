@@ -10,7 +10,6 @@
   const slider = document.querySelector('.home-banners');
   const markerList = slider.querySelector('.home-banner-dots');
   const slots = new Map([...screen.querySelectorAll('[data-home-slot]')].map(slot => [slot.dataset.homeSlot, slot]));
-  const layoutSave = document.querySelector('#home-layout-save');
   const layoutStatus = document.querySelector('#home-layout-status');
   const storageKey = 'otp-home-offers-v1';
 
@@ -55,7 +54,7 @@
   const fixedCards = new Map([...slots.values()].flatMap(slot => [...slot.children]
     .filter(node => !node.dataset.homeOffer)
     .map(node => [homeCardKey(node), node])));
-  let savedOrder = new Map([...slots].map(([section, slot]) => {
+  const layoutOrder = new Map([...slots].map(([section, slot]) => {
     const defaults = [
       ...[...slot.children].filter(node => !node.dataset.homeOffer).map(homeCardKey),
       ...[...entries].filter(([, { state }]) => state.section === section).map(([id]) => id)
@@ -65,24 +64,21 @@
       ? [...new Set([...stored.filter(key => defaults.includes(key)), ...defaults])]
       : defaults];
   }));
-  let draftOrder;
   let activeBanner = markerList.querySelector('[aria-pressed="true"]').dataset.homeBanner;
   let slides = [];
   let swipeStart;
 
-  function saveSettings(status, order = savedOrder) {
+  function saveSettings(status, message = 'Изменения сохранены') {
     try {
-      const sections = new Map([...order].flatMap(([section, keys]) => keys.map(key => [key, section])));
+      const sections = new Map([...layoutOrder].flatMap(([section, keys]) => keys.map(key => [key, section])));
       // Store overrides only, so built-in offers can still receive copy changes in future builds.
       const overrides = Object.fromEntries([...entries].map(([id, { initial, state }]) => [
         id, Object.fromEntries(Object.entries({ ...state, section: sections.get(id) }).filter(([key, value]) => value !== initial[key]))
       ]).filter(([, settings]) => Object.keys(settings).length));
-      localStorage.setItem(storageKey, JSON.stringify({ ...overrides, layoutOrder: Object.fromEntries(order) }));
-      status.textContent = 'Изменения сохранены';
-      return true;
+      localStorage.setItem(storageKey, JSON.stringify({ ...overrides, layoutOrder: Object.fromEntries(layoutOrder) }));
+      status.textContent = message;
     } catch {
       status.textContent = 'Изменения применены, но браузер не смог их сохранить';
-      return false;
     }
   }
 
@@ -119,8 +115,7 @@
   }
 
   function renderOffers() {
-    const order = draftOrder ?? savedOrder;
-    const sections = new Map([...order].flatMap(([section, keys]) => keys.map(key => [key, section])));
+    const sections = new Map([...layoutOrder].flatMap(([section, keys]) => keys.map(key => [key, section])));
     const visibleCards = new Map(fixedCards);
     for (const [id, { state, variants }] of entries) {
       for (const node of Object.values(variants)) node.remove();
@@ -138,7 +133,7 @@
       if (isDismissed) hiddenList.append(node);
       else visibleCards.set(id, node);
     }
-    for (const [section, keys] of order) {
+    for (const [section, keys] of layoutOrder) {
       const slot = slots.get(section);
       for (const key of keys) {
         if (visibleCards.has(key)) slot.append(visibleCards.get(key));
@@ -235,34 +230,18 @@
   slider.addEventListener('lostpointercapture', () => { swipeStart = null; });
 
   function moveOffer(id, section, before) {
-    const current = draftOrder ?? savedOrder;
-    const source = [...current].find(([, keys]) => keys.includes(id))[0];
-    const next = new Map(current);
-    next.set(source, current.get(source).filter(key => key !== id));
-    const destination = next.get(section).filter(key => key !== id);
+    const [source, previous] = [...layoutOrder].find(([, keys]) => keys.includes(id));
+    const destination = layoutOrder.get(section).filter(key => key !== id);
     const index = before == null ? -1 : destination.indexOf(before);
     destination.splice(index < 0 ? destination.length : index, 0, id);
-    next.set(section, destination);
-    if (source === section && destination.join() === current.get(section).join()) return false;
-    draftOrder = [...next].some(([name, keys]) => keys.join() !== savedOrder.get(name).join()) ? next : null;
+    if (source === section && destination.join() === previous.join()) return false;
+    if (source !== section) layoutOrder.set(source, previous.filter(key => key !== id));
+    layoutOrder.set(section, destination);
     if (section === 'banners') activeBanner = id;
-    layoutSave.hidden = !draftOrder;
-    layoutSave.textContent = 'Сохранить';
     renderOffers();
-    layoutStatus.textContent = 'Оффер перенесён в раздел «' + config.sections[section] + '»';
+    saveSettings(layoutStatus, 'Новый порядок офферов сохранён');
     return true;
   }
-
-  layoutSave.addEventListener('click', () => {
-    if (!draftOrder) return;
-    if (!saveSettings(layoutStatus, draftOrder)) {
-      layoutSave.textContent = 'Повторить сохранение';
-      return;
-    }
-    savedOrder = draftOrder;
-    draftOrder = null;
-    layoutSave.hidden = true;
-  });
 
   async function prepareImage(file) {
     if (!/^image\/(?:png|jpeg|webp|avif)$/.test(file.type)) throw Error('Выберите PNG, JPEG, WebP или AVIF');
