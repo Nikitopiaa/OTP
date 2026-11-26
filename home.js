@@ -16,7 +16,6 @@
 
   const config = JSON.parse(document.querySelector('#home-offer-data').textContent);
   const settings = new Map([...controls.querySelectorAll('[data-home-setting]')].map(card => [card.dataset.homeSetting, card]));
-  const placementDraft = new Map();
   const offerTemplate = document.querySelector('#home-offer-variants').content;
   const editedImage = /^data:image\/(?:webp|png);base64,[A-Za-z0-9+/=]+$/;
   const savedText = (value, fallback, limit) => typeof value === 'string' ? value.slice(0, limit) : fallback;
@@ -53,17 +52,32 @@
   }));
 
   const dismissed = new Set();
+  const fixedCards = new Map([...slots.values()].flatMap(slot => [...slot.children]
+    .filter(node => !node.dataset.homeOffer)
+    .map(node => [homeCardKey(node), node])));
+  let savedOrder = new Map([...slots].map(([section, slot]) => {
+    const defaults = [
+      ...[...slot.children].filter(node => !node.dataset.homeOffer).map(homeCardKey),
+      ...[...entries].filter(([, { state }]) => state.section === section).map(([id]) => id)
+    ];
+    const stored = saved.layoutOrder?.[section];
+    return [section, Array.isArray(stored)
+      ? [...new Set([...stored.filter(key => defaults.includes(key)), ...defaults])]
+      : defaults];
+  }));
+  let draftOrder;
   let activeBanner = markerList.querySelector('[aria-pressed="true"]').dataset.homeBanner;
   let slides = [];
   let swipeStart;
 
-  function saveSettings(status, placements = new Map()) {
+  function saveSettings(status, order = savedOrder) {
     try {
+      const sections = new Map([...order].flatMap(([section, keys]) => keys.map(key => [key, section])));
       // Store overrides only, so built-in offers can still receive copy changes in future builds.
       const overrides = Object.fromEntries([...entries].map(([id, { initial, state }]) => [
-        id, Object.fromEntries(Object.entries({ ...state, section: placements.get(id) ?? state.section }).filter(([key, value]) => value !== initial[key]))
+        id, Object.fromEntries(Object.entries({ ...state, section: sections.get(id) }).filter(([key, value]) => value !== initial[key]))
       ]).filter(([, settings]) => Object.keys(settings).length));
-      localStorage.setItem(storageKey, JSON.stringify(overrides));
+      localStorage.setItem(storageKey, JSON.stringify({ ...overrides, layoutOrder: Object.fromEntries(order) }));
       status.textContent = 'Изменения сохранены';
       return true;
     } catch {
@@ -105,11 +119,13 @@
   }
 
   function renderOffers() {
-    slides = [];
+    const order = draftOrder ?? savedOrder;
+    const sections = new Map([...order].flatMap(([section, keys]) => keys.map(key => [key, section])));
+    const visibleCards = new Map(fixedCards);
     for (const [id, { state, variants }] of entries) {
       for (const node of Object.values(variants)) node.remove();
       const isDismissed = !state.enabled || dismissed.has(id);
-      const section = placementDraft.get(id) ?? state.section;
+      const section = sections.get(id);
       const variant = isDismissed ? 'row' : section === 'banners' ? 'banner' : section === 'exchange' && variants.exchange ? 'exchange' : 'row';
       const node = variants[variant];
       node.hidden = false;
@@ -119,9 +135,16 @@
         dismiss.dataset.homeDismiss = isDismissed ? 'restore' : '';
         dismiss.setAttribute('aria-label', (isDismissed ? 'Вернуть предложение ' : 'Скрыть предложение ') + state.title.replaceAll('\n', ' '));
       }
-      (isDismissed ? hiddenList : slots.get(section)).append(node);
-      if (variant === 'banner') slides.push(node);
+      if (isDismissed) hiddenList.append(node);
+      else visibleCards.set(id, node);
     }
+    for (const [section, keys] of order) {
+      const slot = slots.get(section);
+      for (const key of keys) {
+        if (visibleCards.has(key)) slot.append(visibleCards.get(key));
+      }
+    }
+    slides = [...slots.get('banners').children];
     slider.hidden = slides.length === 0;
     slots.get('top').hidden = !slots.get('top').children.length;
     slots.get('exchange').hidden = !slots.get('exchange').children.length;
@@ -188,7 +211,7 @@
     if (dot) selectBanner(dot.dataset.homeBanner);
   });
   slider.addEventListener('keydown', event => {
-    if (event.target.closest('[data-home-grip]')) return;
+    if (event.altKey) return;
     const directions = { ArrowUp: -1, ArrowLeft: -1, ArrowDown: 1, ArrowRight: 1 };
     const direction = directions[event.key];
     if (!direction || slides.length < 2) return;
@@ -211,13 +234,19 @@
   slider.addEventListener('pointercancel', () => { swipeStart = null; });
   slider.addEventListener('lostpointercapture', () => { swipeStart = null; });
 
-  function moveOffer(id, section) {
-    const { state } = entries.get(id);
-    if ((placementDraft.get(id) ?? state.section) === section) return false;
-    if (state.section === section) placementDraft.delete(id);
-    else placementDraft.set(id, section);
+  function moveOffer(id, section, before) {
+    const current = draftOrder ?? savedOrder;
+    const source = [...current].find(([, keys]) => keys.includes(id))[0];
+    const next = new Map(current);
+    next.set(source, current.get(source).filter(key => key !== id));
+    const destination = next.get(section).filter(key => key !== id);
+    const index = before == null ? -1 : destination.indexOf(before);
+    destination.splice(index < 0 ? destination.length : index, 0, id);
+    next.set(section, destination);
+    if (source === section && destination.join() === current.get(section).join()) return false;
+    draftOrder = [...next].some(([name, keys]) => keys.join() !== savedOrder.get(name).join()) ? next : null;
     if (section === 'banners') activeBanner = id;
-    layoutSave.hidden = !placementDraft.size;
+    layoutSave.hidden = !draftOrder;
     layoutSave.textContent = 'Сохранить';
     renderOffers();
     layoutStatus.textContent = 'Оффер перенесён в раздел «' + config.sections[section] + '»';
@@ -225,12 +254,13 @@
   }
 
   layoutSave.addEventListener('click', () => {
-    if (!saveSettings(layoutStatus, placementDraft)) {
+    if (!draftOrder) return;
+    if (!saveSettings(layoutStatus, draftOrder)) {
       layoutSave.textContent = 'Повторить сохранение';
       return;
     }
-    for (const [id, section] of placementDraft) entries.get(id).state.section = section;
-    placementDraft.clear();
+    savedOrder = draftOrder;
+    draftOrder = null;
     layoutSave.hidden = true;
   });
 
@@ -319,26 +349,52 @@
   mountHomeOfferDrag(screen, moveOffer);
 })();
 
+function homeCardKey(node) {
+  return node.dataset.homeOffer || 'product:' + node.dataset.product;
+}
+
 function mountHomeOfferDrag(screen, moveOffer) {
   const scroller = screen.querySelector('#scrollArea');
   const header = screen.querySelector('.home-header');
   const tabs = screen.querySelector('.bottom-bar');
-  const targets = [...scroller.querySelectorAll('[data-home-drop]')];
+  const targets = [...scroller.querySelectorAll('[data-home-drop]')].map(area => ({
+    area,
+    section: area.dataset.homeDrop,
+    slot: area.matches('[data-home-slot]') ? area : area.querySelector('[data-home-slot]')
+  }));
+  const bannerSlot = targets.find(target => target.section === 'banners').slot;
+  const shiftAnimations = new WeakMap();
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let press;
   let drag;
   let animation;
-  let revealed;
   let suppressClick = false;
   let clickTimer;
 
-  function reveal(card) {
-    revealed?.removeAttribute('data-home-grip-visible');
-    revealed = card;
-    revealed?.setAttribute('data-home-grip-visible', '');
-  }
-
   function editableCard(target) {
     return target.closest('[data-home-editable]:not(#home-hidden-offers *)');
+  }
+
+  function cardsIn(slot) {
+    return [...slot.children].filter(node => node !== drag?.gap && !node.hasAttribute('data-home-drag-source'));
+  }
+
+  function measureRows() {
+    if (reducedMotion.matches) return [];
+    return targets.flatMap(({ slot, section }) => section === 'banners' ? [] :
+      cardsIn(slot).map(node => [node, node.getBoundingClientRect().top]));
+  }
+
+  function animateRows(positions, scale) {
+    for (const [node, previousTop] of positions) {
+      shiftAnimations.get(node)?.cancel();
+      if (!node.isConnected || !node.offsetHeight) continue;
+      const delta = (previousTop - node.getBoundingClientRect().top) / scale;
+      if (Math.abs(delta) < 1) continue;
+      shiftAnimations.set(node, node.animate([{ translate: '0 ' + delta + 'px' }, { translate: '0 0' }], {
+        duration: 180, easing: 'cubic-bezier(.2,.65,.3,1)'
+      }));
+    }
   }
 
   function viewportBounds() {
@@ -354,26 +410,40 @@ function mountHomeOfferDrag(screen, moveOffer) {
   function updateTarget(bounds) {
     const { x, y } = press;
     const inside = x >= bounds.left && x <= bounds.right && y >= bounds.top && y <= bounds.bottom;
-    const next = inside ? targets.find(area => {
+    const target = inside ? targets.find(({ area }) => {
       const rect = area.getBoundingClientRect();
       return rect.height > 0 && x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
     }) : null;
-    if (next === drag.target) return;
-    drag.target?.classList.remove('home-drop-highlight');
+    let before = null;
+    if (target?.section === 'banners') {
+      const cards = cardsIn(target.slot);
+      const active = cards.findIndex(node => !node.hidden);
+      const rect = target.area.getBoundingClientRect();
+      before = cards[active + (x < rect.left + rect.width / 2 ? 0 : 1)] ?? null;
+    } else if (target) {
+      const top = target.slot.getBoundingClientRect().top;
+      before = cardsIn(target.slot).find(node => y < top + (node.offsetTop + node.offsetHeight / 2) * drag.scale) ?? null;
+    }
+    const next = target ? { section: target.section, before: before && homeCardKey(before) } : null;
+    if (next?.section === drag.target?.section && next?.before === drag.target?.before) return;
+    const positions = measureRows();
     drag.target = next;
-    drag.target?.classList.add('home-drop-highlight');
+    if (target && target.section !== 'banners') target.slot.insertBefore(drag.gap, before);
+    else if (drag.origin.slot !== bannerSlot) drag.origin.slot.insertBefore(drag.gap, drag.origin.before);
+    else drag.gap.remove();
+    animateRows(positions, drag.scale);
   }
 
   function paintDrag() {
     const bounds = viewportBounds();
     const { x, y } = press;
-    drag.ghost.style.transform = 'translate3d(' + (x - drag.offsetX) + 'px,' + (y - drag.offsetY) + 'px,0) scale(' + drag.scale + ')';
-    if (x >= bounds.left && x <= bounds.right && y >= bounds.top - 28 && y <= bounds.bottom + 42) {
+    drag.ghost.style.transform = 'translate3d(' + (x - drag.offsetX) + 'px,' + (y - drag.offsetY) + 'px,0) scale(' + drag.scale + ') rotate(3deg)';
+    if (press.moved && x >= bounds.left && x <= bounds.right && y >= bounds.top - 28 && y <= bounds.bottom + 42) {
       const edge = 72;
       const velocity = Math.max(0, edge - (bounds.bottom - y)) - Math.max(0, edge - (y - bounds.top));
       if (velocity) scroller.scrollTop += Math.max(-20, Math.min(20, velocity / 4)) / drag.scale;
     }
-    updateTarget(bounds);
+    if (press.moved) updateTarget(bounds);
     animation = requestAnimationFrame(paintDrag);
   }
 
@@ -381,6 +451,12 @@ function mountHomeOfferDrag(screen, moveOffer) {
     const card = press.card;
     const rect = card.getBoundingClientRect();
     const ghost = card.cloneNode(true);
+    const gap = document.createElement('div');
+    const slot = card.parentElement;
+    const scale = rect.width / card.offsetWidth;
+    gap.className = 'home-offer-gap';
+    gap.style.height = card.offsetHeight + 'px';
+    gap.setAttribute('aria-hidden', 'true');
     ghost.classList.add('home-offer-ghost');
     ghost.setAttribute('aria-hidden', 'true');
     ghost.inert = true;
@@ -388,9 +464,10 @@ function mountHomeOfferDrag(screen, moveOffer) {
     ghost.style.height = card.offsetHeight + 'px';
     document.body.append(ghost);
     drag = {
-      ghost, target: null, scale: rect.width / card.offsetWidth,
+      ghost, gap, scale, target: null, origin: { slot, before: card.nextElementSibling },
       offsetX: press.startX - rect.left, offsetY: press.startY - rect.top
     };
+    if (slot !== bannerSlot) slot.insertBefore(gap, card);
     card.setAttribute('data-home-drag-source', '');
     screen.classList.add('is-home-offer-dragging');
     scroller.setPointerCapture(press.id);
@@ -400,54 +477,52 @@ function mountHomeOfferDrag(screen, moveOffer) {
   function finishPress(drop) {
     if (!press) return;
     clearTimeout(press.timer);
-    const { id, card, ready } = press;
-    if (ready) {
+    const { id, card } = press;
+    if (drag) {
       suppressClick = true;
       clearTimeout(clickTimer);
       clickTimer = setTimeout(() => { suppressClick = false; }, 250);
     }
-    const target = drag?.target;
-    if (drag) {
+    const finished = drag;
+    const positions = finished ? measureRows() : [];
+    if (finished) {
       cancelAnimationFrame(animation);
-      target?.classList.remove('home-drop-highlight');
-      drag.ghost.remove();
+      finished.gap.remove();
+      finished.ghost.remove();
       card.removeAttribute('data-home-drag-source');
       screen.classList.remove('is-home-offer-dragging');
-      reveal(null);
     }
     drag = null;
     press = null;
     if (scroller.hasPointerCapture(id)) scroller.releasePointerCapture(id);
-    if (drop && target) moveOffer(card.dataset.homeOffer, target.dataset.homeDrop);
+    if (drop && finished?.target) {
+      moveOffer(card.dataset.homeOffer, finished.target.section, finished.target.before);
+    }
+    if (finished) animateRows(positions, finished.scale);
   }
 
   scroller.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0 || press) return;
+    suppressClick = false;
     const card = editableCard(event.target);
-    if (revealed !== card) reveal(null);
     if (!card || event.target.closest('[data-home-dismiss]')) return;
-    const onGrip = !!event.target.closest('[data-home-grip]');
     press = { id: event.pointerId, card, x: event.clientX, y: event.clientY,
-      startX: event.clientX, startY: event.clientY, ready: onGrip };
-    if (onGrip) return;
-    press.timer = setTimeout(() => {
-      press.ready = true;
-      reveal(card);
-    }, 500);
+      startX: event.clientX, startY: event.clientY, moved: false };
+    press.timer = setTimeout(startDrag, 500);
   });
   window.addEventListener('pointermove', event => {
     if (press?.id !== event.pointerId) return;
     press.x = event.clientX;
     press.y = event.clientY;
     const distance = Math.hypot(press.x - press.startX, press.y - press.startY);
-    if (!press.ready && distance > 7) finishPress(false);
-    else if (press.ready && !drag && distance > 4) startDrag();
+    if (!drag && distance > 7) finishPress(false);
+    else if (drag && distance > 4) press.moved = true;
   });
   window.addEventListener('pointerup', event => {
     if (press?.id !== event.pointerId) return;
     press.x = event.clientX;
     press.y = event.clientY;
-    if (drag) updateTarget(viewportBounds());
+    if (drag && press.moved) updateTarget(viewportBounds());
     finishPress(true);
   });
   window.addEventListener('pointercancel', event => {
@@ -458,8 +533,11 @@ function mountHomeOfferDrag(screen, moveOffer) {
     if (event.target === scroller && press?.id === event.pointerId) finishPress(false);
   });
   scroller.addEventListener('contextmenu', event => {
-    if (press?.ready && editableCard(event.target)) event.preventDefault();
+    if (press && editableCard(event.target)) event.preventDefault();
   });
+  scroller.addEventListener('touchmove', event => {
+    if (drag && event.cancelable) event.preventDefault();
+  }, { passive: false });
   screen.addEventListener('click', event => {
     if (!suppressClick || event.detail === 0) return;
     suppressClick = false;
@@ -468,17 +546,23 @@ function mountHomeOfferDrag(screen, moveOffer) {
   }, true);
   scroller.addEventListener('keydown', event => {
     if (event.key === 'Escape' && press) { event.preventDefault(); finishPress(false); return; }
-    const grip = event.target.closest('[data-home-grip]');
     const direction = event.key === 'ArrowUp' ? -1 : event.key === 'ArrowDown' ? 1 : 0;
-    if (!grip || !direction) return;
-    event.preventDefault();
-    const card = editableCard(grip);
+    if (!event.altKey || !direction || !event.target.matches('.home-row-body, .home-banner-action')) return;
+    const card = editableCard(event.target);
     if (!card) return;
-    const section = card.closest('[data-home-drop]');
-    const target = targets[targets.indexOf(section) + direction];
-    if (!target || !moveOffer(card.dataset.homeOffer, target.dataset.homeDrop)) return;
+    event.preventDefault();
+    const slot = card.parentElement;
+    const cards = cardsIn(slot);
+    const index = cards.indexOf(card);
+    const neighbor = cards[index + direction];
+    const slotIndex = targets.findIndex(target => target.slot === slot);
+    const target = targets[neighbor ? slotIndex : slotIndex + direction];
+    if (!target) return;
+    const before = neighbor
+      ? cards[direction > 0 ? index + 2 : index - 1]
+      : direction > 0 ? cardsIn(target.slot)[0] : null;
+    if (!moveOffer(card.dataset.homeOffer, target.section, before && homeCardKey(before))) return;
     const moved = scroller.querySelector('[data-home-offer="' + card.dataset.homeOffer + '"]');
-    reveal(moved);
-    moved.querySelector('[data-home-grip]').focus();
+    moved.querySelector('.home-row-body, .home-banner-action').focus();
   });
 }

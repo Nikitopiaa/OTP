@@ -82,7 +82,7 @@
 .home-section-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .home-section-title h2 { font-size: 20px; line-height: 24px; font-weight: 640; }
 .home-text-action { color: var(--home-accent); font-size: 14px; line-height: 18px; font-weight: 500; text-align: left; }
-.home-rows { display: grid; gap: 8px; }
+.home-rows { position: relative; display: grid; gap: 8px; }
 .home-row { width: 100%; min-width: 0; position: relative; border-radius: 16px; background: #fff; text-align: left; }
 .home-row[hidden], .home-hidden-empty[hidden] { display: none; }
 .home-row--offer { border-radius: 20px; }
@@ -164,27 +164,17 @@
 .home-layout-save[hidden] { display: none; }
 .home-prototype:has(.sf-product-view, .sf-currency-layer:not([hidden])) .home-layout-save { visibility: hidden; }
 [data-home-editable] { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-.home-offer-grip {
-  position: absolute; z-index: 2; top: 50%; left: 3px; transform: translateY(-50%);
-  display: grid; place-items: center; width: 24px; height: 34px; border-radius: 8px;
-  background: #fff; box-shadow: 0 2px 8px #0002; cursor: grab; touch-action: none;
-  opacity: 0; pointer-events: none;
-}
-.home-offer-grip span {
-  width: 12px; height: 18px; background: radial-gradient(circle, #555 1.5px, transparent 1.7px) 0 0 / 6px 6px;
-}
-.home-banner .home-offer-grip { left: auto; right: 4px; top: 8px; transform: none; }
-[data-home-grip-visible] .home-offer-grip, .home-offer-grip:focus-visible { opacity: 1; pointer-events: auto; }
-#home-hidden-offers .home-offer-grip { display: none; }
-[data-home-drag-source] { opacity: .45; }
-.home-drop-highlight { border-radius: 12px; outline: 2px solid var(--home-accent); outline-offset: 3px; }
+[data-home-drag-source] { display: none; }
+.is-home-offer-dragging, .is-home-offer-dragging * { cursor: grabbing; }
+.is-home-offer-dragging .scroll-area { overflow-anchor: none; }
+.home-offer-gap { min-width: 0; border-radius: 20px; background: #2220000a; }
 .is-home-offer-dragging .home-widgets { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .is-home-offer-dragging .home-banners[hidden] { display: block; }
 .is-home-offer-dragging [data-home-drop="top"][hidden] {
   display: grid; align-items: center; min-height: 44px; text-align: center;
   border: 1px dashed #9b9b9b; border-radius: 12px; color: var(--home-secondary); font-size: 14px;
 }
-.is-home-offer-dragging [data-home-drop="top"][hidden]::before { content: 'Под быстрыми действиями'; }
+.is-home-offer-dragging [data-home-drop="top"][hidden]:not(:has(.home-offer-gap))::before { content: 'Под быстрыми действиями'; }
 .home-offer-ghost {
   position: fixed; z-index: 45; inset: 0 auto auto 0; transform-origin: top left;
   overflow: hidden; pointer-events: none; box-shadow: 0 8px 30px #0003; opacity: .95;
