@@ -7,6 +7,8 @@
   <script src="device-display.js" defer></script><script src="prototype-flows.js" defer></script><script src="home.js" defer></script>
 </head><body class="home-prototype prototype-navigation" data-device-width="456">
 <main class="stage">
+  <button class="home-layout-save" id="home-layout-save" type="button" hidden>Сохранить</button>
+  <p class="sr-only" id="home-layout-status" role="status"></p>
   <div class="device-wrap"><div class="iphone"><div class="screen">
     <div class="scroll-area" id="scrollArea" tabindex="0" aria-label="Главная">
       <header class="home-header">
@@ -28,23 +30,26 @@
             <span class="home-bonus-tag" data-home-amount>0 ₽</span>
             <strong data-home-amount>+790 ₽</strong><span>Кешбэк<br>и предложения</span>
           </button>
-          <section class="home-banners" aria-label="Промопредложения">
+          <section class="home-banners" data-home-drop="banners" aria-label="Промопредложения">
             <div data-home-slot="banners"><article class="home-banner home-banner--refinance" data-home-offer="banner-refinance" data-home-variant="banner" hidden>
 
     <img src="assets/home-refinance.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Объедините кредиты до 1 000 000 ₽</p><small data-offer-copy hidden></small>
     <button class="home-banner-action" type="button" data-offer-label data-product="refinance">Подробнее</button>
+
   </article><article class="home-banner home-banner--gift" data-home-offer="banner-referral" data-home-variant="banner">
     <span class="home-banner-shape" aria-hidden="true"><span><img src="assets/home-banner-shape.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></span></span>
     <img src="assets/home-gift.png" class="home-banner-art" alt="" draggable="false" loading="eager" decoding="async">
     <p data-offer-title>+ 2 500 ₽
 за друга</p><small data-offer-copy hidden></small>
     <button class="home-banner-action" type="button" data-offer-label data-product="referral">Пригласить</button>
+
   </article><article class="home-banner home-banner--credit-promo" data-home-offer="banner-credit" data-home-variant="banner" hidden>
 
     <img src="assets/home-credit-promo.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>120 дней без процентов</p><small data-offer-copy hidden></small>
     <button class="home-banner-action" type="button" data-offer-label data-product="credit-card">Оформить</button>
+
   </article></div>
             <div class="home-banner-dots" aria-label="Выбор промопредложения">
               <button type="button" data-home-banner="banner-refinance" aria-label="Предложение 1" aria-pressed="false"></button><button type="button" data-home-banner="banner-referral" aria-label="Предложение 2" aria-pressed="true"></button><button type="button" data-home-banner="banner-credit" aria-label="Предложение 3" aria-pressed="false"></button>
@@ -56,16 +61,17 @@
           <span class="home-shortcut-separator" aria-hidden="true"><img src="assets/home-separator.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
           <div class="home-shortcut-items"><button type="button" aria-label="Оплата мобильной связи" data-unavailable><img src="assets/flow-4a743fb8-60a3-4bd3-a3c6-cf260b8fd65f.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></button><button type="button" aria-label="Система быстрых платежей" data-unavailable><img src="assets/home-sbp.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></button><button type="button" aria-label="Оплата по QR-коду" data-unavailable><img src="assets/home-qr.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></button><button type="button" aria-label="Бесконтактная оплата" data-product="sticker"><img src="assets/home-contactless.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></button><button type="button" aria-label="Польза+" data-product="benefits"><img src="assets/flow-cd1b10a3-a17e-4d96-a283-4c1ebd6c264b.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></button><button type="button" aria-label="Настройки быстрых действий" data-home-settings><img src="assets/home-gear.svg" class="" alt="" draggable="false" loading="eager" decoding="async"></button></div>
         </nav>
-        <div class="home-rows" data-home-slot="top"><article class="home-row home-promo home-promo--refinance home-row--offer" data-home-offer="refinance" data-home-variant="row">
+        <div class="home-rows" data-home-slot="top" data-home-drop="top"><article class="home-row home-promo home-promo--refinance home-row--offer" data-home-offer="refinance" data-home-variant="row">
     <button class="home-row-body" type="button" data-product="refinance">
       <span class="home-row-art"><img src="assets/home-refinance.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Объедините кредиты в других банках до 1 000 000 ₽</strong><small data-offer-copy hidden></small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Объедините кредиты в других банках до 1 000 000 ₽"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+
   </article></div>
       </section>
       <div class="home-body">
-        <section class="home-section"><header class="home-section-title"><h2>Карты</h2>
+        <section class="home-section" data-home-drop="cards"><header class="home-section-title"><h2>Карты</h2>
     <button class="home-text-action" type="button" data-product="debit">Оформить</button>
   </header><div class="home-rows" data-home-slot="cards"><button class="home-row home-row--card" type="button" data-product="debit">
     <span class="home-row-body">
@@ -85,20 +91,23 @@
 120 дней без процентов</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение 200 000 ₽"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
-  </article><article class="home-row home-promo home-promo--sport home-row--offer" data-home-offer="sport" data-home-variant="row">
+
+  </article><article class="home-row home-promo home-promo--sport home-row--offer" data-home-offer="sport" data-home-variant="row" data-home-editable>
     <button class="home-row-body" type="button" data-product="sport">
       <span class="home-row-art"><img src="assets/home-sport.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Страхование для занятий спортом</strong><small data-offer-copy>Для взрослых и детей</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Страхование для занятий спортом"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
-  </article><article class="home-row home-promo home-promo--debit-promo home-row--offer" data-home-offer="debit" data-home-variant="row">
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-row home-promo home-promo--debit-promo home-row--offer" data-home-offer="debit" data-home-variant="row" data-home-editable>
     <button class="home-row-body" type="button" data-product="debit">
       <span class="home-row-art"><img src="assets/home-debit-promo.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ</strong><small data-offer-copy>Оформите цифровую карту сейчас</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
   </article></div></section>
-        <section class="home-section"><header class="home-section-title"><h2>Кредиты</h2>
+        <section class="home-section" data-home-drop="credits"><header class="home-section-title"><h2>Кредиты</h2>
     <button class="home-text-action" type="button" data-product="cash">Получить</button>
   </header><div class="home-rows" data-home-slot="credits"><button class="home-row home-row--account" type="button" data-product="cash">
     <span class="home-row-body">
@@ -108,20 +117,22 @@
 
       </span>
     </span>
-  </button><article class="home-row home-promo home-promo--express home-row--offer" data-home-offer="express" data-home-variant="row">
+  </button><article class="home-row home-promo home-promo--express home-row--offer" data-home-offer="express" data-home-variant="row" data-home-editable>
     <button class="home-row-body" type="button" data-product="express">
       <span class="home-row-art"><img src="assets/home-express.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Срочно нужны деньги?</strong><small data-offer-copy>До 500 000 ₽ без процентов на 4 месяца</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Срочно нужны деньги?"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
-  </article><article class="home-row home-promo home-promo--credit-promo home-row--offer" data-home-offer="credit" data-home-variant="row">
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-row home-promo home-promo--credit-promo home-row--offer" data-home-offer="credit" data-home-variant="row" data-home-editable>
     <button class="home-row-body" type="button" data-product="credit-card">
       <span class="home-row-art"><img src="assets/home-credit-promo.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>120 дней без процентов</strong><small data-offer-copy>Ставки на кредит снижены</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение 120 дней без процентов"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
   </article></div></section>
-        <section class="home-section"><header class="home-section-title"><h2>Вклады и счета</h2>
+        <section class="home-section" data-home-drop="deposits"><header class="home-section-title"><h2>Вклады и счета</h2>
     <button class="home-text-action" type="button" data-product="deposits">Открыть</button>
   </header><div class="home-rows" data-home-slot="deposits"><button class="home-row home-row--account" type="button" data-product="deposits">
     <span class="home-row-body">
@@ -139,24 +150,26 @@
 
       </span>
     </span>
-  </button><article class="home-row home-promo home-promo--deposit-promo home-row--offer" data-home-offer="deposit" data-home-variant="row">
+  </button><article class="home-row home-promo home-promo--deposit-promo home-row--offer" data-home-offer="deposit" data-home-variant="row" data-home-editable>
     <button class="home-row-body" type="button" data-product="deposits">
       <span class="home-row-art"><img src="assets/home-deposit-promo.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Вклады «Для своих 12%»</strong><small data-offer-copy>От 10 000 ₽, на срок от 91 дня</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Вклады «Для своих 12%»"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
-  </article><article class="home-row home-promo home-promo--autopay home-row--offer" data-home-offer="autopay" data-home-variant="row">
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-row home-promo home-promo--autopay home-row--offer" data-home-offer="autopay" data-home-variant="row" data-home-editable>
     <button class="home-row-body" type="button" data-unavailable>
       <span class="home-row-art"><img src="assets/home-autopay-calendar-eefda5.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Оплачивать счета вовремя</strong><small data-offer-copy>Настроить сейчас и получать уведомления за выставленные счета по ЖКУ, налогам, штрафам и т.д.</small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Оплачивать счета вовремя"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
   </article></div></section>
         <details class="home-hidden">
           <summary><img src="assets/home-eye.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"><strong>Скрытые продукты</strong><img src="assets/home-chevron.svg" class="home-hidden-chevron" alt="" draggable="false" loading="lazy" decoding="async"></summary>
           <p class="home-hidden-empty">Скрытых продуктов пока нет</p><div class="home-rows" id="home-hidden-offers"></div>
         </details>
-        <section class="home-section">
+        <section class="home-section" data-home-drop="exchange">
           <header class="home-section-title"><h2>Курсы валют</h2><button class="home-text-action" type="button" data-product="currency">Обменять</button></header>
           <div class="home-exchange">
             <table><thead><tr><th scope="col">Валюта</th><th scope="col">Покупка</th><th scope="col">Продажа</th></tr></thead>
@@ -223,25 +236,112 @@
         <h2>Настройки</h2>
         <label class="sf-switch-row"><span>Обрамление iPhone</span><input id="showDeviceChrome" type="checkbox" checked></label>
 
-        <details class="home-offer-settings"><summary>Видимость и расположение офферов</summary>
-    <label>Оффер<select id="home-layout-offer"><option value="banner-refinance">Баннеры наверху · Объедините кредиты до 1 000 000 ₽</option><option value="banner-referral">Баннеры наверху · + 2 500 ₽ за друга</option><option value="banner-credit">Баннеры наверху · 120 дней без процентов</option><option value="refinance">Под быстрыми действиями · Объедините кредиты в других банках до 1 000 000 ₽</option><option value="creditCard">Карты · 200 000 ₽</option><option value="sport">Карты · Страхование для занятий спортом</option><option value="debit">Карты · Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ</option><option value="express">Кредиты · Срочно нужны деньги?</option><option value="credit">Кредиты · 120 дней без процентов</option><option value="deposit">Вклады и счета · Вклады «Для своих 12%»</option><option value="autopay">Вклады и счета · Оплачивать счета вовремя</option><option value="exchange">Курсы валют · Выгодный курс валют</option></select></label>
-    <label class="sf-switch-row"><span>Показывать оффер</span><input id="home-offer-visible" type="checkbox" checked></label>
-    <label>Раздел<select id="home-offer-section"><option value="banners">Баннеры наверху</option><option value="top">Под быстрыми действиями</option><option value="cards">Карты</option><option value="credits">Кредиты</option><option value="deposits">Вклады и счета</option><option value="exchange">Курсы валют</option></select></label>
-    <p id="home-layout-status" class="home-settings-status" role="status"></p>
-  </details>
-  <details class="home-offer-settings"><summary>Текст и картинки офферов</summary>
-    <form id="home-offer-content">
-      <label>Оффер<select name="offer"><option value="banner-refinance">Баннеры наверху · Объедините кредиты до 1 000 000 ₽</option><option value="banner-referral">Баннеры наверху · + 2 500 ₽ за друга</option><option value="banner-credit">Баннеры наверху · 120 дней без процентов</option><option value="refinance">Под быстрыми действиями · Объедините кредиты в других банках до 1 000 000 ₽</option><option value="creditCard">Карты · 200 000 ₽</option><option value="sport">Карты · Страхование для занятий спортом</option><option value="debit">Карты · Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ</option><option value="express">Кредиты · Срочно нужны деньги?</option><option value="credit">Кредиты · 120 дней без процентов</option><option value="deposit">Вклады и счета · Вклады «Для своих 12%»</option><option value="autopay">Вклады и счета · Оплачивать счета вовремя</option><option value="exchange">Курсы валют · Выгодный курс валют</option></select></label>
-      <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
-      <label>Описание<textarea name="copy" rows="2" maxlength="300"></textarea></label>
-      <label>Текст кнопки баннера<input name="label" maxlength="26"></label>
-      <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
-      <img class="home-settings-image" alt="Картинка оффера" hidden>
-      <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
-      <div class="home-settings-actions"><button type="submit">Сохранить</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        <section class="home-offer-settings" aria-label="Офферы">
+    <h3>Офферы</h3>
+    <article class="home-offer-setting" data-home-setting="sport">
+      <label class="sf-switch-row">
+        <span data-home-setting-title>Страхование для занятий спортом</span>
+        <input type="checkbox" data-home-offer-visible checked>
+      </label>
+      <details><summary>Текст и картинка</summary>
+        <form>
+          <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
+          <label class="sf-switch-row"><span>Показывать подзаголовок</span><input name="showCopy" type="checkbox" checked></label>
+          <label>Подзаголовок<textarea name="copy" rows="2" maxlength="300"></textarea></label>
+          <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
+          <img class="home-settings-image" alt="Картинка оффера" hidden>
+          <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
+          <div class="home-settings-actions"><button type="submit">Сохранить контент</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        </form>
+      </details>
       <p class="home-settings-status" role="status"></p>
-    </form>
-  </details>
+    </article><article class="home-offer-setting" data-home-setting="debit">
+      <label class="sf-switch-row">
+        <span data-home-setting-title>Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ</span>
+        <input type="checkbox" data-home-offer-visible checked>
+      </label>
+      <details><summary>Текст и картинка</summary>
+        <form>
+          <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
+          <label class="sf-switch-row"><span>Показывать подзаголовок</span><input name="showCopy" type="checkbox" checked></label>
+          <label>Подзаголовок<textarea name="copy" rows="2" maxlength="300"></textarea></label>
+          <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
+          <img class="home-settings-image" alt="Картинка оффера" hidden>
+          <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
+          <div class="home-settings-actions"><button type="submit">Сохранить контент</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        </form>
+      </details>
+      <p class="home-settings-status" role="status"></p>
+    </article><article class="home-offer-setting" data-home-setting="express">
+      <label class="sf-switch-row">
+        <span data-home-setting-title>Срочно нужны деньги?</span>
+        <input type="checkbox" data-home-offer-visible checked>
+      </label>
+      <details><summary>Текст и картинка</summary>
+        <form>
+          <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
+          <label class="sf-switch-row"><span>Показывать подзаголовок</span><input name="showCopy" type="checkbox" checked></label>
+          <label>Подзаголовок<textarea name="copy" rows="2" maxlength="300"></textarea></label>
+          <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
+          <img class="home-settings-image" alt="Картинка оффера" hidden>
+          <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
+          <div class="home-settings-actions"><button type="submit">Сохранить контент</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        </form>
+      </details>
+      <p class="home-settings-status" role="status"></p>
+    </article><article class="home-offer-setting" data-home-setting="credit">
+      <label class="sf-switch-row">
+        <span data-home-setting-title>120 дней без процентов</span>
+        <input type="checkbox" data-home-offer-visible checked>
+      </label>
+      <details><summary>Текст и картинка</summary>
+        <form>
+          <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
+          <label class="sf-switch-row"><span>Показывать подзаголовок</span><input name="showCopy" type="checkbox" checked></label>
+          <label>Подзаголовок<textarea name="copy" rows="2" maxlength="300"></textarea></label>
+          <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
+          <img class="home-settings-image" alt="Картинка оффера" hidden>
+          <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
+          <div class="home-settings-actions"><button type="submit">Сохранить контент</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        </form>
+      </details>
+      <p class="home-settings-status" role="status"></p>
+    </article><article class="home-offer-setting" data-home-setting="deposit">
+      <label class="sf-switch-row">
+        <span data-home-setting-title>Вклады «Для своих 12%»</span>
+        <input type="checkbox" data-home-offer-visible checked>
+      </label>
+      <details><summary>Текст и картинка</summary>
+        <form>
+          <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
+          <label class="sf-switch-row"><span>Показывать подзаголовок</span><input name="showCopy" type="checkbox" checked></label>
+          <label>Подзаголовок<textarea name="copy" rows="2" maxlength="300"></textarea></label>
+          <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
+          <img class="home-settings-image" alt="Картинка оффера" hidden>
+          <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
+          <div class="home-settings-actions"><button type="submit">Сохранить контент</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        </form>
+      </details>
+      <p class="home-settings-status" role="status"></p>
+    </article><article class="home-offer-setting" data-home-setting="autopay">
+      <label class="sf-switch-row">
+        <span data-home-setting-title>Оплачивать счета вовремя</span>
+        <input type="checkbox" data-home-offer-visible checked>
+      </label>
+      <details><summary>Текст и картинка</summary>
+        <form>
+          <label>Заголовок<textarea name="title" rows="2" maxlength="140" required></textarea></label>
+          <label class="sf-switch-row"><span>Показывать подзаголовок</span><input name="showCopy" type="checkbox" checked></label>
+          <label>Подзаголовок<textarea name="copy" rows="2" maxlength="300"></textarea></label>
+          <label>Картинка<select name="art"><option value="gift" data-image="assets/home-gift.png">Подарок</option><option value="refinance" data-image="assets/home-refinance.png">Рефинансирование</option><option value="credit" data-image="assets/home-credit.png">Кредитная карта</option><option value="credit-with-plus" data-image="assets/home-credit-with-plus.png">Кредитная карта с плюсом</option><option value="sport" data-image="assets/home-sport.png">Спортивная страховка</option><option value="debit-promo" data-image="assets/home-debit-promo.png">Дебетовая карта</option><option value="express" data-image="assets/home-express.png">Экспресс-деньги</option><option value="credit-promo" data-image="assets/home-credit-promo.png">Кредитный оффер</option><option value="deposit-promo" data-image="assets/home-deposit-promo.png">Вклад</option><option value="autopay" data-image="assets/home-autopay-calendar-eefda5.png">Автоплатёж</option><option value="exchange" data-image="assets/home-exchange.png">Обмен валют</option><option value="uploaded" hidden>Загруженная картинка</option></select></label>
+          <img class="home-settings-image" alt="Картинка оффера" hidden>
+          <label>Загрузить картинку<input name="image" type="file" accept="image/png,image/jpeg,image/webp,image/avif"></label>
+          <div class="home-settings-actions"><button type="submit">Сохранить контент</button><button type="button" data-home-content-reset>Вернуть исходный контент</button></div>
+        </form>
+      </details>
+      <p class="home-settings-status" role="status"></p>
+    </article>
+  </section>
       </div>
     </details>
 </main>
@@ -251,6 +351,7 @@
       <span class="home-row-copy"><strong data-offer-title>Объедините кредиты до 1 000 000 ₽</strong><small data-offer-copy hidden></small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Объедините кредиты до 1 000 000 ₽"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+
   </article><article class="home-row home-promo home-promo--gift home-row--offer" data-home-offer="banner-referral" data-home-variant="row">
     <button class="home-row-body" type="button" data-product="referral">
       <span class="home-row-art"><img src="assets/home-gift.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
@@ -258,66 +359,78 @@
 за друга</strong><small data-offer-copy hidden></small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение + 2 500 ₽ за друга"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+
   </article><article class="home-row home-promo home-promo--credit-promo home-row--offer" data-home-offer="banner-credit" data-home-variant="row">
     <button class="home-row-body" type="button" data-product="credit-card">
       <span class="home-row-art"><img src="assets/home-credit-promo.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>120 дней без процентов</strong><small data-offer-copy hidden></small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение 120 дней без процентов"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+
   </article><article class="home-banner home-banner--refinance" data-home-offer="refinance" data-home-variant="banner" hidden>
 
     <img src="assets/home-refinance.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Объедините кредиты в других банках до 1 000 000 ₽</p><small data-offer-copy hidden></small>
     <button class="home-banner-action" type="button" data-offer-label data-product="refinance">Подробнее</button>
+
   </article><article class="home-banner home-banner--credit-with-plus" data-home-offer="creditCard" data-home-variant="banner" hidden>
 
     <img src="assets/home-credit-with-plus.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>200 000 ₽</p><small data-offer-copy>Кредитная карта
 120 дней без процентов</small>
     <button class="home-banner-action" type="button" data-offer-label data-product="credit-card">Подробнее</button>
-  </article><article class="home-banner home-banner--sport" data-home-offer="sport" data-home-variant="banner" hidden>
+
+  </article><article class="home-banner home-banner--sport" data-home-offer="sport" data-home-variant="banner" data-home-editable hidden>
 
     <img src="assets/home-sport.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Страхование для занятий спортом</p><small data-offer-copy>Для взрослых и детей</small>
     <button class="home-banner-action" type="button" data-offer-label data-product="sport">Подробнее</button>
-  </article><article class="home-banner home-banner--debit-promo" data-home-offer="debit" data-home-variant="banner" hidden>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-banner home-banner--debit-promo" data-home-offer="debit" data-home-variant="banner" data-home-editable hidden>
 
     <img src="assets/home-debit-promo.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ</p><small data-offer-copy>Оформите цифровую карту сейчас</small>
     <button class="home-banner-action" type="button" data-offer-label data-product="debit">Подробнее</button>
-  </article><article class="home-banner home-banner--express" data-home-offer="express" data-home-variant="banner" hidden>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-banner home-banner--express" data-home-offer="express" data-home-variant="banner" data-home-editable hidden>
 
     <img src="assets/home-express.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Срочно нужны деньги?</p><small data-offer-copy>До 500 000 ₽ без процентов на 4 месяца</small>
     <button class="home-banner-action" type="button" data-offer-label data-product="express">Подробнее</button>
-  </article><article class="home-banner home-banner--credit-promo" data-home-offer="credit" data-home-variant="banner" hidden>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-banner home-banner--credit-promo" data-home-offer="credit" data-home-variant="banner" data-home-editable hidden>
 
     <img src="assets/home-credit-promo.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>120 дней без процентов</p><small data-offer-copy>Ставки на кредит снижены</small>
     <button class="home-banner-action" type="button" data-offer-label data-product="credit-card">Подробнее</button>
-  </article><article class="home-banner home-banner--deposit-promo" data-home-offer="deposit" data-home-variant="banner" hidden>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-banner home-banner--deposit-promo" data-home-offer="deposit" data-home-variant="banner" data-home-editable hidden>
 
     <img src="assets/home-deposit-promo.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Вклады «Для своих 12%»</p><small data-offer-copy>От 10 000 ₽, на срок от 91 дня</small>
     <button class="home-banner-action" type="button" data-offer-label data-product="deposits">Подробнее</button>
-  </article><article class="home-banner home-banner--autopay" data-home-offer="autopay" data-home-variant="banner" hidden>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
+  </article><article class="home-banner home-banner--autopay" data-home-offer="autopay" data-home-variant="banner" data-home-editable hidden>
 
     <img src="assets/home-autopay-calendar-eefda5.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Оплачивать счета вовремя</p><small data-offer-copy>Настроить сейчас и получать уведомления за выставленные счета по ЖКУ, налогам, штрафам и т.д.</small>
     <button class="home-banner-action" type="button" data-offer-label data-unavailable>Подробнее</button>
+    <button class="home-offer-grip" type="button" data-home-grip aria-label="Перенести оффер стрелками вверх и вниз"><span aria-hidden="true"></span></button>
   </article><article class="home-banner home-banner--exchange" data-home-offer="exchange" data-home-variant="banner" hidden>
 
     <img src="assets/home-exchange.png" class="home-banner-art" alt="" draggable="false" loading="lazy" decoding="async">
     <p data-offer-title>Выгодный курс валют</p><small data-offer-copy hidden></small>
     <button class="home-banner-action" type="button" data-offer-label data-product="currency">Подробнее</button>
+
   </article><article class="home-row home-promo home-promo--exchange home-row--offer" data-home-offer="exchange" data-home-variant="row">
     <button class="home-row-body" type="button" data-product="currency">
       <span class="home-row-art"><img src="assets/home-exchange.png" class="" alt="" draggable="false" loading="eager" decoding="async"></span>
       <span class="home-row-copy"><strong data-offer-title>Выгодный курс валют</strong><small data-offer-copy hidden></small></span>
     </button>
     <button class="home-dismiss" type="button" data-home-dismiss aria-label="Скрыть предложение Выгодный курс валют"><img src="assets/home-close.svg" class="" alt="" draggable="false" loading="lazy" decoding="async"></button>
+
   </article></template>
-<script type="application/json" id="home-offer-data">{"offers":{"banner-refinance":{"section":"banners","title":"Объедините кредиты до 1 000 000 ₽","label":"Подробнее","route":"refinance","art":"refinance"},"banner-referral":{"section":"banners","title":"+ 2 500 ₽\u003cbr>за друга","label":"Пригласить","route":"referral","art":"gift"},"banner-credit":{"section":"banners","title":"120 дней без процентов","label":"Оформить","route":"credit-card","art":"credit-promo"},"refinance":{"section":"top","art":"refinance","title":"Объедините кредиты в других банках до 1 000 000 ₽","route":"refinance"},"creditCard":{"section":"cards","art":"credit-with-plus","title":"200 000 ₽","copy":"Кредитная карта\u003cbr>120 дней без процентов","route":"credit-card","style":"card","amount":true},"sport":{"section":"cards","art":"sport","title":"Страхование для занятий спортом","copy":"Для взрослых и детей","route":"sport"},"debit":{"section":"cards","art":"debit-promo","title":"Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ","copy":"Оформите цифровую карту сейчас","route":"debit"},"express":{"section":"credits","art":"express","title":"Срочно нужны деньги?","copy":"До 500 000 ₽ без процентов на 4 месяца","route":"express"},"credit":{"section":"credits","art":"credit-promo","title":"120 дней без процентов","copy":"Ставки на кредит снижены","route":"credit-card"},"deposit":{"section":"deposits","art":"deposit-promo","title":"Вклады «Для своих 12%»","copy":"От 10 000 ₽, на срок от 91 дня","route":"deposits"},"autopay":{"section":"deposits","art":"autopay","title":"Оплачивать счета вовремя","copy":"Настроить сейчас и получать уведомления за выставленные счета по ЖКУ, налогам, штрафам и т.д."},"exchange":{"section":"exchange","title":"Выгодный курс валют","route":"currency","art":"exchange"}},"artwork":{"gift":"assets/home-gift.png","refinance":"assets/home-refinance.png","credit":"assets/home-credit.png","credit-with-plus":"assets/home-credit-with-plus.png","sport":"assets/home-sport.png","debit-promo":"assets/home-debit-promo.png","express":"assets/home-express.png","credit-promo":"assets/home-credit-promo.png","deposit-promo":"assets/home-deposit-promo.png","autopay":"assets/home-autopay-calendar-eefda5.png","exchange":"assets/home-exchange.png"}}</script>
+<script type="application/json" id="home-offer-data">{"offers":{"banner-refinance":{"section":"banners","title":"Объедините кредиты до 1 000 000 ₽","label":"Подробнее","route":"refinance","art":"refinance"},"banner-referral":{"section":"banners","title":"+ 2 500 ₽\u003cbr>за друга","label":"Пригласить","route":"referral","art":"gift"},"banner-credit":{"section":"banners","title":"120 дней без процентов","label":"Оформить","route":"credit-card","art":"credit-promo"},"refinance":{"section":"top","art":"refinance","title":"Объедините кредиты в других банках до 1 000 000 ₽","route":"refinance"},"creditCard":{"section":"cards","art":"credit-with-plus","title":"200 000 ₽","copy":"Кредитная карта\u003cbr>120 дней без процентов","route":"credit-card","style":"card","amount":true},"sport":{"section":"cards","art":"sport","title":"Страхование для занятий спортом","copy":"Для взрослых и детей","route":"sport"},"debit":{"section":"cards","art":"debit-promo","title":"Бесплатная карта с высоким кэшбэком на АЗС, ЖКХ","copy":"Оформите цифровую карту сейчас","route":"debit"},"express":{"section":"credits","art":"express","title":"Срочно нужны деньги?","copy":"До 500 000 ₽ без процентов на 4 месяца","route":"express"},"credit":{"section":"credits","art":"credit-promo","title":"120 дней без процентов","copy":"Ставки на кредит снижены","route":"credit-card"},"deposit":{"section":"deposits","art":"deposit-promo","title":"Вклады «Для своих 12%»","copy":"От 10 000 ₽, на срок от 91 дня","route":"deposits"},"autopay":{"section":"deposits","art":"autopay","title":"Оплачивать счета вовремя","copy":"Настроить сейчас и получать уведомления за выставленные счета по ЖКУ, налогам, штрафам и т.д."},"exchange":{"section":"exchange","title":"Выгодный курс валют","route":"currency","art":"exchange"}},"sections":{"banners":"Баннеры наверху","top":"Под быстрыми действиями","cards":"Карты","credits":"Кредиты","deposits":"Вклады и счета","exchange":"Курсы валют"},"artwork":{"gift":"assets/home-gift.png","refinance":"assets/home-refinance.png","credit":"assets/home-credit.png","credit-with-plus":"assets/home-credit-with-plus.png","sport":"assets/home-sport.png","debit-promo":"assets/home-debit-promo.png","express":"assets/home-express.png","credit-promo":"assets/home-credit-promo.png","deposit-promo":"assets/home-deposit-promo.png","autopay":"assets/home-autopay-calendar-eefda5.png","exchange":"assets/home-exchange.png"}}</script>
 <template id="sf-product-cash"><div class="sf-product-view sf-product--promo" data-route="cash">
       <div class="sf-product-scroll" tabindex="0" aria-label="Кредит наличными"><div class="sf-product-hero"><div class="sf-promo-art"><img src="assets/flow-f22ab27f-240a-4574-84a1-845b3d0e50df.webp" class="" alt="" decoding="async" draggable="false" loading="lazy"></div></div>
     <section class="sf-product-body" data-header-panel><h1>Кредит наличными</h1>
