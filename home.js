@@ -265,22 +265,32 @@
     const visibility = card.querySelector('[data-home-offer-visible]');
     const form = card.querySelector('form');
     const fields = form.elements;
-    const preview = form.querySelector('.home-settings-image');
-    const uploadedOption = fields.art.querySelector('[value="uploaded"]');
+    const picker = form.querySelector('.home-art-picker');
+    const pickerToggle = picker.querySelector('summary');
+    const preview = pickerToggle.querySelector('img');
+    const imageName = pickerToggle.querySelector('span');
+    const options = new Map([...picker.querySelectorAll('[data-home-art-option]')].map(button =>
+      [button.dataset.homeArtOption, button]));
     const submit = form.querySelector('[type="submit"]');
     const reset = form.querySelector('[data-home-content-reset]');
+    let selectedArt;
+
+    function selectArt(art) {
+      selectedArt = art;
+      preview.src = config.artwork[art] || art;
+      imageName.textContent = options.get(art)?.textContent ||
+        (editedImage.test(art) ? 'Загруженная картинка' : art === initial.art ? 'Исходная картинка' : 'Текущая картинка');
+      for (const [key, button] of options) button.setAttribute('aria-pressed', String(key === art));
+    }
 
     function syncContent() {
       fields.title.value = state.title;
       fields.copy.value = state.copy;
       fields.showCopy.checked = state.showCopy;
       fields.copy.disabled = !state.showCopy;
-      const uploaded = editedImage.test(state.art);
-      uploadedOption.hidden = !uploaded;
-      fields.art.value = uploaded ? 'uploaded' : state.art;
       fields.image.value = '';
-      preview.src = config.artwork[state.art] || state.art;
-      preview.hidden = false;
+      selectArt(state.art);
+      picker.open = false;
     }
 
     visibility.addEventListener('change', () => {
@@ -290,9 +300,20 @@
       saveSettings(status);
     });
     fields.showCopy.addEventListener('change', () => { fields.copy.disabled = !fields.showCopy.checked; });
-    fields.art.addEventListener('change', () => {
+    picker.addEventListener('click', event => {
+      const option = event.target.closest('[data-home-art-option]');
+      if (!option) return;
       fields.image.value = '';
-      preview.src = fields.art.value === 'uploaded' ? state.art : config.artwork[fields.art.value];
+      selectArt(option.dataset.homeArtOption);
+      picker.open = false;
+      pickerToggle.focus({ preventScroll: true });
+    });
+    picker.addEventListener('keydown', event => {
+      if (event.key !== 'Escape' || !picker.open) return;
+      event.preventDefault();
+      event.stopPropagation();
+      picker.open = false;
+      pickerToggle.focus({ preventScroll: true });
     });
     form.addEventListener('submit', async event => {
       event.preventDefault();
@@ -301,7 +322,7 @@
       const copy = fields.copy.value.trim();
       const showCopy = fields.showCopy.checked;
       const file = fields.image.files[0];
-      let art = fields.art.value === 'uploaded' ? state.art : fields.art.value;
+      let art = selectedArt;
       if (file) {
         submit.disabled = true;
         reset.disabled = true;
