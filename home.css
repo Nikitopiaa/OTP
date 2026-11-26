@@ -5,14 +5,9 @@
   --home-top-inset: 59px;
   --home-editable-radius: 16px;
 }
-.home-prototype .stage { min-height: calc(972px * var(--device-scale) + 32px); }
-.home-prototype .device-wrap { width: calc(456px * var(--device-scale)); height: calc(972px * var(--device-scale)); }
-.home-prototype .iphone { width: 456px; height: 972px; }
-.home-prototype .screen { height: 956px; background: var(--home-surface); }
+.home-prototype .screen { background: var(--home-surface); }
 .home-prototype.hide-frame { --home-top-inset: 0px; }
-.home-prototype.hide-frame .stage { min-height: 0; }
-.home-prototype.hide-frame .device-wrap { width: 440px; height: 100dvh; }
-.home-prototype.hide-frame .iphone, .home-prototype.hide-frame .screen { width: 100%; height: 100%; }
+.home-prototype.hide-frame .device-wrap { height: min(852px, 100dvh); }
 .home-status {
   position: absolute; z-index: 7; inset: 0 0 auto; height: 59px;
   display: flex; align-items: center; justify-content: space-between;
@@ -198,9 +193,7 @@
 .home-settings-actions [type="submit"]:disabled { opacity: .6; }
 .home-settings-status { margin-top: 6px; color: #525252; font-size: 12px; line-height: 16px; }
 @media (max-width:650px), (hover:none) and (pointer:coarse) {
-  .home-prototype .stage { min-height: 0; }
-  .home-prototype .device-wrap, .home-prototype.hide-frame .device-wrap { width: 100%; height: 100dvh; }
-  .home-prototype .iphone, .home-prototype .screen { width: 100%; height: 100%; }
+  .home-prototype.hide-frame .device-wrap { height: 100dvh; }
   .home-prototype.hide-frame { --home-top-inset: calc(56px + env(safe-area-inset-top, 0px)); }
   .home-prototype:not(.hide-frame) { --home-top-inset: 110px; }
   .home-header-actions { gap: 8px; }
