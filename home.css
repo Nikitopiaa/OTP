@@ -106,6 +106,10 @@
 .home-row-copy { display: grid; justify-items: start; min-width: 0; overflow-wrap: break-word; white-space: pre-line; }
 .home-row-copy strong { font-size: 16px; line-height: 20px; font-weight: 580; letter-spacing: -.1px; }
 .home-row-copy small { color: var(--home-secondary); font-size: 14px; line-height: 18px; letter-spacing: -.1px; }
+:is(
+  [data-home-offer="sport"], [data-home-offer="debit"], [data-home-offer="express"],
+  [data-home-offer="credit"], [data-home-offer="deposit"], [data-home-offer="autopay"]
+) [data-offer-title] + [data-offer-copy]:not([hidden]) { margin-top: 2px; }
 .home-account-note { padding: 2px 6px; margin-top: 6px; border-radius: 4px; background: var(--home-surface); color: var(--home-secondary); font-size: 12px; line-height: 14px; }
 .home-card-accounts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 .home-card-accounts > span {
