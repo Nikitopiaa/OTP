@@ -102,10 +102,7 @@
 .home-promo--debit-promo .home-row-art img { width: 37.85px; height: 37.85px; }
 .home-promo--express .home-row-art img, .home-promo--deposit-promo .home-row-art img { width: 36px; height: 36px; }
 .home-promo--credit-promo .home-row-art img { width: 36.97px; height: 36.97px; }
-.home-card-plus {
-  position: absolute; right: -3px; bottom: 3px; display: grid; place-items: center; width: 20px; height: 20px;
-  border: 2px solid white; border-radius: 50%; background: #222; color: white; font: 600 14px/1 Onest,Arial,sans-serif;
-}
+.home-promo--credit-with-plus .home-row-art img { border-radius: 0; object-fit: contain; }
 .home-row-copy { display: grid; justify-items: start; min-width: 0; overflow-wrap: break-word; white-space: pre-line; }
 .home-row-copy strong { font-size: 16px; line-height: 20px; font-weight: 580; letter-spacing: -.1px; }
 .home-row-copy small { color: var(--home-secondary); font-size: 14px; line-height: 18px; letter-spacing: -.1px; }
